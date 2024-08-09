@@ -6,7 +6,7 @@ type FormatNumberParams = {
 };
 
 export const formatNumber = (value: number, { roundTo = 0, format = 'number' }: FormatNumberParams = {}) => {
-  const options =
+  const options: Intl.NumberFormatOptions =
     format === 'currency'
       ? {
           style: 'currency',

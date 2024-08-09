@@ -10,5 +10,5 @@ export const SectionDataTableWithID = ({ id, title }: SectionDataTableProps) => 
   const { updateTable } = useForm210();
   const value = useForm210Table(id);
 
-  return <SectionDataTable id={id} onChange={updateTable(id)} defaultData={value} title={title} />;
+  return <SectionDataTable onChange={updateTable(id)} defaultData={value} title={title} />;
 };
