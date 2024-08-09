@@ -4,6 +4,7 @@ This project was develop with the idea to help people understand how the DIAN's 
 
 > **Disclamer:** This project take in consideration the formulas described on the DIAN's form 210 instruction on how to use it, although their values ​​are quite approximate and it is carefully reviewed that their calculations are as accurate as possible, it is still a good idea to consult these values ​​with your trusted accountant, use at your own risk.
 
+Visit the platform here [https://declaracion-renta-colombia.juanmsl.com/](https://declaracion-renta-colombia.juanmsl.com/)
 
 ## Setup
 
