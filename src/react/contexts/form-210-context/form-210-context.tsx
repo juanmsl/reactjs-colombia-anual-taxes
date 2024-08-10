@@ -260,7 +260,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
       return f126 * 0.5 - f132;
     }
 
-    return v(Math.min(f133Value, f133Average) - f132);
+    return v(Math.max(Math.min(f133Value, f133Average) - f132, 0));
   }, [declarationNumber, f126, f132, prevDeclarationValue]);
   const f134 = useMemo(() => v(Math.max(f129 + f133 - f130 - f131 - f132, 0)), [f129, f130, f131, f132, f133]);
   const f136 = useMemo(

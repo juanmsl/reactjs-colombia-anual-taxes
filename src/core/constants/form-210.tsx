@@ -1,4 +1,4 @@
-import { Patrimonio } from '../../react/pages/home/components';
+import { Patrimonio } from '../../react/pages/form210-page/components';
 
 import { SectionDataTableWithID } from '@components/section-data-table-with-id';
 
@@ -94,8 +94,8 @@ export type Form210Data = {
 };
 
 export const defaultForm210Data: Form210Data = {
-  year: 2024,
-  uvt: 47065,
+  year: 2023,
+  uvt: 42412,
   declarationNumber: 3,
   prevDeclarationValue: 8751000,
   f28: 0,

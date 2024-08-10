@@ -10,6 +10,7 @@ export default defineConfig({
       '@assets': '/src/assets',
       '@helpers': '/src/helpers',
       '@components': '/src/react/components',
+      '@layouts': '/src/react/layouts',
       '@contexts': '/src/react/contexts',
       '@pages': '/src/react/pages',
       '@hooks': '/src/react/hooks',

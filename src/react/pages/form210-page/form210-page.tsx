@@ -1,18 +1,17 @@
-import { Icon, THEME, Typography, useMyTheme } from '@juanmsl/ui';
+import { Icon, Typography } from '@juanmsl/ui';
 
-import { HomeStyle } from './home.style';
+import { Form210PageStyle } from './form210-page.style';
 
 import { Form210 } from '@components/form-210';
 import { Label } from '@components/label';
 import { useForm210 } from '@contexts';
 import { formatNumber } from '@helpers';
 
-export const Home = () => {
+export const Form210Page = () => {
   const { year, uvt, f136, f137 } = useForm210();
-  const { toggleTheme, themeName } = useMyTheme();
 
   return (
-    <HomeStyle>
+    <Form210PageStyle>
       <section className='home-content-panel'>
         <Form210 />
       </section>
@@ -44,25 +43,20 @@ export const Home = () => {
           )}
         </section>
         <section className='shared-footer'>
-          <section className='theme-selector' onClick={toggleTheme}>
-            <Icon name={themeName === THEME.LIGHT ? 'moon' : 'sun'} />
-            <Typography variant='small'>Cambiar al tema {themeName === THEME.LIGHT ? 'oscuro' : 'claro'}</Typography>
-          </section>
+          <a
+            href='https://www.dian.gov.co/atencionciudadano/formulariosinstructivos/Formularios/2024/Formulario_210_2024.pdf'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='form-link'
+          >
+            <Icon name='download' />
+            <Typography variant='small' weight='bold' withoutPadding>
+              Descargar Formulario 210
+              <br />+ Instrucciones por celda
+            </Typography>
+          </a>
         </section>
       </section>
-      <section className='home-footer'>
-        <a
-          href='https://www.dian.gov.co/atencionciudadano/formulariosinstructivos/Formularios/2024/Formulario_210_2024.pdf'
-          target='_blank'
-          rel='noopener noreferrer'
-          className='form-link'
-        >
-          <Icon name='download' />
-          <Typography variant='label' weight='bold' withoutPadding>
-            Click aqui para descargar el Formulario 210 para año gravable {year} (Presentando en {year + 1})
-          </Typography>
-        </a>
-      </section>
-    </HomeStyle>
+    </Form210PageStyle>
   );
 };
