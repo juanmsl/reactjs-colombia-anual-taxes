@@ -40,7 +40,6 @@ export const FieldInputStyle = styled.section`
   }
 
   &.is-locked {
-    border-color: ${props => props.theme.colors.primary};
   }
 
   &.is-disabled {

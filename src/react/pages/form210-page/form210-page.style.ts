@@ -1,31 +1,13 @@
 import styled from 'styled-components';
 
-export const HomeStyle = styled.main`
+export const Form210PageStyle = styled.main`
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-template-rows: 1fr auto;
-  grid-template-areas: 'home-content home-shared' 'home-footer home-shared';
+  grid-template-rows: 1fr;
+  grid-template-areas: 'home-content home-shared';
   position: relative;
-  padding: 2em;
-  gap: 2em;
-  height: 100dvh;
+  height: 100%;
   overflow: auto;
-  background-size: 40px 40px;
-  background-position:
-    0 0,
-    20px 20px;
-  animation: AnimateBG 3s linear infinite;
-  background-image: radial-gradient(${props => props.theme.colors.text}55 1px, transparent 1px),
-    radial-gradient(${props => props.theme.colors.text}55 1px, transparent 1px);
-
-  @keyframes AnimateBG {
-    from {
-      background-position: 0 0;
-    }
-    to {
-      background-position: 80px 40px;
-    }
-  }
 
   .form-link {
     justify-self: center;
@@ -48,12 +30,6 @@ export const HomeStyle = styled.main`
     }
   }
 
-  .home-shared {
-    background: ${props => props.theme.colors.background};
-    border: 2px solid ${props => props.theme.colors.primary};
-    border-radius: 15px;
-  }
-
   .home-content-panel {
     height: 100%;
     overflow: auto;
@@ -61,13 +37,18 @@ export const HomeStyle = styled.main`
     align-content: start;
     border: 0;
     grid-area: home-content;
+    padding-bottom: 4em;
   }
 
   .home-footer {
     grid-area: home-footer;
+    padding: 2em 0;
   }
 
   .home-shared {
+    background: ${props => props.theme.colors.background};
+    border: 2px solid ${props => props.theme.colors.primary};
+    border-radius: 15px;
     position: sticky;
     top: 0;
     padding: 1em;
@@ -75,11 +56,12 @@ export const HomeStyle = styled.main`
     grid-template-rows: 1fr auto;
     gap: 1em;
     grid-area: home-shared;
+    margin: 2em;
 
     .shared-data {
       display: grid;
       padding: 0.5em 1.5em;
-      border-radius: 100px;
+      border-radius: 20px;
       border: 1px solid;
 
       &.selected {
@@ -94,22 +76,5 @@ export const HomeStyle = styled.main`
       gap: 1em;
       align-content: start;
     }
-
-    .shared-footer {
-      margin-top: auto;
-      display: grid;
-      grid-auto-flow: column;
-      align-items: center;
-      gap: 1em;
-    }
-  }
-
-  .theme-selector {
-    cursor: pointer;
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
   }
 `;
