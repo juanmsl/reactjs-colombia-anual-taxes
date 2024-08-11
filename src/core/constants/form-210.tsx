@@ -88,7 +88,6 @@ export type Form210Data = {
   _132: Array<Form210DataItem>;
   f135: number;
   f138: number;
-  f139: number;
   f140: number;
   f141: number;
 };
@@ -167,7 +166,6 @@ export const defaultForm210Data: Form210Data = {
   _132: [DefaultForm210DataItem],
   f135: 0,
   f138: 0,
-  f139: 0,
   f140: 0,
   f141: 0,
 };

@@ -741,7 +741,7 @@ export const Form210 = () => {
           <tr>
             <td colSpan={2} />
             <FormField id='138' format='number' />
-            <FormField id='139' />
+            <FormField id='139' readOnly formula='138 * 72UVT' />
             <FormField id='140' />
             <FormField id='141' />
           </tr>

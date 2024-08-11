@@ -96,7 +96,6 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
     _132,
     f135,
     f138,
-    f139,
     f140,
     f141,
   } = data;
@@ -220,6 +219,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
   const f88 = useMemo(() => v(Math.max(f75 + f76 + f77 - f74 - f79, 0)), [f74, f75, f76, f77, f79]);
   const f90 = useMemo(() => v(f87 - f89), [f87, f89]);
   const f91 = useMemo(() => v(f41 + f42 + f53 + f57 + f69 + f73 + f86 + f90), [f41, f42, f53, f57, f69, f73, f86, f90]);
+  const f139 = useMemo(() => v(f138 * valueFromUVT(72)), [f138, valueFromUVT]);
   const f92 = useMemo(
     () => v(Math.min(f28 + f41 + f53 + f69 + f86 + f139, valueFromUVT(1340))),
     [f28, f41, f53, f69, f86, f139, valueFromUVT],
