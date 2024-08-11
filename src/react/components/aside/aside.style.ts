@@ -19,4 +19,19 @@ export const AsideStyle = styled.aside`
     border-top: 1px solid;
     padding-top: 1em;
   }
+
+  .aside-tab {
+    padding: 0.5em 1em;
+    border-radius: 100px;
+    border: 1px solid transparent;
+    transition: border 300ms ease;
+
+    &:hover {
+      border-color: currentColor;
+    }
+
+    &.active {
+      border-color: ${props => props.theme.colors.primary};
+    }
+  }
 `;
