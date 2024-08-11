@@ -34,7 +34,7 @@ export const Form210 = () => {
 
   return (
     <Form210Style>
-      <Typography variant='header1'>Formulario 210</Typography>
+      <Typography variant='hero'>Formulario 210</Typography>
       <FormTable>
         <tbody>
           <tr>

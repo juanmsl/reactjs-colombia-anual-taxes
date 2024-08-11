@@ -63,6 +63,7 @@ export const Form210PageStyle = styled.main`
       padding: 0.5em 1.5em;
       border-radius: 20px;
       border: 1px solid;
+      gap: 4px;
 
       &.selected {
         border-width: 2px;
