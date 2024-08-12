@@ -47,7 +47,7 @@ export const Form210PageStyle = styled.main`
 
   .home-shared {
     background: ${props => props.theme.colors.background};
-    border: 2px solid ${props => props.theme.colors.primary};
+    border: 4px solid ${props => props.theme.colors.tertiary};
     border-radius: 15px;
     position: sticky;
     top: 0;
@@ -66,9 +66,9 @@ export const Form210PageStyle = styled.main`
       gap: 4px;
 
       &.selected {
-        border-width: 2px;
-        background: ${props => props.theme.colors.primary};
-        color: ${props => props.theme.colors.primaryContrast};
+        border-width: 0;
+        background: ${props => props.theme.colors.tertiary};
+        color: ${props => props.theme.colors.tertiaryContrast};
       }
     }
 

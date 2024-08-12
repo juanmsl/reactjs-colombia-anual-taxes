@@ -1,4 +1,4 @@
-import { Line, Typography } from '@juanmsl/ui';
+import { Checkbox, Line, Typography } from '@juanmsl/ui';
 import { useState } from 'react';
 
 import { FieldInputDetails, FormField, FormLabel, MarginTable } from './components';
@@ -31,6 +31,9 @@ export const Form210 = () => {
 
   const [showDescriptionTable, setShowDescriptionTable] = useState<`${number | ''}`>('');
   const [asideID, setAsideID] = useState<`${number | ''}`>('');
+  const [showCedulaDePensiones, setShowCedulaDePensiones] = useState(false);
+  const [showCedulaDeDividendos, setShowCedulaDeDividendos] = useState(false);
+  const [showGananciasOcasionales, setShowGananciasOcasionales] = useState(false);
 
   return (
     <Form210Style>
@@ -61,7 +64,7 @@ export const Form210 = () => {
           </tr>
           <tr>
             <FormLabel className='form-section-title' colSpan={6}>
-              Cedula general
+              Cédula general
             </FormLabel>
           </tr>
           <tr>
@@ -263,84 +266,143 @@ export const Form210 = () => {
           </tr>
 
           <tr>
-            <td colSpan={2} />
+            <td colSpan={2}>
+              <Checkbox
+                name='showCedulaDePensiones'
+                value={showCedulaDePensiones}
+                setValue={value => setShowCedulaDePensiones(value)}
+                label={showCedulaDePensiones ? 'Ocultar' : 'Mostrar'}
+              />
+            </td>
             <FormLabel className='form-section-title' colSpan={4}>
               Cédula de pensiones
             </FormLabel>
           </tr>
 
-          <tr>
-            <td colSpan={2} />
-            <FormLabel atBottom>Ingresos brutos por rentas de pensiones del pais y del exterior</FormLabel>
-            <FormLabel atBottom>Ingresos no constitutivos de renta</FormLabel>
-            <FormLabel atBottom>Renta liquida</FormLabel>
-            <FormLabel atBottom>Rentas excentas de pensiones</FormLabel>
-          </tr>
+          {showCedulaDePensiones && (
+            <>
+              <tr>
+                <td colSpan={2} />
+                <td colSpan={4} style={{ padding: '1em 0' }}>
+                  <Typography variant='label'>
+                    Los ingresos como las pensiones de jubilación, invalidez, vejez, de sobrevivientes y sobre riesgos
+                    laborales, así como aquellas provenientes de indemnizaciones sustitutivas de las pensiones o las
+                    devoluciones de saldos de ahorro pensional.
+                  </Typography>
+                </td>
+              </tr>
 
-          <tr>
-            <td colSpan={2} />
-            <FormField id='99' />
-            <FormField id='100' />
-            <FormField id='101' readOnly formula='99 - 100' />
-            <FormField id='102' />
-          </tr>
+              <tr>
+                <td colSpan={2} />
+                <FormLabel atBottom>Ingresos brutos por rentas de pensiones del pais y del exterior</FormLabel>
+                <FormLabel atBottom>Ingresos no constitutivos de renta</FormLabel>
+                <FormLabel atBottom>Renta liquida</FormLabel>
+                <FormLabel atBottom>Rentas excentas de pensiones</FormLabel>
+              </tr>
 
-          <tr>
-            <td colSpan={2} />
-            <FormLabel atBottom>Total impuesto sobre rentas liquidas</FormLabel>
-          </tr>
+              <tr>
+                <td colSpan={2} />
+                <FormField id='99' />
+                <FormField id='100' />
+                <FormField id='101' readOnly formula='99 - 100' />
+                <FormField id='102' />
+              </tr>
 
-          <tr>
-            <td colSpan={2} />
-            <FormField id='103' readOnly formula='101 - 102' />
-          </tr>
+              <tr>
+                <td colSpan={2} />
+                <FormLabel atBottom>Total impuesto sobre rentas liquidas</FormLabel>
+              </tr>
+
+              <tr>
+                <td colSpan={2} />
+                <FormField id='103' readOnly formula='101 - 102' />
+              </tr>
+            </>
+          )}
 
           <tr>
             <td colSpan={6} className='empty-row' />
           </tr>
 
           <tr>
-            <td colSpan={2} />
+            <td colSpan={2}>
+              <Checkbox
+                name='showCedulaDeDividendos'
+                value={showCedulaDeDividendos}
+                setValue={value => setShowCedulaDeDividendos(value)}
+                label={showCedulaDeDividendos ? 'Ocultar' : 'Mostrar'}
+              />
+            </td>
             <FormLabel className='form-section-title' colSpan={4}>
-              Cedula de dividendos y/o participaciones
+              Cédula de dividendos y/o participaciones
             </FormLabel>
           </tr>
 
-          <tr>
-            <td colSpan={2} />
-            <FormLabel atBottom>Dividendos y participaciones 2016 y anteriores, y otros</FormLabel>
-            <FormLabel atBottom>Ingresos no constitutivos de renta</FormLabel>
-            <FormLabel atBottom>Renta liquida ordinaria año 2016 y anteriores</FormLabel>
-            <FormLabel atBottom>1a Subcedula año 2017 y siguientes numeral 3 art 49 del E.T.</FormLabel>
-          </tr>
+          {showCedulaDeDividendos && (
+            <>
+              <tr>
+                <td colSpan={2} />
+                <td colSpan={4} style={{ padding: '1em 0' }}>
+                  <section>
+                    <Typography variant='label' as='p'>
+                      Son ingresos de esta cédula los recibidos por concepto de dividendos y/o participaciones, y
+                      constituyen renta gravable en cabeza de los socios, accionistas, comuneros, asociados,
+                      suscriptores y similares, que sean personas naturales residentes y sucesiones ilíquidas de
+                      causantes que al momento de su muerte eran residentes, recibidos de distribuciones provenientes de
+                      sociedades y entidades nacionales, y de sociedades y entidades extranjeras.
+                    </Typography>
+                    <Typography variant='label' as='p'>
+                      Deberá incluir el valor total de los dividendos y/o participaciones que le hayan sido pagados o
+                      abonados en cuenta en calidad de exigibles, durante el año gravable que se está declarando y
+                      siguientes, según los valores certificados por la sociedad anónima, limitada o asimiladas, según
+                      el caso.
+                    </Typography>
+                    <Typography variant='label' as='p'>
+                      Dependiendo del periodo en el que los dividendos fueron decretados y pagados o abonados, estos
+                      pueden ser considerados como no constitutivos de renta, o como gravados de acuerdo con lo
+                      establecido en el artículo 343 del E.T.
+                    </Typography>
+                  </section>
+                </td>
+              </tr>
 
-          <tr>
-            <td colSpan={2} />
-            <FormField id='104' />
-            <FormField id='105' />
-            <FormField id='106' readOnly formula='104 - 105' />
-            <FormField id='107' />
-          </tr>
+              <tr>
+                <td colSpan={2} />
+                <FormLabel atBottom>Dividendos y participaciones 2016 y anteriores, y otros</FormLabel>
+                <FormLabel atBottom>Ingresos no constitutivos de renta</FormLabel>
+                <FormLabel atBottom>Renta liquida ordinaria año 2016 y anteriores</FormLabel>
+                <FormLabel atBottom>1a Subcedula año 2017 y siguientes numeral 3 art 49 del E.T.</FormLabel>
+              </tr>
 
-          <tr>
-            <td colSpan={2} />
-            <FormLabel atBottom>2a Subcedula año 2017 y siguientes paragrafo 2 art 49 del E.T.</FormLabel>
-            <FormLabel atBottom>Dividendos y participaciones recibidas del exterior</FormLabel>
-            <FormLabel atBottom>Rentas exentas de la casilla 109</FormLabel>
-          </tr>
-          <tr>
-            <td colSpan={2} />
-            <FormField id='108' />
-            <FormField id='109' />
-            <FormField id='110' />
-          </tr>
+              <tr>
+                <td colSpan={2} />
+                <FormField id='104' />
+                <FormField id='105' />
+                <FormField id='106' readOnly formula='104 - 105' />
+                <FormField id='107' />
+              </tr>
 
-          <tr>
-            <td colSpan={2} />
-            <td colSpan={4}>
-              <Line orientation='horizontal' />
-            </td>
-          </tr>
+              <tr>
+                <td colSpan={2} />
+                <FormLabel atBottom>2a Subcedula año 2017 y siguientes paragrafo 2 art 49 del E.T.</FormLabel>
+                <FormLabel atBottom>Dividendos y participaciones recibidas del exterior</FormLabel>
+                <FormLabel atBottom>Rentas exentas de la casilla 109</FormLabel>
+              </tr>
+              <tr>
+                <td colSpan={2} />
+                <FormField id='108' />
+                <FormField id='109' />
+                <FormField id='110' />
+              </tr>
+
+              <tr>
+                <td colSpan={2} />
+                <td colSpan={4}>
+                  <Line orientation='horizontal' />
+                </td>
+              </tr>
+            </>
+          )}
 
           <tr>
             <td colSpan={2} />
@@ -359,27 +421,48 @@ export const Form210 = () => {
           </tr>
 
           <tr>
-            <td colSpan={2} />
+            <td colSpan={2}>
+              <Checkbox
+                name='showGananciasOcasionales'
+                value={showGananciasOcasionales}
+                setValue={value => setShowGananciasOcasionales(value)}
+                label={showGananciasOcasionales ? 'Ocultar' : 'Mostrar'}
+              />
+            </td>
             <FormLabel atBottom className='form-section-title' colSpan={4}>
               Ganancias ocasionales
             </FormLabel>
           </tr>
 
-          <tr>
-            <td colSpan={2} />
-            <FormLabel atBottom>Ingresos por ganancias ocasionales en el país y del exterior</FormLabel>
-            <FormLabel atBottom>Costos por ganancias ocacionales</FormLabel>
-            <FormLabel atBottom>Ganancias ocasionales no gravadas y exentas</FormLabel>
-            <FormLabel atBottom>Ganancias ocasionales gravables</FormLabel>
-          </tr>
+          {showGananciasOcasionales && (
+            <>
+              <tr>
+                <td colSpan={2} />
+                <td colSpan={4} style={{ padding: '1em 0' }}>
+                  <Typography variant='label' as='p'>
+                    Los ingresos a reportar son la venta de activos fijos, indemnizaciones de seguros de vida, ganancias
+                    por loterias, legados, donaciones, porciónes conyugales y valores recibidos por herencias.
+                  </Typography>
+                </td>
+              </tr>
 
-          <tr>
-            <td colSpan={2} />
-            <FormField id='112' />
-            <FormField id='113' />
-            <FormField id='114' />
-            <FormField id='115' readOnly formula='112 - 113 - 114' />
-          </tr>
+              <tr>
+                <td colSpan={2} />
+                <FormLabel atBottom>Ingresos por ganancias ocasionales en el país y del exterior</FormLabel>
+                <FormLabel atBottom>Costos por ganancias ocacionales</FormLabel>
+                <FormLabel atBottom>Ganancias ocasionales no gravadas y exentas</FormLabel>
+                <FormLabel atBottom>Ganancias ocasionales gravables</FormLabel>
+              </tr>
+
+              <tr>
+                <td colSpan={2} />
+                <FormField id='112' />
+                <FormField id='113' />
+                <FormField id='114' />
+                <FormField id='115' readOnly formula='112 - 113 - 114' />
+              </tr>
+            </>
+          )}
 
           <tr>
             <td colSpan={6} className='empty-row' />
@@ -598,7 +681,12 @@ export const Form210 = () => {
                         <tbody>
                           <tr>
                             <td>Impuesto Neto de Renta del año actual (126)</td>
-                            <td>{formatNumber(f126, { roundTo: -3, format: 'currency' })}</td>
+                            <td>
+                              {formatNumber(f126, {
+                                roundTo: -3,
+                                format: 'currency',
+                              })}
+                            </td>
                           </tr>
                           <tr>
                             <td>Año a declarar</td>
@@ -615,7 +703,12 @@ export const Form210 = () => {
                           </tr>
                           <tr>
                             <td>Retenciones</td>
-                            <td>{formatNumber(f132, { roundTo: -3, format: 'currency' })}</td>
+                            <td>
+                              {formatNumber(f132, {
+                                roundTo: -3,
+                                format: 'currency',
+                              })}
+                            </td>
                           </tr>
                           <tr>
                             <td>TOTAL MÉTODO 1</td>
@@ -655,16 +748,29 @@ export const Form210 = () => {
                         <tbody>
                           <tr>
                             <td>Impuesto Neto de Renta del año actual (126)</td>
-                            <td>{formatNumber(f126, { roundTo: -3, format: 'currency' })}</td>
+                            <td>
+                              {formatNumber(f126, {
+                                roundTo: -3,
+                                format: 'currency',
+                              })}
+                            </td>
                           </tr>
                           <tr>
                             <td>Impuesto Neto de Renta del año anterior (126)</td>
-                            <td>{formatNumber(prevDeclarationValue, { roundTo: -3, format: 'currency' })}</td>
+                            <td>
+                              {formatNumber(prevDeclarationValue, {
+                                roundTo: -3,
+                                format: 'currency',
+                              })}
+                            </td>
                           </tr>
                           <tr>
                             <td>Promedio</td>
                             <td>
-                              {formatNumber((f126 + prevDeclarationValue) / 2, { roundTo: -3, format: 'currency' })}
+                              {formatNumber((f126 + prevDeclarationValue) / 2, {
+                                roundTo: -3,
+                                format: 'currency',
+                              })}
                             </td>
                           </tr>
                           <tr>

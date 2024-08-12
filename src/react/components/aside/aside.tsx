@@ -1,4 +1,4 @@
-import { Typography } from '@juanmsl/ui';
+import { Icon, Typography } from '@juanmsl/ui';
 import { NavLink } from 'react-router-dom';
 
 import { AsideStyle } from './aside.style';
@@ -11,10 +11,16 @@ export const Aside = () => {
     <AsideStyle>
       <section className='aside-content'>
         <NavLink to={PATHS.HOME} className='aside-tab'>
-          <Typography variant='label'>Inicio</Typography>
+          <Icon name='house' size={14} />
+          <Typography variant='label' withoutPadding>
+            Inicio
+          </Typography>
         </NavLink>
         <NavLink to={PATHS.FORM210} className='aside-tab'>
-          <Typography variant='label'>Formulario 210</Typography>
+          <Icon name='download' size={14} />
+          <Typography variant='label' withoutPadding>
+            Formulario 210
+          </Typography>
         </NavLink>
       </section>
       <section className='aside-footer'>
