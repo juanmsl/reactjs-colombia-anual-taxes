@@ -4,11 +4,12 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import { Form210Provider } from '@contexts';
+import { DarkTheme, LightTheme } from '@core/theme';
 import { Router } from '@router';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider>
+    <ThemeProvider darkTheme={DarkTheme} lightTheme={LightTheme}>
       <Suspense fallback={<SimpleLoader />}>
         <BrowserRouter>
           <Form210Provider>
