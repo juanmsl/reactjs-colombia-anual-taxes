@@ -15,7 +15,7 @@ export const Form210PageStyle = styled.main`
     border: 1px solid;
     border-radius: 100px;
     box-shadow: 0 0 4px;
-    transition: all 300ms ease;
+    transition: box-shadow 300ms ease;
     background: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.primary};
     text-align: center;
@@ -48,7 +48,7 @@ export const Form210PageStyle = styled.main`
   .home-shared {
     background: ${props => props.theme.colors.background};
     border: 4px solid ${props => props.theme.colors.tertiary};
-    border-radius: 15px;
+    border-radius: 25px;
     position: sticky;
     top: 0;
     padding: 1em;
@@ -56,7 +56,7 @@ export const Form210PageStyle = styled.main`
     grid-template-rows: 1fr auto;
     gap: 1em;
     grid-area: home-shared;
-    margin: 2em;
+    margin: 1em;
 
     .shared-data {
       display: grid;

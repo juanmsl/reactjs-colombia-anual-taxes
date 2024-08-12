@@ -3,12 +3,14 @@ import styled from 'styled-components';
 export const AsideStyle = styled.aside`
   background: ${props => props.theme.colors.secondary};
   color: ${props => props.theme.colors.secondaryContrast};
-  border-right: 5px solid ${props => props.theme.colors.tertiary};
+  border: 5px solid ${props => props.theme.colors.primary};
+  border-radius: 25px;
   padding: 1em;
   display: grid;
   gap: 1em;
   align-content: space-between;
   width: 250px;
+  margin: 1em;
 
   .aside-content {
     display: grid;
@@ -25,16 +27,24 @@ export const AsideStyle = styled.aside`
   .aside-tab {
     padding: 0.5em 1em;
     border-radius: 100px;
-    border: 1px solid transparent;
-    transition: border 300ms ease;
+    border: 3px solid transparent;
+    transition:
+      border 300ms ease,
+      background 100ms ease;
     display: grid;
     grid-template-columns: subgrid;
     grid-column: span 2;
     align-items: center;
+    background: transparent;
 
     &.active,
     &:hover {
-      border-color: currentColor;
+      border-color: ${props => props.theme.colors.primary};
+    }
+
+    &.active {
+      color: ${props => props.theme.colors.text};
+      background: ${props => props.theme.colors.background};
     }
   }
 `;
