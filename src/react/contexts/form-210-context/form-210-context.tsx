@@ -10,10 +10,173 @@ import {
   Form210DataLimits,
   LocalStorage,
   MarginTableEntity,
+  Table29,
+  YearForm210Data,
+  YearsForm210Data,
 } from '@core/constants';
 import { roundNumber } from '@helpers';
 
-const Form210Context = createContext(null);
+type Form210ContextEntity = {
+  year: number;
+  uvt: number;
+  minimumSalary: number;
+  declarationNumber: number;
+  prevDeclarationValue: number;
+  f28: number;
+  f29: number;
+  _29: Table29;
+  f30: number;
+  _30: Array<Form210DataItem>;
+  f31: number;
+  f32: number;
+  _32: Array<Form210DataItem>;
+  f33: number;
+  _33: Array<Form210DataItem>;
+  f34: number;
+  f35: number;
+  _35: Array<Form210DataItem>;
+  f36: number;
+  _36: Array<Form210DataItem>;
+  f37: number;
+  f38: number;
+  _38: Array<Form210DataItem>;
+  f39: number;
+  _39: Array<Form210DataItem>;
+  f40: number;
+  f41: number;
+  f42: number;
+  f43: number;
+  _43: Array<Form210DataItem>;
+  f44: number;
+  _44: Array<Form210DataItem>;
+  f45: number;
+  _45: Array<Form210DataItem>;
+  f46: number;
+  f47: number;
+  _47: Array<Form210DataItem>;
+  f48: number;
+  _48: Array<Form210DataItem>;
+  f49: number;
+  f50: number;
+  _50: Array<Form210DataItem>;
+  f51: number;
+  _51: Array<Form210DataItem>;
+  f52: number;
+  f53: number;
+  f54: number;
+  f55: number;
+  f56: number;
+  f57: number;
+  f58: number;
+  _58: Array<Form210DataItem>;
+  f59: number;
+  _59: Array<Form210DataItem>;
+  f60: number;
+  _60: Array<Form210DataItem>;
+  f61: number;
+  f62: number;
+  _62: Array<Form210DataItem>;
+  f63: number;
+  _63: Array<Form210DataItem>;
+  f64: number;
+  _64: Array<Form210DataItem>;
+  f65: number;
+  f66: number;
+  _66: Array<Form210DataItem>;
+  f67: number;
+  _67: Array<Form210DataItem>;
+  f68: number;
+  f69: number;
+  f70: number;
+  f71: number;
+  f72: number;
+  f73: number;
+  f74: number;
+  _74: Array<Form210DataItem>;
+  f75: number;
+  _75: Array<Form210DataItem>;
+  f76: number;
+  _76: Array<Form210DataItem>;
+  f77: number;
+  _77: Array<Form210DataItem>;
+  f78: number;
+  f79: number;
+  _79: Array<Form210DataItem>;
+  f80: number;
+  _80: Array<Form210DataItem>;
+  f81: number;
+  _81: Array<Form210DataItem>;
+  f82: number;
+  f83: number;
+  _83: Array<Form210DataItem>;
+  f84: number;
+  _84: Array<Form210DataItem>;
+  f85: number;
+  f86: number;
+  f87: number;
+  f88: number;
+  f89: number;
+  f90: number;
+  f91: number;
+  f92: number;
+  f93: number;
+  f94: number;
+  f95: number;
+  f96: number;
+  f97: number;
+  f98: number;
+  f99: number;
+  f100: number;
+  f101: number;
+  f102: number;
+  f103: number;
+  f104: number;
+  f105: number;
+  f106: number;
+  f107: number;
+  f108: number;
+  f109: number;
+  f110: number;
+  f111: number;
+  f112: number;
+  f113: number;
+  f114: number;
+  f115: number;
+  f116: number;
+  f117: number;
+  f118: number;
+  f119: number;
+  f120: number;
+  f121: number;
+  f122: number;
+  f123: number;
+  f124: number;
+  f125: number;
+  f126: number;
+  f127: number;
+  f128: number;
+  f129: number;
+  f130: number;
+  f131: number;
+  f132: number;
+  _132: Array<Form210DataItem>;
+  f133: number;
+  f134: number;
+  f135: number;
+  f136: number;
+  f137: number;
+  f138: number;
+  f139: number;
+  f140: number;
+  f141: number;
+  setValue: (id: string, value: number) => void;
+  setData: React.Dispatch<React.SetStateAction<Form210Data>>;
+  updateTable: (id: `${number}`) => (value: Array<Form210DataItem>) => void;
+  valueToUVT: (value: number) => number;
+  valueFromUVT: (value: number) => number;
+};
+
+const Form210Context = createContext<Form210ContextEntity | null>(null);
 
 type Form210ProviderProps = {
   children: React.ReactNode;
@@ -32,7 +195,6 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
 
   const {
     year,
-    uvt,
     declarationNumber,
     prevDeclarationValue,
     f28,
@@ -100,11 +262,29 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
     f141,
   } = data;
 
-  const valueToUVT = useCallback((value: number) => Math.round(value / uvt), [uvt]);
+  const [{ uvt, minimumSalary }, setYearData] = useState<YearForm210Data>(() => {
+    if (year in YearsForm210Data) {
+      return YearsForm210Data[year];
+    }
 
-  const valueFromUVT = useCallback((value: number) => value * uvt, [uvt]);
+    const years = Object.keys(YearsForm210Data);
+    const selectedYear = years[years.length - 2];
 
-  const setValue = useCallback(
+    return YearsForm210Data[selectedYear];
+  });
+
+  useEffect(() => {
+    const years = Object.keys(YearsForm210Data);
+    const selectedYear = years[years.length - 2];
+
+    setYearData(YearsForm210Data[year] ?? YearsForm210Data[selectedYear]);
+  }, [year]);
+
+  const valueToUVT = useCallback<Form210ContextEntity['valueToUVT']>((value: number) => Math.round(value / uvt), [uvt]);
+
+  const valueFromUVT = useCallback<Form210ContextEntity['valueFromUVT']>((value: number) => value * uvt, [uvt]);
+
+  const setValue = useCallback<Form210ContextEntity['setValue']>(
     (id: string, value: number) => {
       const { min = null, max = null } = Form210DataLimits[`f${id}`] ?? {};
 
@@ -122,7 +302,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
     [valueFromUVT],
   );
 
-  const updateTable = useCallback(
+  const updateTable = useCallback<Form210ContextEntity['updateTable']>(
     (id: `${number}`) => (value: Array<Form210DataItem>) => {
       setData(prev => ({
         ...prev,
@@ -139,7 +319,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
   const valueFromTableMargin = useCallback(
     (tableMargin: MarginTableEntity, value) => {
       const valueUVT = valueToUVT(value);
-      const match = tableMargin.find(({ uvt }) => valueUVT >= uvt);
+      const match = tableMargin.find(({ uvt }) => valueUVT > uvt);
 
       if (match) {
         const { uvt: mUVT, imp, tm } = match;
@@ -277,6 +457,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
       value={{
         year,
         uvt,
+        minimumSalary,
         declarationNumber,
         prevDeclarationValue,
         f28,
@@ -438,7 +619,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
   );
 };
 
-export const useForm210 = () => {
+export const useForm210 = (): Form210ContextEntity => {
   const context = useContext(Form210Context);
 
   if (context === null) {

@@ -16,6 +16,8 @@ export type FieldInputProps = {
   disabled?: boolean;
   locked?: boolean;
   action?: () => void;
+  min?: number;
+  max?: number;
 };
 
 export const FieldInput = ({
@@ -28,6 +30,8 @@ export const FieldInput = ({
   disabled,
   action,
   locked,
+  min,
+  max,
 }: FieldInputProps) => {
   const value = useForm210Field(id);
   const { setValue } = useForm210();
@@ -57,6 +61,8 @@ export const FieldInput = ({
               roundTo={roundTo}
               format={format}
               rightIcon={!disabled && locked ? 'pencil' : undefined}
+              min={min}
+              max={max}
             />
           </section>
         </FieldInputStyle>

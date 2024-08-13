@@ -55,7 +55,7 @@ export const MarginTable = ({ id, marginTable, value, uvtValue, children }: Marg
                 </td>
                 <td>
                   <Typography withoutPadding variant='label'>
-                    &#x2264; {uvtValue} &lt;
+                    &lt; {uvtValue} &#x2264;
                   </Typography>
                 </td>
                 <td>

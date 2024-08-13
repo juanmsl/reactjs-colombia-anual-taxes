@@ -1,4 +1,4 @@
-import { Checkbox, Line, Typography } from '@juanmsl/ui';
+import { Line, Tooltip, Typography } from '@juanmsl/ui';
 import { useState } from 'react';
 
 import { FieldInputDetails, FormField, FormLabel, MarginTable } from './components';
@@ -6,6 +6,7 @@ import { Form210Style, FormTable, Table133 } from './form-210.style';
 
 import { AsideModal } from '@components/aside-modal';
 import { FieldInput } from '@components/field-input';
+import { ToggleButton } from '@components/toggle-button';
 import { useForm210 } from '@contexts';
 import { f116MarginTable, f117MarginTable, f119MarginTable } from '@core/constants';
 import { formatNumber, getPrevPaymentYearPercentage } from '@helpers';
@@ -37,31 +38,33 @@ export const Form210 = () => {
 
   return (
     <Form210Style>
-      <Typography variant='hero'>Formulario 210</Typography>
       <FormTable>
         <tbody>
           <tr>
-            <FormLabel className='form-section-title' colSpan={6}>
+            <td colSpan={2} />
+            <FormLabel className='form-section-title' colSpan={4}>
               Patrimonio
             </FormLabel>
           </tr>
           <tr>
-            <FormLabel colSpan={3} atBottom>
-              Uno por ciento (1%) de compras con fáctura electrónica
-            </FormLabel>
+            <td colSpan={2} />
+            <FormLabel atBottom>Uno por ciento (1%) de compras con fáctura electrónica</FormLabel>
             <FormLabel atBottom>Total patrimonio bruto</FormLabel>
             <FormLabel atBottom>Deudas</FormLabel>
             <FormLabel atBottom>Total patrimonio liquido</FormLabel>
           </tr>
           <tr>
-            <FormField colSpan={3} id='28' />
+            <td colSpan={2} />
+            <FormField id='28' />
             <FormField id='29' onClick={() => setAsideID('29')} />
             <FormField id='30' onClick={() => setAsideID('30')} />
             <FormField id='31' readOnly formula='29 - 30' />
           </tr>
+
           <tr>
             <td colSpan={6} className='empty-row' />
           </tr>
+
           <tr>
             <FormLabel className='form-section-title' colSpan={6}>
               Cédula general
@@ -82,6 +85,7 @@ export const Form210 = () => {
               Rentas no laborales
             </FormLabel>
           </tr>
+
           <tr>
             <FormLabel colSpan={2}>Ingresos brutos</FormLabel>
             <FormField id='32' onClick={() => setAsideID('32')} />
@@ -267,11 +271,11 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2}>
-              <Checkbox
-                name='showCedulaDePensiones'
+              <ToggleButton
                 value={showCedulaDePensiones}
+                name='showCedulaDePensiones'
                 setValue={value => setShowCedulaDePensiones(value)}
-                label={showCedulaDePensiones ? 'Ocultar' : 'Mostrar'}
+                style={{ marginLeft: 'auto' }}
               />
             </td>
             <FormLabel className='form-section-title' colSpan={4}>
@@ -326,11 +330,11 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2}>
-              <Checkbox
+              <ToggleButton
                 name='showCedulaDeDividendos'
                 value={showCedulaDeDividendos}
                 setValue={value => setShowCedulaDeDividendos(value)}
-                label={showCedulaDeDividendos ? 'Ocultar' : 'Mostrar'}
+                style={{ marginLeft: 'auto' }}
               />
             </td>
             <FormLabel className='form-section-title' colSpan={4}>
@@ -422,12 +426,14 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2}>
-              <Checkbox
-                name='showGananciasOcasionales'
-                value={showGananciasOcasionales}
-                setValue={value => setShowGananciasOcasionales(value)}
-                label={showGananciasOcasionales ? 'Ocultar' : 'Mostrar'}
-              />
+              <Tooltip content=':D'>
+                <ToggleButton
+                  name='showGananciasOcasionales'
+                  value={showGananciasOcasionales}
+                  setValue={value => setShowGananciasOcasionales(value)}
+                  style={{ marginLeft: 'auto' }}
+                />
+              </Tooltip>
             </td>
             <FormLabel atBottom className='form-section-title' colSpan={4}>
               Ganancias ocasionales
@@ -846,7 +852,7 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2} />
-            <FormField id='138' format='number' />
+            <FormField id='138' format='number' min={0} max={4} />
             <FormField id='139' readOnly formula='138 * 72UVT' />
             <FormField id='140' />
             <FormField id='141' />

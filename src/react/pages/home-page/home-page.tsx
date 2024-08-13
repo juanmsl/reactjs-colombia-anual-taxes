@@ -6,7 +6,7 @@ import { useForm210 } from '@contexts';
 import { formatNumber } from '@helpers';
 
 export const HomePage = () => {
-  const { uvt, year, valueFromUVT } = useForm210();
+  const { uvt, year, valueFromUVT, minimumSalary } = useForm210();
 
   return (
     <HomePageStyle>
@@ -34,7 +34,7 @@ export const HomePage = () => {
         <section className='home-data'>
           <section>
             <Typography variant='header4' as='p'>
-              {formatNumber(1160000, { format: 'currency' })}
+              {formatNumber(minimumSalary, { format: 'currency' })}
             </Typography>
           </section>
           <section className='home-data-content'>

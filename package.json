@@ -14,7 +14,7 @@
     "@juanmsl/eslint-config": "^0.0.6",
     "@juanmsl/hooks": "^0.0.2",
     "@juanmsl/tsconfig": "^0.0.1",
-    "@juanmsl/ui": "^0.0.29",
+    "@juanmsl/ui": "^0.0.30",
     "framer-motion": "^11.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -12,6 +12,22 @@ export const DefaultForm210DataItem: Form210DataItem = {
   value: 0,
 };
 
+export type YearForm210Data = {
+  minimumSalary: number;
+  uvt: number;
+};
+
+export const YearsForm210Data: Record<number, YearForm210Data> = {
+  2023: {
+    minimumSalary: 1160000,
+    uvt: 42412,
+  },
+  2024: {
+    minimumSalary: 1300000,
+    uvt: 47065,
+  },
+};
+
 export type Table29 = {
   cuentasBancarias: Array<Form210DataItem>;
   inversiones: Array<Form210DataItem>;
@@ -24,7 +40,6 @@ export type Table29 = {
 
 export type Form210Data = {
   year: number;
-  uvt: number;
   declarationNumber: number;
   prevDeclarationValue: number;
   f28: number;
@@ -94,9 +109,8 @@ export type Form210Data = {
 
 export const defaultForm210Data: Form210Data = {
   year: 2023,
-  uvt: 42412,
-  declarationNumber: 3,
-  prevDeclarationValue: 8751000,
+  declarationNumber: 1,
+  prevDeclarationValue: 0,
   f28: 0,
   _29: {
     cuentasBancarias: [DefaultForm210DataItem],
