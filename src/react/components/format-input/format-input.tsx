@@ -15,6 +15,8 @@ type FormatInputProps = {
   label?: string;
   rightIcon?: IconNameT;
   leftIcon?: IconNameT;
+  min?: number;
+  max?: number;
 };
 
 export const FormatInput = ({
@@ -29,6 +31,8 @@ export const FormatInput = ({
   label,
   rightIcon,
   leftIcon,
+  min = 0,
+  max,
 }: FormatInputProps) => {
   const [usePlainValue, setPlainValue] = useState(false);
 
@@ -40,11 +44,17 @@ export const FormatInput = ({
     return `${value}`;
   }, [value, usePlainValue, readOnly, format, roundTo]);
 
-  const parseInput = useCallback((value: string): number => {
-    const intValue = parseInt(value);
+  const parseInput = useCallback(
+    (value: string): number => {
+      const intValue = parseInt(value);
 
-    return isNaN(intValue) ? 0 : intValue;
-  }, []);
+      const initialValue = isNaN(intValue) ? min : intValue;
+      const minValue = min !== undefined && initialValue < min ? min : initialValue;
+
+      return max !== undefined && minValue > max ? max : minValue;
+    },
+    [min, max],
+  );
 
   return (
     <Input
@@ -59,6 +69,8 @@ export const FormatInput = ({
       onFocus={() => setPlainValue(true)}
       rightIcon={rightIcon}
       leftIcon={leftIcon}
+      max={max}
+      min={min}
     />
   );
 };

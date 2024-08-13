@@ -8,7 +8,9 @@ export const MainLayout = () => {
   return (
     <MainLayoutStyle>
       <Aside />
-      <Outlet />
+      <section className='main-layout-content'>
+        <Outlet />
+      </section>
     </MainLayoutStyle>
   );
 };

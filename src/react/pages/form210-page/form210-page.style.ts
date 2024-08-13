@@ -1,34 +1,12 @@
 import styled from 'styled-components';
 
 export const Form210PageStyle = styled.main`
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: 1fr;
-  grid-template-areas: 'home-content home-shared';
   position: relative;
   height: 100%;
   overflow: auto;
-
-  .form-link {
-    justify-self: center;
-    padding: 0.5em 2em;
-    border: 1px solid;
-    border-radius: 100px;
-    box-shadow: 0 0 4px;
-    transition: box-shadow 300ms ease;
-    background: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.primary};
-    text-align: center;
-    display: grid;
-    place-content: center;
-    gap: 1em;
-    grid-auto-flow: column;
-    align-items: center;
-
-    &:hover {
-      box-shadow: 0 0 10px;
-    }
-  }
+  display: grid;
+  grid-template-areas: 'form-shared' 'form-content';
+  gap: 1em;
 
   .home-content-panel {
     height: 100%;
@@ -36,33 +14,27 @@ export const Form210PageStyle = styled.main`
     display: grid;
     align-content: start;
     border: 0;
-    grid-area: home-content;
     padding-bottom: 4em;
-  }
-
-  .home-footer {
-    grid-area: home-footer;
-    padding: 2em 0;
+    grid-area: form-content;
   }
 
   .home-shared {
     background: ${props => props.theme.colors.background};
     border: 4px solid ${props => props.theme.colors.tertiary};
     border-radius: 25px;
-    position: sticky;
-    top: 0;
     padding: 1em;
     display: grid;
-    grid-template-rows: 1fr auto;
+    grid-template-columns: repeat(4, 1fr);
     gap: 1em;
-    grid-area: home-shared;
-    margin: 1em;
+    grid-area: form-shared;
 
     .shared-data {
       display: grid;
       padding: 0.5em 1.5em;
       border-radius: 20px;
       border: 1px solid;
+      align-items: center;
+      align-content: center;
       gap: 4px;
 
       &.selected {
@@ -70,12 +42,6 @@ export const Form210PageStyle = styled.main`
         background: ${props => props.theme.colors.tertiary};
         color: ${props => props.theme.colors.tertiaryContrast};
       }
-    }
-
-    .shared-content {
-      display: grid;
-      gap: 1em;
-      align-content: start;
     }
   }
 `;

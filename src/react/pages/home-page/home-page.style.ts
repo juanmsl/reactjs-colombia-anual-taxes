@@ -21,9 +21,8 @@ export const HomePageStyle = styled.section`
     grid-auto-flow: row;
     place-content: center;
     place-items: center;
-    aspect-ratio: 1 / 1;
     border: 1px solid;
-    border-radius: 50%;
+    border-radius: 25px;
     padding: 2em;
     background: ${props => props.theme.colors.secondary};
     color: ${props => props.theme.colors.secondaryContrast};
