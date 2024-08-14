@@ -1,4 +1,4 @@
-import { Button, Icon, Input, Line, Tooltip, Typography } from '@juanmsl/ui';
+import { Button, Icon, Input, Tooltip, Typography } from '@juanmsl/ui';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { SectionDataTableStyle } from './section-data-table.style';
@@ -75,34 +75,7 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
         </Typography>
       ) : null}
       {children ? <Typography className='recommended-width'>{children}</Typography> : null}
-      {title || children ? <Line orientation='horizontal' /> : null}
       <section className='item-rows'>
-        <section className='item-row'>
-          <Typography weight='bold' withoutPadding>
-            Concepto
-          </Typography>
-          <Typography weight='bold' withoutPadding>
-            Valor
-          </Typography>
-        </section>
-        {data.map(({ name, value }, key) => (
-          <section className='item-row' key={key}>
-            <section className='item-row-content'>
-              <Input
-                placeholder='Ingresa el concepto'
-                name='name'
-                value={name}
-                setValue={value => updateItem(key, { name: value })}
-              />
-              <FormatInput id='value' value={value} setValue={value => updateItem(key, { value: value })} roundTo={0} />
-            </section>
-            {key > 0 ? (
-              <Tooltip content='Eliminar fila' position='left'>
-                <Icon name='trash-can' className='delete-row-button' onClick={() => deleteItem(key)} />
-              </Tooltip>
-            ) : null}
-          </section>
-        ))}
         <section className='item-row'>
           <Button
             variant='ghost'
@@ -121,6 +94,34 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
             <Icon name='trash-can' className='empty-table-button' onClick={emptyTable} />
           </Tooltip>
         </section>
+        <section className='item-row'>
+          <Typography weight='bold' withoutPadding variant='label'>
+            Concepto
+          </Typography>
+          <Typography weight='bold' withoutPadding variant='label'>
+            Valor
+          </Typography>
+        </section>
+        {data.map(({ name, value }, key) => (
+          <section className='item-row' key={key}>
+            <Input
+              placeholder='Ingresa el concepto'
+              name='name'
+              value={name}
+              setValue={value => updateItem(key, { name: value })}
+            />
+            <FormatInput id='value' value={value} setValue={value => updateItem(key, { value: value })} roundTo={0} />
+            <section className='item-delete-row'>
+              {data.length > 1 ? (
+                <Tooltip content='Eliminar fila' position='left'>
+                  <Icon name='trash-can' className='delete-row-button' onClick={() => deleteItem(key)} />
+                </Tooltip>
+              ) : (
+                <span className='empty-icon' />
+              )}
+            </section>
+          </section>
+        ))}
       </section>
     </SectionDataTableStyle>
   );
