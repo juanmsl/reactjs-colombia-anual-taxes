@@ -5,21 +5,25 @@ export const SectionDataTableStyle = styled.section`
   gap: 0.5em;
   background: ${props => props.theme.colors.background};
 
-  border: 1px solid;
-  border-radius: 25px;
-
   .data-table-title {
     text-wrap: balance;
-    text-align: center;
     padding-top: 1em;
+  }
+
+  .item-delete-row {
+    display: grid;
+    place-content: center;
+    width: 26px;
+    height: 26px;
+    opacity: 0;
   }
 
   .item-rows {
     display: grid;
     grid-template-columns: 1fr 1fr auto;
-    //border-radius: 25px;
-    //border: 1px solid;
     overflow: hidden;
+    border: 1px solid;
+    border-radius: 10px;
   }
 
   .item-row {
@@ -31,8 +35,7 @@ export const SectionDataTableStyle = styled.section`
     padding: 0.5em 1em;
     transition: background 250ms ease;
 
-    &:first-child,
-    &:last-child {
+    &:first-child {
       padding-top: 1em;
       padding-bottom: 1em;
     }
@@ -41,15 +44,15 @@ export const SectionDataTableStyle = styled.section`
       border-bottom: 1px dashed ${props => props.theme.colors.gray7};
     }
 
-    &:not(:first-child):not(:last-child):hover {
+    &:not(:first-child):hover {
       background: hsl(from ${props => props.theme.colors.secondary} h s 90 / 40%);
-    }
-  }
 
-  .item-row-content {
-    grid-column: span 2;
-    display: grid;
-    grid-template-columns: subgrid;
+      &:hover {
+        .item-delete-row {
+          opacity: 1;
+        }
+      }
+    }
   }
 
   .add-row-button {
