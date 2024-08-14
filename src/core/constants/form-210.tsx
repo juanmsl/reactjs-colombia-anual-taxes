@@ -28,6 +28,30 @@ export const YearsForm210Data: Record<number, YearForm210Data> = {
   },
 };
 
+export type DeclarationNumberOption = {
+  value: number;
+  label: string;
+};
+
+export const DeclarationNumberOptions: Array<DeclarationNumberOption> = [
+  {
+    value: 1,
+    label: 'Primera vez',
+  },
+  {
+    value: 2,
+    label: 'Segunda vez',
+  },
+  {
+    value: 3,
+    label: 'Tercera vez',
+  },
+  {
+    value: 4,
+    label: 'Más de la 3ra vez',
+  },
+];
+
 export type Table29 = {
   cuentasBancarias: Array<Form210DataItem>;
   inversiones: Array<Form210DataItem>;

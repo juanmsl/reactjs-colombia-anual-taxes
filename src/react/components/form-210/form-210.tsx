@@ -1,34 +1,17 @@
 import { Line, Tooltip, Typography } from '@juanmsl/ui';
 import { useState } from 'react';
 
-import { FieldInputDetails, FormField, FormLabel, MarginTable } from './components';
-import { Form210Style, FormTable, Table133 } from './form-210.style';
+import { FieldInputDetails, FormField, FormLabel, MarginTable, Table133 } from './components';
+import { Form210Style, FormTable } from './form-210.style';
 
 import { AsideModal } from '@components/aside-modal';
 import { FieldInput } from '@components/field-input';
 import { ToggleButton } from '@components/toggle-button';
 import { useForm210 } from '@contexts';
 import { f116MarginTable, f117MarginTable, f119MarginTable } from '@core/constants';
-import { formatNumber, getPrevPaymentYearPercentage } from '@helpers';
 
 export const Form210 = () => {
-  const {
-    declarationNumber,
-    prevDeclarationValue,
-    f34,
-    f46,
-    f61,
-    f62,
-    f70,
-    f78,
-    f79,
-    f87,
-    f106,
-    f111,
-    f126,
-    f132,
-    valueToUVT,
-  } = useForm210();
+  const { f34, f46, f61, f62, f70, f78, f79, f87, f106, f111, valueToUVT } = useForm210();
 
   const [showDescriptionTable, setShowDescriptionTable] = useState<`${number | ''}`>('');
   const [asideID, setAsideID] = useState<`${number | ''}`>('');
@@ -646,171 +629,7 @@ export const Form210 = () => {
             <tr>
               <td colSpan={2} />
               <td colSpan={4}>
-                <Table133>
-                  <Typography withoutPadding variant='label'>
-                    Para calcular el anticipo hay que calcular basado en 2 metodos y escoger el menor
-                  </Typography>
-                  <Typography withoutPadding variant='label'>
-                    Según el año de la respectiva declaración el porcentaje corresponderá al valor descrito aqui
-                  </Typography>
-                  <Typography withoutPadding variant='label'>
-                    25% - 1er año
-                  </Typography>
-                  <Typography withoutPadding variant='label'>
-                    50% - 2do año
-                  </Typography>
-                  <Typography withoutPadding variant='label'>
-                    75% - 3er año en adelante
-                  </Typography>
-
-                  <section className='tables-columns'>
-                    <section>
-                      <Typography variant='label' weight='bold'>
-                        Método 1
-                      </Typography>
-
-                      <code>
-                        <Typography variant='small'>Metodo 1 = 126 * porcentaje - retenciones</Typography>
-                      </code>
-
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>
-                              <Typography variant='label'>Anticipo</Typography>
-                            </th>
-                            <th>
-                              <Typography variant='label'>Cálculo</Typography>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Impuesto Neto de Renta del año actual (126)</td>
-                            <td>
-                              {formatNumber(f126, {
-                                roundTo: -3,
-                                format: 'currency',
-                              })}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Año a declarar</td>
-                            <td>{declarationNumber}</td>
-                          </tr>
-                          <tr>
-                            <td>{getPrevPaymentYearPercentage(declarationNumber, 'string')}</td>
-                            <td>
-                              {formatNumber(getPrevPaymentYearPercentage(declarationNumber) * f126, {
-                                roundTo: -3,
-                                format: 'currency',
-                              })}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Retenciones</td>
-                            <td>
-                              {formatNumber(f132, {
-                                roundTo: -3,
-                                format: 'currency',
-                              })}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>TOTAL MÉTODO 1</td>
-                            <td>
-                              {formatNumber(getPrevPaymentYearPercentage(declarationNumber) * f126 - f132, {
-                                roundTo: -3,
-                                format: 'currency',
-                              })}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </section>
-
-                    <section>
-                      <Typography variant='label' weight='bold'>
-                        Método 2
-                      </Typography>
-
-                      <code>
-                        <Typography variant='small'>
-                          Método 2 = Promedio(126 año actual, 126 año anterior) * porcentaje - retenciones
-                        </Typography>
-                      </code>
-
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>
-                              <Typography variant='label'>Anticipo</Typography>
-                            </th>
-                            <th>
-                              <Typography variant='label'>Cálculo</Typography>
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Impuesto Neto de Renta del año actual (126)</td>
-                            <td>
-                              {formatNumber(f126, {
-                                roundTo: -3,
-                                format: 'currency',
-                              })}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Impuesto Neto de Renta del año anterior (126)</td>
-                            <td>
-                              {formatNumber(prevDeclarationValue, {
-                                roundTo: -3,
-                                format: 'currency',
-                              })}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Promedio</td>
-                            <td>
-                              {formatNumber((f126 + prevDeclarationValue) / 2, {
-                                roundTo: -3,
-                                format: 'currency',
-                              })}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Año a declarar</td>
-                            <td>{declarationNumber}</td>
-                          </tr>
-                          <tr>
-                            <td>{getPrevPaymentYearPercentage(declarationNumber, 'string')}</td>
-                            <td>
-                              {formatNumber(
-                                (getPrevPaymentYearPercentage(declarationNumber) * (f126 + prevDeclarationValue)) / 2,
-                                { roundTo: -3, format: 'currency' },
-                              )}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Retenciones</td>
-                            <td>{formatNumber(f132)}</td>
-                          </tr>
-                          <tr>
-                            <td>TOTAL MÉTODO 2</td>
-                            <td>
-                              {formatNumber(
-                                getPrevPaymentYearPercentage(declarationNumber) * ((f126 + prevDeclarationValue) / 2) -
-                                  f132,
-                                { roundTo: -3, format: 'currency' },
-                              )}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </section>
-                  </section>
-                </Table133>
+                <Table133 />
               </td>
             </tr>
           )}
