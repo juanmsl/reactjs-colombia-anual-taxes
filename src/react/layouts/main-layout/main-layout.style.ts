@@ -4,7 +4,7 @@ export const MainLayoutStyle = styled.section`
   display: grid;
   grid-template-columns: auto 1fr;
   padding: 1em;
-  gap: 1em;
+  gap: 2em;
 
   height: 100dvh;
   overflow: auto;

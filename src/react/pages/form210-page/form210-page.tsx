@@ -1,4 +1,4 @@
-import { Typography } from '@juanmsl/ui';
+import { Select, Typography } from '@juanmsl/ui';
 
 import { Form210PageStyle } from './form210-page.style';
 
@@ -6,6 +6,7 @@ import { Form210 } from '@components/form-210';
 import { FormatInput } from '@components/format-input';
 import { Label } from '@components/label';
 import { useForm210 } from '@contexts';
+import { DeclarationNumberOption, DeclarationNumberOptions } from '@core/constants';
 import { formatNumber } from '@helpers';
 
 export const Form210Page = () => {
@@ -22,13 +23,13 @@ export const Form210Page = () => {
           {formatNumber(uvt, { format: 'currency' })}
         </section>
         <section className='shared-data'>
-          <Label>Declaración #</Label>
-          <FormatInput
-            id='declarationNumber'
-            value={declarationNumber}
-            setValue={declarationNumber => setData(prev => ({ ...prev, declarationNumber }))}
-            format='number'
-            roundTo={0}
+          <Label>Estoy declarando por</Label>
+          <Select<DeclarationNumberOption>
+            options={DeclarationNumberOptions}
+            renderOption={item => item.label}
+            name='declarationNumber'
+            value={DeclarationNumberOptions.find(item => item.value === declarationNumber)}
+            setValue={value => setData(prev => ({ ...prev, declarationNumber: value.value }))}
           />
         </section>
         {declarationNumber > 1 ? (

@@ -39,4 +39,8 @@ export const HomePageStyle = styled.section`
       max-width: 150px;
     }
   }
+
+  .home-header {
+    padding: 2em 0 1em;
+  }
 `;

@@ -10,7 +10,14 @@ export const HomePage = () => {
 
   return (
     <HomePageStyle>
-      <Typography variant='hero'>Declaración de renta 2024!</Typography>
+      <section className='home-header'>
+        <Typography variant='hero' withoutPadding>
+          ¡Declaración de renta {+year + 1}!
+        </Typography>
+        <Typography variant='header1' withoutPadding>
+          (Año gravable {year})
+        </Typography>
+      </section>
       <Typography>
         Sabemos que la declaración de renta puede ser complicada, por eso hemos creado este espacio para desglosar el
         Formulario 210 de la DIAN. Esta plataforma está diseñada para ayudarte a entender cada parte del Formulario 210

@@ -64,32 +64,3 @@ export const FormTable = styled.table`
     min-width: unset;
   }
 `;
-
-export const Table133 = styled.section`
-  display: grid;
-  padding: 1em 0.5em;
-  white-space: initial;
-  gap: 1em;
-
-  code {
-    padding: 0.5em;
-    border: 1px solid;
-    display: block;
-  }
-
-  .tables-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1em;
-  }
-
-  table,
-  td {
-    border: 1px solid;
-    border-collapse: collapse;
-  }
-
-  td {
-    padding: 0.5em;
-  }
-`;
