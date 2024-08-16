@@ -20,7 +20,7 @@ export const Form210PageStyle = styled.main`
 
   .home-shared {
     background: ${props => props.theme.colors.background};
-    border: 4px solid ${props => props.theme.colors.tertiary};
+    border: 4px solid ${props => props.theme.colors.primary};
     border-radius: 25px;
     padding: 1em;
     display: grid;
@@ -39,8 +39,8 @@ export const Form210PageStyle = styled.main`
 
       &.selected {
         border-width: 0;
-        background: ${props => props.theme.colors.tertiary};
-        color: ${props => props.theme.colors.tertiaryContrast};
+        background: ${props => props.theme.colors.secondary};
+        color: ${props => props.theme.colors.secondaryContrast};
       }
     }
   }
