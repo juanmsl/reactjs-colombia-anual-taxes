@@ -1,4 +1,4 @@
-import { Line, Tooltip, Typography } from '@juanmsl/ui';
+import { Line, Typography } from '@juanmsl/ui';
 import { useState } from 'react';
 
 import { FieldInputDetails, FormField, FormLabel, MarginTable, Table133 } from './components';
@@ -409,14 +409,12 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2}>
-              <Tooltip content=':D'>
-                <ToggleButton
-                  name='showGananciasOcasionales'
-                  value={showGananciasOcasionales}
-                  setValue={value => setShowGananciasOcasionales(value)}
-                  style={{ marginLeft: 'auto' }}
-                />
-              </Tooltip>
+              <ToggleButton
+                name='showGananciasOcasionales'
+                value={showGananciasOcasionales}
+                setValue={value => setShowGananciasOcasionales(value)}
+                style={{ marginLeft: 'auto' }}
+              />
             </td>
             <FormLabel atBottom className='form-section-title' colSpan={4}>
               Ganancias ocasionales
