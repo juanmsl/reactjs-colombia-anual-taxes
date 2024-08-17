@@ -87,7 +87,7 @@ export const HomePageStyle = styled.section`
     }
 
     .requirement-value {
-      color: ${props => props.theme.colors.secondary};
+      color: ${props => props.theme.colors.primary};
     }
   }
 `;
