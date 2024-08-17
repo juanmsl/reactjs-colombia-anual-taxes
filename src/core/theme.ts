@@ -1,7 +1,7 @@
 import { PaletteThemeEntity } from '@juanmsl/ui';
 
 export const DarkTheme: PaletteThemeEntity = {
-  background: '#2b2b2b',
+  background: '#24263A',
   text: '#FFFFFF',
   primary: '#0084ef',
   secondary: '#002b83',
