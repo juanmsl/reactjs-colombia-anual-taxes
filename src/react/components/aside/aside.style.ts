@@ -3,9 +3,8 @@ import styled from 'styled-components';
 export const AsideStyle = styled.aside`
   background: ${props => props.theme.colors.secondary};
   color: ${props => props.theme.colors.secondaryContrast};
-  border: 5px solid ${props => props.theme.colors.primary};
-  border-radius: 25px;
-  padding: 2em 1em;
+  border-right: 5px solid ${props => props.theme.colors.primary};
+  padding: 2em 1em 3em;
   display: grid;
   gap: 1em;
   align-content: space-between;

@@ -1,4 +1,4 @@
-import { Modal } from '@juanmsl/ui';
+import { Icon, Modal, Tooltip } from '@juanmsl/ui';
 
 import { AsideModalStyle } from './aside-modal.style';
 
@@ -11,7 +11,14 @@ type AsideModalProps = {
 export const AsideModal = ({ children, isOpen, onClose }: AsideModalProps) => {
   return (
     <Modal id='aside' isOpen={isOpen} opacity={0.6} onClick={onClose}>
-      <AsideModalStyle>{children}</AsideModalStyle>
+      <AsideModalStyle>
+        <Tooltip content='Cerrar' position='left'>
+          <span className='close-modal-button'>
+            <Icon name='cross' onClick={onClose} />
+          </span>
+        </Tooltip>
+        {children}
+      </AsideModalStyle>
     </Modal>
   );
 };

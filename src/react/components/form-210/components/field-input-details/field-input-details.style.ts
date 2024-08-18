@@ -7,8 +7,12 @@ export const FieldInputDetailsStyle = styled.section`
   .details-header {
     display: grid;
     justify-content: space-between;
-    gap: 8em;
+    gap: 3em;
     align-items: center;
     grid-auto-flow: column;
+  }
+
+  .line-separator {
+    margin-bottom: 2em;
   }
 `;

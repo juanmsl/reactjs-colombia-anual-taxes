@@ -6,6 +6,19 @@ export const AsideModalStyle = styled.section`
   color: ${props => props.theme.colors.text};
   padding: 2em;
   overflow: auto;
+  border-right: 4px solid ${props => props.theme.colors.primary};
+
+  .close-modal-button {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    border: 1px solid;
+    cursor: pointer;
+    margin-left: auto;
+    display: grid;
+    place-content: center;
+    margin-bottom: 2em;
+  }
 
   &,
   &.left {

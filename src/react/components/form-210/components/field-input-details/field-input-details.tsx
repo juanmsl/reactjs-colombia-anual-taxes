@@ -20,7 +20,7 @@ export const FieldInputDetails = ({ id }: FieldInputDetailsProps) => {
     <FieldInputDetailsStyle>
       <section className='details-header'>
         <section>
-          <Typography withoutPadding variant='header4'>
+          <Typography withoutPadding variant='header3'>
             {title}
           </Typography>
           {subtitle ? (
@@ -31,8 +31,12 @@ export const FieldInputDetails = ({ id }: FieldInputDetailsProps) => {
         </section>
         <FieldInput id={id} readOnly />
       </section>
-      <Line lineStyle='dotted' orientation='horizontal' spacing={4} dotSize={2} />
-      {description ? <Typography variant='body'>{description}</Typography> : null}
+      <Line lineStyle='dotted' orientation='horizontal' className='line-separator' spacing={4} dotSize={2} />
+      {description ? (
+        <Typography variant='body' withoutPadding>
+          {description}
+        </Typography>
+      ) : null}
       {content}
     </FieldInputDetailsStyle>
   );

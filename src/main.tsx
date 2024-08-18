@@ -1,4 +1,6 @@
 import { SimpleLoader, ThemeProvider } from '@juanmsl/ui';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -13,6 +15,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Suspense fallback={<SimpleLoader />}>
         <BrowserRouter>
           <Form210Provider>
+            <Analytics />
+            <SpeedInsights />
             <Router />
           </Form210Provider>
         </BrowserRouter>

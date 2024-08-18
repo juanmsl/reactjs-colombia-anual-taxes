@@ -22,8 +22,25 @@ export const SectionDataTableStyle = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr auto;
     overflow: hidden;
+  }
+
+  .table-rows {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: span 3;
+    overflow: hidden;
     border: 1px solid;
     border-radius: 10px;
+  }
+
+  .actions-row {
+    display: grid;
+    grid-template-columns: subgrid;
+    gap: 1em;
+    align-items: center;
+    grid-column: span 3;
+    padding: 0 0 1em;
+    transition: background 250ms ease;
   }
 
   .item-row {
@@ -55,7 +72,16 @@ export const SectionDataTableStyle = styled.section`
     }
   }
 
+  .empty-table-message {
+    grid-column: span 3;
+  }
+
   .add-row-button {
+  }
+
+  .clear-table-button {
+    display: flex;
+    justify-content: end;
   }
 
   .id-field {

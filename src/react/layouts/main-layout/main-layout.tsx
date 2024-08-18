@@ -35,7 +35,9 @@ export const MainLayout = () => {
     <MainLayoutStyle>
       <Aside />
       <section className='main-layout-content'>
-        <Outlet />
+        <section className='main-layout-content-page'>
+          <Outlet />
+        </section>
       </section>
     </MainLayoutStyle>
   );
