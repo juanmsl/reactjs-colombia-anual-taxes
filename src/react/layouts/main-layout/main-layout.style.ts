@@ -3,9 +3,6 @@ import styled from 'styled-components';
 export const MainLayoutStyle = styled.section`
   display: grid;
   grid-template-columns: auto 1fr;
-  padding: 1em;
-  gap: 2em;
-
   height: 100dvh;
   overflow: auto;
   background-size: 40px 40px;
@@ -16,9 +13,13 @@ export const MainLayoutStyle = styled.section`
     radial-gradient(${props => props.theme.colors.text}55 1px, transparent 1px);
 
   .main-layout-content {
-    min-width: 1200px;
-    max-width: ${props => props.theme.constants.breakpoints.laptopM};
     height: 100%;
     overflow: auto;
+
+    &-page {
+      min-width: 1200px;
+      max-width: ${props => props.theme.constants.breakpoints.laptopM};
+      padding: 1em 1em 1em 2em;
+    }
   }
 `;

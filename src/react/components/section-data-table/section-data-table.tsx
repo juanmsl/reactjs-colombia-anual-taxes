@@ -20,7 +20,7 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
       return defaultData;
     }
 
-    return [DefaultForm210DataItem];
+    return [];
   });
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
   }, []);
 
   const emptyTable = useCallback(() => {
-    setData([DefaultForm210DataItem]);
+    setData([]);
   }, []);
 
   const updateItem = useCallback((index: number, item: Partial<Form210DataItem>) => {
@@ -59,24 +59,18 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
     });
   }, []);
 
-  useEffect(() => {
-    if (data && data.length === 0) {
-      emptyTable();
-    }
-  }, [data, addItem, emptyTable]);
-
   const total = useMemo(() => data.reduce((count, item) => count + item.value, 0), [data]);
 
   return (
     <SectionDataTableStyle>
       {title ? (
-        <Typography variant='body' weight='bold' className='data-table-title'>
+        <Typography variant='header4' weight='bold' className='data-table-title'>
           {title}
         </Typography>
       ) : null}
       {children ? <Typography className='recommended-width'>{children}</Typography> : null}
       <section className='item-rows'>
-        <section className='item-row'>
+        <section className='actions-row'>
           <Button
             variant='ghost'
             size='small'
@@ -90,42 +84,55 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
           <Typography weight='bold' withoutPadding>
             {data.length > 1 ? formatNumber(total, { format: 'currency' }) : null}
           </Typography>
-          <Tooltip content='Reiniciar tabla' position='left'>
-            <span>
-              <Icon name='trash-can' className='empty-table-button' onClick={emptyTable} />
+          {data.length > 0 && (
+            <span className='clear-table-button'>
+              <Tooltip content='Vaciar toda la tabla' position='left'>
+                <span>
+                  <Icon name='trash-can' className='empty-table-button' onClick={emptyTable} />
+                </span>
+              </Tooltip>
             </span>
-          </Tooltip>
+          )}
         </section>
-        <section className='item-row'>
-          <Typography weight='bold' withoutPadding variant='label'>
-            Concepto
-          </Typography>
-          <Typography weight='bold' withoutPadding variant='label'>
-            Valor
-          </Typography>
-        </section>
-        {data.map(({ name, value }, key) => (
-          <section className='item-row' key={key}>
-            <Input
-              placeholder='Ingresa el concepto'
-              name='name'
-              value={name}
-              setValue={value => updateItem(key, { name: value })}
-            />
-            <FormatInput id='value' value={value} setValue={value => updateItem(key, { value: value })} roundTo={0} />
-            <section className='item-delete-row'>
-              {data.length > 1 ? (
-                <Tooltip content='Eliminar fila' position='left'>
-                  <span>
-                    <Icon name='trash-can' className='delete-row-button' onClick={() => deleteItem(key)} />
-                  </span>
-                </Tooltip>
-              ) : (
-                <span className='empty-icon' />
-              )}
+        {data.length > 0 ? (
+          <section className='table-rows'>
+            <section className='item-row'>
+              <Typography weight='bold' withoutPadding variant='label'>
+                Concepto
+              </Typography>
+              <Typography weight='bold' withoutPadding variant='label'>
+                Valor
+              </Typography>
             </section>
+            {data.map(({ name, value }, key) => (
+              <section className='item-row' key={key}>
+                <Input
+                  placeholder='Ingresa el concepto'
+                  name='name'
+                  value={name}
+                  setValue={value => updateItem(key, { name: value })}
+                />
+                <FormatInput
+                  id='value'
+                  value={value}
+                  setValue={value => updateItem(key, { value: value })}
+                  roundTo={0}
+                />
+                <section className='item-delete-row'>
+                  <Tooltip content='Eliminar fila' position='left'>
+                    <span>
+                      <Icon name='trash-can' className='delete-row-button' onClick={() => deleteItem(key)} />
+                    </span>
+                  </Tooltip>
+                </section>
+              </section>
+            ))}
           </section>
-        ))}
+        ) : (
+          <section className='empty-table-message'>
+            <Typography variant='label'>No hay conceptos en esta tabla, agrega una fila para registrar uno</Typography>
+          </section>
+        )}
       </section>
     </SectionDataTableStyle>
   );
