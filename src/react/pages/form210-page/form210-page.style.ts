@@ -1,21 +1,16 @@
 import styled from 'styled-components';
 
 export const Form210PageStyle = styled.main`
-  position: relative;
-  height: 100%;
-  overflow: auto;
   display: grid;
-  grid-template-areas: 'form-shared' 'form-content';
-  gap: 1em;
+  gap: 2em;
+  overflow: clip;
+  padding: 2em 0;
 
   .home-content-panel {
+    display: grid;
+    justify-items: center;
     height: 100%;
     overflow: auto;
-    display: grid;
-    align-content: start;
-    border: 0;
-    padding-bottom: 4em;
-    grid-area: form-content;
   }
 
   .home-shared {
@@ -26,7 +21,9 @@ export const Form210PageStyle = styled.main`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1em;
-    grid-area: form-shared;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 
     .shared-data {
       display: grid;

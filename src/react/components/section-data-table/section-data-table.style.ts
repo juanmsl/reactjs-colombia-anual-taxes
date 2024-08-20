@@ -99,10 +99,5 @@ export const SectionDataTableStyle = styled.section`
     padding: 0.3em;
     border-radius: 50%;
     font-size: 1em;
-
-    &:hover {
-      color: ${props => props.theme.colors.primary};
-      background: ${props => props.theme.colors.primary}33;
-    }
   }
 `;

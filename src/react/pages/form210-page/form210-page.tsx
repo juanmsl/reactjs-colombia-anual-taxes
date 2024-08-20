@@ -14,9 +14,6 @@ export const Form210Page = () => {
 
   return (
     <Form210PageStyle>
-      <section className='home-content-panel'>
-        <Form210 />
-      </section>
       <section className='home-shared'>
         <section className='shared-data'>
           <Label>UVT</Label>
@@ -63,6 +60,10 @@ export const Form210Page = () => {
             </Typography>
           </section>
         )}
+      </section>
+
+      <section className='home-content-panel'>
+        <Form210 />
       </section>
     </Form210PageStyle>
   );

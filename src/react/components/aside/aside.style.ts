@@ -46,7 +46,7 @@ export const AsideStyle = styled.aside`
   .aside-tab {
     padding: 0.5em 1em;
     border-radius: 100px;
-    border: 3px solid transparent;
+    border: 1px solid transparent;
     transition:
       border 300ms ease,
       background 100ms ease;

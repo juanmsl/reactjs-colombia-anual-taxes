@@ -664,7 +664,6 @@ export const Form210 = () => {
             <FormLabel atBottom>Número de dependientes económicos</FormLabel>
             <FormLabel atBottom>Adición por dependientes a la casilla 92</FormLabel>
             <FormLabel atBottom>Ud. superó tope indicativo art. 336-1 del E.T., marque X</FormLabel>
-            <FormLabel atBottom>Aporte voluntario</FormLabel>
           </tr>
 
           <tr>
@@ -672,7 +671,6 @@ export const Form210 = () => {
             <FormField id='138' format='number' min={0} max={4} />
             <FormField id='139' readOnly formula='138 * 72UVT' />
             <FormField id='140' />
-            <FormField id='141' />
           </tr>
         </tbody>
       </FormTable>

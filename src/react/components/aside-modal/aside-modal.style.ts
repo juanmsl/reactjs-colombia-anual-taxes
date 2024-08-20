@@ -7,6 +7,7 @@ export const AsideModalStyle = styled.section`
   padding: 2em;
   overflow: auto;
   border-right: 4px solid ${props => props.theme.colors.primary};
+  z-index: 1000;
 
   .close-modal-button {
     width: 2em;

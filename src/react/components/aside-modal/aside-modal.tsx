@@ -10,7 +10,7 @@ type AsideModalProps = {
 
 export const AsideModal = ({ children, isOpen, onClose }: AsideModalProps) => {
   return (
-    <Modal id='aside' isOpen={isOpen} opacity={0.6} onClick={onClose}>
+    <Modal id='aside' isOpen={isOpen} opacity={0.6} onClick={onClose} zIndex={999}>
       <AsideModalStyle>
         <Tooltip content='Cerrar' position='left'>
           <span className='close-modal-button'>
