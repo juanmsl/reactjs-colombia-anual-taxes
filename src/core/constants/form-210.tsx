@@ -25,10 +25,6 @@ export const YearsForm210Data: Record<number, YearForm210Data> = {
     minimumSalary: 1160000,
     uvt: 42412,
   },
-  2024: {
-    minimumSalary: 1300000,
-    uvt: 47065,
-  },
 };
 
 export type DeclarationNumberOption = {
@@ -130,7 +126,6 @@ export type Form210Data = {
   _132: Array<Form210DataItem>;
   f135: number;
   f138: number;
-  f140: number;
 };
 
 export const defaultForm210Data: Form210Data = {
@@ -206,7 +201,6 @@ export const defaultForm210Data: Form210Data = {
   _132: [],
   f135: 0,
   f138: 0,
-  f140: 0,
 };
 
 export const Form210DataLimits: Record<

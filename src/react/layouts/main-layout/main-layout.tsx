@@ -5,6 +5,7 @@ import { Outlet } from 'react-router-dom';
 import { MainLayoutStyle } from './main-layout.style';
 
 import { Aside } from '@components/aside';
+import { Footer } from '@components/footer';
 
 export const MainLayout = () => {
   const [shouldUpdate, setShouldUpdate] = useState(false);
@@ -37,6 +38,7 @@ export const MainLayout = () => {
       <section className='main-layout-content'>
         <section className='main-layout-content-page'>
           <Outlet />
+          <Footer />
         </section>
       </section>
     </MainLayoutStyle>

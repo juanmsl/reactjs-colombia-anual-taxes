@@ -1,17 +1,39 @@
-import { Line, Typography } from '@juanmsl/ui';
-import { useState } from 'react';
+import { Line, Select, Typography } from '@juanmsl/ui';
+import { useEffect, useState } from 'react';
 
 import { FieldInputDetails, FormField, FormLabel, MarginTable, Table133 } from './components';
 import { Form210Style, FormTable } from './form-210.style';
 
 import { AsideModal } from '@components/aside-modal';
 import { FieldInput } from '@components/field-input';
+import { FormatInput } from '@components/format-input';
 import { ToggleButton } from '@components/toggle-button';
 import { useForm210 } from '@contexts';
-import { f116MarginTable, f117MarginTable, f119MarginTable } from '@core/constants';
+import {
+  DeclarationNumberOption,
+  DeclarationNumberOptions,
+  f116MarginTable,
+  f117MarginTable,
+  f119MarginTable,
+} from '@core/constants';
 
 export const Form210 = () => {
-  const { f34, f46, f61, f62, f70, f78, f79, f87, f106, f111, valueToUVT } = useForm210();
+  const {
+    declarationNumber,
+    f34,
+    f46,
+    f61,
+    f62,
+    f70,
+    f78,
+    f79,
+    f87,
+    f106,
+    f111,
+    prevDeclarationValue,
+    valueToUVT,
+    setData,
+  } = useForm210();
 
   const [showDescriptionTable, setShowDescriptionTable] = useState<`${number | ''}`>('');
   const [asideID, setAsideID] = useState<`${number | ''}`>('');
@@ -19,10 +41,62 @@ export const Form210 = () => {
   const [showCedulaDeDividendos, setShowCedulaDeDividendos] = useState(false);
   const [showGananciasOcasionales, setShowGananciasOcasionales] = useState(false);
 
+  useEffect(() => {
+    if (declarationNumber === 1) {
+      setData(prev => ({ ...prev, prevDeclarationValue: 0 }));
+    }
+  }, [declarationNumber, setData]);
+
   return (
     <Form210Style>
       <FormTable>
         <tbody>
+          <tr>
+            <td colSpan={2} />
+            <FormLabel className='form-section-title' colSpan={4}>
+              Inicio
+            </FormLabel>
+          </tr>
+
+          <tr>
+            <td colSpan={2} />
+            <FormLabel atBottom>Estoy declarando por</FormLabel>
+            <FormLabel colSpan={2} atBottom>
+              Impuesto neto de renta año anterior (Celda 127 del 2022)
+            </FormLabel>
+          </tr>
+
+          <tr>
+            <td colSpan={2} />
+            <td>
+              <Select<DeclarationNumberOption>
+                options={DeclarationNumberOptions}
+                renderOption={item => item.label}
+                name='declarationNumber'
+                value={DeclarationNumberOptions.find(item => item.value === declarationNumber)}
+                setValue={value =>
+                  setData(prev => ({
+                    ...prev,
+                    declarationNumber: value.value,
+                  }))
+                }
+              />
+            </td>
+            <td colSpan={2}>
+              <FormatInput
+                id='prevDeclarationValue'
+                value={prevDeclarationValue}
+                setValue={prevDeclarationValue => setData(prev => ({ ...prev, prevDeclarationValue }))}
+                roundTo={0}
+                disabled={declarationNumber === 1}
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td colSpan={6} className='empty-row' />
+          </tr>
+
           <tr>
             <td colSpan={2} />
             <FormLabel className='form-section-title' colSpan={4}>
@@ -663,14 +737,12 @@ export const Form210 = () => {
             <td colSpan={2} />
             <FormLabel atBottom>Número de dependientes económicos</FormLabel>
             <FormLabel atBottom>Adición por dependientes a la casilla 92</FormLabel>
-            <FormLabel atBottom>Ud. superó tope indicativo art. 336-1 del E.T., marque X</FormLabel>
           </tr>
 
           <tr>
             <td colSpan={2} />
             <FormField id='138' format='number' min={0} max={4} />
             <FormField id='139' readOnly formula='138 * 72UVT' />
-            <FormField id='140' />
           </tr>
         </tbody>
       </FormTable>

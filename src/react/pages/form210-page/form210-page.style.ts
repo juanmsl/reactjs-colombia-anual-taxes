@@ -19,7 +19,8 @@ export const Form210PageStyle = styled.main`
     border-radius: 25px;
     padding: 1em;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    grid-auto-flow: column;
     gap: 1em;
     position: sticky;
     top: 0;
