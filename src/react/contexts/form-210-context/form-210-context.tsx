@@ -364,11 +364,11 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
     const f133Average = 0.75 * ((prevDeclarationValue + f126) / 2);
 
     if (declarationNumber === 1) {
-      return f126 * 0.25 - f132;
+      return Math.max(f126 * 0.25 - f132, 0);
     }
 
     if (declarationNumber === 2) {
-      return f126 * 0.5 - f132;
+      return Math.max(f126 * 0.5 - f132, 0);
     }
 
     return v(Math.max(Math.min(f133Value, f133Average) - f132, 0));
