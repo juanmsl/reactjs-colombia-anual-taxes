@@ -5,21 +5,15 @@ export const MainLayoutStyle = styled.section`
   grid-template-columns: auto 1fr;
   height: 100dvh;
   overflow: auto;
-  background-size: 40px 40px;
-  background-position:
-    0 0,
-    20px 20px;
-  background-image: radial-gradient(${props => props.theme.colors.text}55 1px, transparent 1px),
-    radial-gradient(${props => props.theme.colors.text}55 1px, transparent 1px);
 
   .main-layout-content {
     height: 100%;
     overflow: auto;
+    padding: 0 2em;
 
     &-page {
-      min-width: 1200px;
-      max-width: ${props => props.theme.constants.breakpoints.laptopM};
-      padding: 1em 1em 1em 2em;
+      max-width: ${props => props.theme.constants.breakpoints.laptopL};
+      margin: 0 auto;
     }
   }
 `;

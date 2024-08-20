@@ -41,8 +41,6 @@ export const Aside = () => {
         </NavLink>
       </section>
       <section className='aside-footer'>
-        <ThemeSelector />
-        <Line orientation='horizontal' />
         <a
           href='https://www.dian.gov.co/atencionciudadano/formulariosinstructivos/Formularios/2024/Formulario_210_2024.pdf'
           target='_blank'
@@ -54,6 +52,8 @@ export const Aside = () => {
             <br />+ Instrucciones por celda
           </Typography>
         </a>
+        <Line orientation='horizontal' />
+        <ThemeSelector />
       </section>
     </AsideStyle>
   );

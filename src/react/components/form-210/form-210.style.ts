@@ -5,6 +5,7 @@ export const Form210Style = styled.section`
   gap: 1em;
   align-content: start;
   justify-self: start;
+  margin: 0 auto;
 
   .table-label {
     text-wrap: balance;

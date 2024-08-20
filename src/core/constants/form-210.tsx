@@ -1,3 +1,6 @@
+import { Typography } from '@juanmsl/ui';
+import React from 'react';
+
 import { Patrimonio } from '../../react/pages/form210-page/components';
 
 import { SectionDataTableWithID } from '@components/section-data-table-with-id';
@@ -128,7 +131,6 @@ export type Form210Data = {
   f135: number;
   f138: number;
   f140: number;
-  f141: number;
 };
 
 export const defaultForm210Data: Form210Data = {
@@ -137,47 +139,47 @@ export const defaultForm210Data: Form210Data = {
   prevDeclarationValue: 0,
   f28: 0,
   _29: {
-    cuentasBancarias: [DefaultForm210DataItem],
-    inversiones: [DefaultForm210DataItem],
-    cuentasPorCobrar: [DefaultForm210DataItem],
-    activosFijos: [DefaultForm210DataItem],
-    bienesInmuebles: [DefaultForm210DataItem],
-    vehiculos: [DefaultForm210DataItem],
-    otros: [DefaultForm210DataItem],
+    cuentasBancarias: [],
+    inversiones: [],
+    cuentasPorCobrar: [],
+    activosFijos: [],
+    bienesInmuebles: [],
+    vehiculos: [],
+    otros: [],
   },
-  _30: [DefaultForm210DataItem],
-  _32: [DefaultForm210DataItem],
-  _33: [DefaultForm210DataItem],
-  _35: [DefaultForm210DataItem],
-  _36: [DefaultForm210DataItem],
-  _38: [DefaultForm210DataItem],
-  _39: [DefaultForm210DataItem],
-  _43: [DefaultForm210DataItem],
-  _44: [DefaultForm210DataItem],
-  _45: [DefaultForm210DataItem],
-  _47: [DefaultForm210DataItem],
-  _48: [DefaultForm210DataItem],
-  _50: [DefaultForm210DataItem],
-  _51: [DefaultForm210DataItem],
+  _30: [],
+  _32: [],
+  _33: [],
+  _35: [],
+  _36: [],
+  _38: [],
+  _39: [],
+  _43: [],
+  _44: [],
+  _45: [],
+  _47: [],
+  _48: [],
+  _50: [],
+  _51: [],
   f56: 0,
-  _58: [DefaultForm210DataItem],
-  _59: [DefaultForm210DataItem],
-  _60: [DefaultForm210DataItem],
-  _62: [DefaultForm210DataItem],
-  _63: [DefaultForm210DataItem],
-  _64: [DefaultForm210DataItem],
-  _66: [DefaultForm210DataItem],
-  _67: [DefaultForm210DataItem],
+  _58: [],
+  _59: [],
+  _60: [],
+  _62: [],
+  _63: [],
+  _64: [],
+  _66: [],
+  _67: [],
   f72: 0,
-  _74: [DefaultForm210DataItem],
-  _75: [DefaultForm210DataItem],
-  _76: [DefaultForm210DataItem],
-  _77: [DefaultForm210DataItem],
-  _79: [DefaultForm210DataItem],
-  _80: [DefaultForm210DataItem],
-  _81: [DefaultForm210DataItem],
-  _83: [DefaultForm210DataItem],
-  _84: [DefaultForm210DataItem],
+  _74: [],
+  _75: [],
+  _76: [],
+  _77: [],
+  _79: [],
+  _80: [],
+  _81: [],
+  _83: [],
+  _84: [],
   f89: 0,
   f94: 0,
   f95: 0,
@@ -201,11 +203,10 @@ export const defaultForm210Data: Form210Data = {
   f128: 0,
   f130: 0,
   f131: 0,
-  _132: [DefaultForm210DataItem],
+  _132: [],
   f135: 0,
   f138: 0,
   f140: 0,
-  f141: 0,
 };
 
 export const Form210DataLimits: Record<
@@ -282,7 +283,7 @@ export const f119MarginTable: MarginTableEntity = [
 export type FieldInputDetails = {
   title: string;
   subtitle?: string;
-  description?: string;
+  description?: React.ReactNode;
   content: React.ReactNode;
 };
 
@@ -290,14 +291,143 @@ export const Form210Details: Record<`${number}`, FieldInputDetails> = {
   '29': {
     title: 'Total patrimonio bruto',
     subtitle: 'Patrimonio',
-    description:
-      'Registre el total del valor patrimonial de todos los bienes y derechos apreciables en dinero poseídos en el país o en el exterior por el contribuyente al final del periodo fiscal, tales como: bienes y/o efectivo en moneda extranjera, efectivo en moneda nacional, saldo en cuentas corrientes y cuentas de ahorros, inversiones en moneda nacional, inventarios que representen bienes corporales destinados a la venta en el curso normal de los negocios, así como aquellos que se hallen en proceso de producción o que se utilizarán o consumirán en la producción de otros que van a ser vendidos, activos biológicos, bienes inmuebles (casas, apartamentos, fincas, lotes, locales, oficinas, otros), construcciones en curso, vehículos, naves, aeronaves, muebles y enseres, maquinaria y equipo, pozos petroleros, minas, good will, know how, patentes, primas, derechos de autor, cuentas por cobrar, joyas, cuadros y demás derechos reales y personales, cupos de taxis, criptoactivos, entre otros.',
+    description: (
+      <>
+        <Typography withoutPadding>
+          Registre el total del valor patrimonial de todos los bienes y derechos apreciables en dinero poseídos en el
+          país o en el exterior por el contribuyente al final del periodo fiscal, tales como:
+        </Typography>
+        <ul>
+          <li>
+            <Typography variant='label'>Bienes y/o efectivo en moneda extranjera</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Efectivo en moneda nacional</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Saldo en cuentas corrientes y cuentas de ahorros</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Inversiones en moneda nacional</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>
+              Inventarios que representen bienes corporales destinados a la venta en el curso normal de los negocios,
+              así como aquellos que se hallen en proceso de producción o que se utilizarán o consumirán en la producción
+              de otros que van a ser vendidos
+            </Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Activos biológicos</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>
+              Bienes inmuebles (casas, apartamentos, fincas, lotes, locales, oficinas, otros)
+            </Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Construcciones en curso</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Vehículos</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Naves</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Aeronaves</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Muebles y enseres</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Maquinaria y equipo</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Pozos petroleros</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Minas</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Good will</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Know how</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Patentes</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Primas</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Derechos de autor</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Cuentas por cobrar</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Joyas</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Cuadros y demás derechos reales y personales</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Cupos de taxis</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Criptoactivos</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Entre otros</Typography>
+          </li>
+        </ul>
+      </>
+    ),
     content: <Patrimonio />,
   },
   '30': {
     title: 'Deudas',
     subtitle: 'Patrimonio',
     content: <SectionDataTableWithID id='30' />,
+    description: (
+      <>
+        <Typography withoutPadding>
+          Registre en esta casilla el valor total de los saldos pendientes de pago a 31 de diciembre del periodo fiscal,
+          tales como:
+        </Typography>
+        <ul>
+          <li>
+            <Typography variant='label'>Obligaciones financieras</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Cuentas por pagar</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Arrendamientos por pagar</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Otros pasivos financieros</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Impuestos</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Gravámenes y tasas por pagar</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Pasivos por beneficios a los empleados</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Pasivos por ingresos diferidos</Typography>
+          </li>
+          <li>
+            <Typography variant='label'>Otros pasivos u obligaciones diferentes a las anteriores</Typography>
+          </li>
+        </ul>
+      </>
+    ),
   },
   '32': {
     title: 'Ingresos brutos',

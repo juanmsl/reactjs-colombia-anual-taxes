@@ -6,7 +6,7 @@ export const DarkTheme: PaletteThemeEntity = {
   primary: '#0084ef',
   secondary: '#002b83',
   tertiary: '#0054ff',
-  primaryContrast: '#e9faff',
+  primaryContrast: '#002135',
   secondaryContrast: '#FFFFFF',
   tertiaryContrast: '#FFFFFF',
 };
@@ -17,7 +17,7 @@ export const LightTheme: PaletteThemeEntity = {
   primary: '#0084ef',
   secondary: '#002b83',
   tertiary: '#0054ff',
-  primaryContrast: '#e9faff',
+  primaryContrast: '#002135',
   secondaryContrast: '#FFFFFF',
   tertiaryContrast: '#FFFFFF',
 };
