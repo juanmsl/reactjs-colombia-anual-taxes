@@ -12,15 +12,15 @@ import { Router } from '@router';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ThemeProvider darkTheme={DarkTheme} lightTheme={LightTheme}>
-      <Suspense fallback={<SimpleLoader />}>
-        <BrowserRouter>
-          <Form210Provider>
+      <BrowserRouter>
+        <Form210Provider>
+          <Suspense fallback={<SimpleLoader />}>
             <Analytics />
             <SpeedInsights />
             <Router />
-          </Form210Provider>
-        </BrowserRouter>
-      </Suspense>
+          </Suspense>
+        </Form210Provider>
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,
 );

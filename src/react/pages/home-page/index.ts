@@ -1,1 +1,1 @@
-export * from './home-page.lazy';
+export * from './home-page';

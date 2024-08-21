@@ -48,6 +48,7 @@ export const DeclarationYearDataStyle = styled.section`
   color: ${props => props.theme.colors.secondaryContrast};
   padding: 2em;
   text-align: center;
+  border-radius: 150px;
 
   .year-data-content {
     display: grid;
@@ -103,6 +104,7 @@ export const DeclarationRequirementsStyle = styled.section`
     background: ${props => props.theme.colors.background};
     padding: 1em;
     border-radius: 10px;
+    transition: all 300ms ease;
 
     .requirement-title {
       border-bottom: 1px solid;
