@@ -1,1 +1,1 @@
-export * from './form210-page.lazy';
+export * from './form210-page';

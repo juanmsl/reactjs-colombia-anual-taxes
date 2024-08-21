@@ -9,8 +9,14 @@ export const FooterStyle = styled.footer`
   margin-top: 8em;
 
   a {
-    padding: 4px 8px;
-    border: 1px solid;
-    border-radius: 4px;
+    padding: 0.5em 1em 0.5em 0.5em;
+    display: inline-block;
+    transition: all 300ms ease;
+    border-radius: 5px;
+    filter: drop-shadow(0 0 2px ${props => props.theme.colors.secondary});
+    text-shadow:
+      1px 1px 1px ${props => props.theme.colors.secondary},
+      2px 2px 1px ${props => props.theme.colors.secondary},
+      3px 3px 1px ${props => props.theme.colors.secondary};
   }
 `;
