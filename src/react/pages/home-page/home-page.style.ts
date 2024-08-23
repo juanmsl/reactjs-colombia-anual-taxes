@@ -88,6 +88,7 @@ export const DeclarationRequirementsStyle = styled.section`
   gap: 1em;
   place-content: center;
   min-height: ${props => props.theme.constants.sectionMinHeight};
+  padding: 4em 0;
 
   .declaration-content {
     display: grid;
