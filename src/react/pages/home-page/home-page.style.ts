@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
+import { SectionLayout } from '@layouts/section-layout';
+
 export const HomePageStyle = styled.section`
   display: grid;
-  gap: 2em;
   align-content: start;
 
   .home-page-logo {
@@ -39,16 +40,17 @@ export const HomePageStyle = styled.section`
   }
 `;
 
-export const DeclarationYearDataStyle = styled.section`
-  display: grid;
-  gap: 2em;
-  place-content: center;
-  min-height: ${props => props.theme.constants.sectionMinHeight};
+export const DeclarationYearDataStyle = styled(SectionLayout)`
   background: ${props => props.theme.colors.secondary};
   color: ${props => props.theme.colors.secondaryContrast};
-  padding: 2em;
-  text-align: center;
-  border-radius: 150px;
+
+  .year-data-section-content {
+    min-height: ${props => props.theme.constants.sectionMinHeight};
+    display: grid;
+    gap: 2em;
+    place-content: center;
+    text-align: center;
+  }
 
   .year-data-content {
     display: grid;

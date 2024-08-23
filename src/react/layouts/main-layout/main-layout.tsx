@@ -86,10 +86,8 @@ export const MainLayout = () => {
         }
       >
         <section className='main-layout-content' ref={ref}>
-          <section className='main-layout-content-page'>
-            <Outlet />
-            <Footer />
-          </section>
+          <Outlet />
+          <Footer />
         </section>
       </Suspense>
     </MainLayoutStyle>
