@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 
-export const FooterStyle = styled.footer`
+import { SectionLayout } from '@layouts/section-layout';
+
+export const FooterStyle = styled(SectionLayout)`
   background: ${props => props.theme.colors.primary};
   color: ${props => props.theme.colors.primaryContrast};
-  text-align: center;
-  padding: 2em;
-  border-radius: 100px 100px 0 0;
   margin-top: 8em;
+
+  .footer-content {
+    text-align: center;
+    padding: 2em 0;
+  }
 
   a {
     padding: 0.5em 1em 0.5em 0.5em;

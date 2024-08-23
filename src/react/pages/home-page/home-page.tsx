@@ -6,6 +6,7 @@ import { DeclarationRequirementsStyle, DeclarationYearDataStyle, HomePageStyle }
 import { useForm210 } from '@contexts';
 import { DeclarationRequirements } from '@core/constants';
 import { formatNumber } from '@helpers';
+import { SectionLayout } from '@layouts/section-layout';
 
 export const HomePage = () => {
   const { uvt, year, valueFromUVT, minimumSalary } = useForm210();
@@ -34,30 +35,32 @@ export const HomePage = () => {
 
   return (
     <HomePageStyle>
-      <section className='home-header'>
-        <section className='home-header-title'>
-          <section className='home-page-logo'>
-            <Image src='/assets/images/logo.png' />
+      <SectionLayout>
+        <section className='home-header'>
+          <section className='home-header-title'>
+            <section className='home-page-logo'>
+              <Image src='/assets/images/logo.png' />
+            </section>
+            <section>
+              <Typography variant='hero'>¡Declara tu renta, Colombia!</Typography>
+            </section>
           </section>
-          <section>
-            <Typography variant='hero'>¡Declara tu renta, Colombia!</Typography>
+
+          <section className='home-header-description'>
+            <Typography>
+              Sabemos que la declaración de renta puede ser complicada, por eso hemos creado este espacio para desglosar
+              el Formulario 210 de la DIAN.
+            </Typography>
+            <Typography>
+              Esta plataforma está diseñada para ayudarte a entender cada parte del Formulario 210 de la DIAN. Aquí
+              podrás ver cómo se calcula cada celda y qué información necesitas ingresar. Navega por las secciones y
+              encuentra explicaciones detalladas, todo de manera fácil y accesible.
+            </Typography>
           </section>
         </section>
+      </SectionLayout>
 
-        <section className='home-header-description'>
-          <Typography>
-            Sabemos que la declaración de renta puede ser complicada, por eso hemos creado este espacio para desglosar
-            el Formulario 210 de la DIAN.
-          </Typography>
-          <Typography>
-            Esta plataforma está diseñada para ayudarte a entender cada parte del Formulario 210 de la DIAN. Aquí podrás
-            ver cómo se calcula cada celda y qué información necesitas ingresar. Navega por las secciones y encuentra
-            explicaciones detalladas, todo de manera fácil y accesible.
-          </Typography>
-        </section>
-      </section>
-
-      <DeclarationYearDataStyle>
+      <DeclarationYearDataStyle contentClassName='year-data-section-content'>
         <section>
           <Typography variant='header1' withoutPadding>
             Declaración de renta {+year + 1}
@@ -83,35 +86,37 @@ export const HomePage = () => {
         </section>
       </DeclarationYearDataStyle>
 
-      <DeclarationRequirementsStyle>
-        <Typography variant='header4'>Debes declarar si...</Typography>
-        <Typography>
-          Recuerda que en {+year + 1} para declarar renta sobre el año gravable {year}, debes haber cumplido con alguno
-          de los siguientes criterios
-        </Typography>
+      <SectionLayout>
+        <DeclarationRequirementsStyle>
+          <Typography variant='header4'>Debes declarar si...</Typography>
+          <Typography>
+            Recuerda que en {+year + 1} para declarar renta sobre el año gravable {year}, debes haber cumplido con
+            alguno de los siguientes criterios
+          </Typography>
 
-        <section className='declaration-content'>
-          {DeclarationRequirements.map(({ title, text, uvtValue }, key) => (
-            <section key={key} className='declaration-requirement'>
-              <Typography variant='body' weight='bold' className='requirement-title'>
-                {title}
-              </Typography>
-              <Typography variant='body' className='requirement-text' withoutPadding>
-                {text}
-              </Typography>
-              <Typography variant='header4'>
-                <span className='requirement-value'>
-                  {formatNumber(valueFromUVT(uvtValue), {
-                    format: 'currency',
-                    roundTo: -3,
-                  })}
-                </span>{' '}
-                <Typography variant='small'>({formatNumber(uvtValue)} UVT)</Typography>
-              </Typography>
-            </section>
-          ))}
-        </section>
-      </DeclarationRequirementsStyle>
+          <section className='declaration-content'>
+            {DeclarationRequirements.map(({ title, text, uvtValue }, key) => (
+              <section key={key} className='declaration-requirement'>
+                <Typography variant='body' weight='bold' className='requirement-title'>
+                  {title}
+                </Typography>
+                <Typography variant='body' className='requirement-text' withoutPadding>
+                  {text}
+                </Typography>
+                <Typography variant='header4'>
+                  <span className='requirement-value'>
+                    {formatNumber(valueFromUVT(uvtValue), {
+                      format: 'currency',
+                      roundTo: -3,
+                    })}
+                  </span>{' '}
+                  <Typography variant='small'>({formatNumber(uvtValue)} UVT)</Typography>
+                </Typography>
+              </section>
+            ))}
+          </section>
+        </DeclarationRequirementsStyle>
+      </SectionLayout>
     </HomePageStyle>
   );
 };

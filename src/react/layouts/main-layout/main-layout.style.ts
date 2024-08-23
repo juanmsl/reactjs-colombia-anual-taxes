@@ -42,12 +42,6 @@ export const MainLayoutStyle = styled.section`
   .main-layout-content {
     height: 100%;
     overflow: auto;
-    padding: 0 2em;
-
-    &-page {
-      max-width: ${props => props.theme.constants.breakpoints.laptopL};
-      margin: 0 auto;
-    }
   }
 
   .suspense-loader {
