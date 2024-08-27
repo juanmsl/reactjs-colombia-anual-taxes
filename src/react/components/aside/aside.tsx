@@ -44,7 +44,7 @@ export const Aside = () => {
         <a
           href={`https://www.dian.gov.co/atencionciudadano/formulariosinstructivos/Formularios/${+year + 1}/Formulario_210_${+year + 1}.pdf`}
           target='_blank'
-          rel='noopener noreferrer'
+          rel='noopener'
           className='form-link'
         >
           <Typography variant='small' withoutPadding>
