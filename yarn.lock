@@ -441,10 +441,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@juanmsl/eslint-config@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@juanmsl/eslint-config/-/eslint-config-0.0.6.tgz#37797988b21e236bae649f45658d9fcd8d3aef75"
-  integrity sha512-OMyjULVnmryqK2K0qWfUHfHU8jBVZJu21NYWG4Ksqr2pGpnRvPi6kzxdPj3uKaxKc9yePQ75qbmY3Y8bO26tkQ==
+"@juanmsl/eslint-config@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@juanmsl/eslint-config/-/eslint-config-0.0.7.tgz#b5f7c41a741a270889e32771be98eb10769361bb"
+  integrity sha512-ZhngFnYf+UXgbDv6vv4yMfUNQP8Kfe3CsC+BCl9i/W7SnPpxaFg4uPZ2O1Fgw5dvJ4KCyvg86++ZGArXJApMIA==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^7.4.0"
     "@typescript-eslint/parser" "^7.4.0"
@@ -462,33 +462,33 @@
     prettier "^3.0.3"
     typescript "^5.3.3"
 
-"@juanmsl/helpers@^0.0.5", "@juanmsl/helpers@latest":
+"@juanmsl/helpers@0.0.5", "@juanmsl/helpers@^0.0.5":
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/@juanmsl/helpers/-/helpers-0.0.5.tgz#c70965ef2ded8274f7ae2129088a1a3ca5dfaf0b"
   integrity sha512-/U1sjGD5MnXnDxWlH1fRr+RFI0cSuwvTfjRiV3hzAMBbqRDoylR6lZ54d1q5V3JUYUM36kkWHtDuHBnf2nBBig==
   dependencies:
     moment "^2.30.1"
 
-"@juanmsl/hooks@^0.0.6", "@juanmsl/hooks@latest":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@juanmsl/hooks/-/hooks-0.0.6.tgz#d12026cfdb9a781f258bb209a355907c46aebb47"
-  integrity sha512-MSXDHq4BgqIIFAJ3ZX841dy1bCmew8jea2OTC5rNHTX5c/Mnzk8EQt3suQV3lu64/mEPBry4FvDh3wG3TOo2nw==
+"@juanmsl/hooks@0.0.10", "@juanmsl/hooks@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@juanmsl/hooks/-/hooks-0.0.10.tgz#9681620554054b368e94ec658de7324019682574"
+  integrity sha512-4PnzSLB3xSatLieAziKD6oEXWGeb/5M7o7yr3cExqCaXS2NtcH2VbRhQyQ/IDTd1gxM/iREIBkUSTEV5bpC/Vg==
   dependencies:
-    "@juanmsl/helpers" latest
+    "@juanmsl/helpers" "0.0.5"
 
 "@juanmsl/tsconfig@^0.0.1":
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/@juanmsl/tsconfig/-/tsconfig-0.0.1.tgz#5a053a7a04aabd30eea2ecb90c95d145aa49cbac"
   integrity sha512-Nf8s/T+oz+ghNutI1JrslRHDbigKPet1btGRKkiTunvShigs4KCGNGGO0pjDKZqYPTZMksz7s/44lqsb9VCjSg==
 
-"@juanmsl/ui@^0.0.33":
-  version "0.0.33"
-  resolved "https://registry.yarnpkg.com/@juanmsl/ui/-/ui-0.0.33.tgz#54ea06a486366f80f21dcaf34a230455f93d6f1e"
-  integrity sha512-bZQ0LvyIFQzp/QVQAKYxY2QIBt9dIJ9X4QdOlqk17v2YX+XsOdgPqMpr93seu+8U4D4y7hK3Mlmk7m2v4l4XnQ==
+"@juanmsl/ui@^0.0.38":
+  version "0.0.38"
+  resolved "https://registry.yarnpkg.com/@juanmsl/ui/-/ui-0.0.38.tgz#9e231ff8a91dec060f6aed12802b124307eae15c"
+  integrity sha512-sHWH3Tq8Qug28BxqJYeH7K3orV6HVUBIaMQpvJafNksTUf7fXJXt6DIanyiA7AQLBxvlCoyMz+xURFCp8cundQ==
   dependencies:
     "@hookform/resolvers" "^3.1.0"
-    "@juanmsl/helpers" latest
-    "@juanmsl/hooks" latest
+    "@juanmsl/helpers" "0.0.5"
+    "@juanmsl/hooks" "0.0.10"
     axios "^1.4.0"
     color "^4.2.3"
     moment "^2.30.1"

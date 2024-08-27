@@ -1,4 +1,4 @@
-import { Line, Select, Typography } from '@juanmsl/ui';
+import { Line, Select, Typography, ToggleButton } from '@juanmsl/ui';
 import { useEffect, useState } from 'react';
 
 import { FieldInputDetails, FormField, FormLabel, MarginTable, Table133 } from './components';
@@ -7,7 +7,6 @@ import { Form210Style, FormTable } from './form-210.style';
 import { AsideModal } from '@components/aside-modal';
 import { FieldInput } from '@components/field-input';
 import { FormatInput } from '@components/format-input';
-import { ToggleButton } from '@components/toggle-button';
 import { useForm210 } from '@contexts';
 import {
   DeclarationNumberOption,

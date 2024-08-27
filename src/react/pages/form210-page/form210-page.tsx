@@ -13,7 +13,7 @@ export const Form210Page = () => {
 
   return (
     <Form210PageStyle>
-      <Form210ToolBarStyle>
+      <Form210ToolBarStyle fitHeightContent>
         <section className='home-shared'>
           <section className='shared-data'>
             <Label>UVT</Label>

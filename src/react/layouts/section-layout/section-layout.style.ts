@@ -13,4 +13,10 @@ export const SectionLayoutContentStyle = styled.section`
   max-width: ${props => props.theme.constants.breakpoints.laptopL};
   width: 100%;
   margin: 0 auto;
+
+  &.section-layout-min-height {
+    min-height: ${props => props.theme.constants.sectionMinHeight};
+    display: grid;
+    align-content: center;
+  }
 `;

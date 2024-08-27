@@ -1,3 +1,5 @@
+import { useClassNames } from '@juanmsl/hooks';
+
 import { SectionLayoutContentStyle, SectionLayoutStyle } from './section-layout.style';
 
 type SectionLayoutProps = {
@@ -6,6 +8,7 @@ type SectionLayoutProps = {
   contentClassName?: string;
   style?: React.CSSProperties;
   padding?: string;
+  fitHeightContent?: boolean;
 };
 
 export const SectionLayout = ({
@@ -14,10 +17,16 @@ export const SectionLayout = ({
   contentClassName = '',
   style = {},
   padding = '0 2em',
+  fitHeightContent = false,
 }: SectionLayoutProps) => {
+  const sectionLayoutContentClassName = useClassNames({
+    [contentClassName]: Boolean(contentClassName),
+    'section-layout-min-height': !fitHeightContent,
+  });
+
   return (
     <SectionLayoutStyle className={className} style={style} $padding={padding}>
-      <SectionLayoutContentStyle className={contentClassName}>{children}</SectionLayoutContentStyle>
+      <SectionLayoutContentStyle className={sectionLayoutContentClassName}>{children}</SectionLayoutContentStyle>
     </SectionLayoutStyle>
   );
 };
