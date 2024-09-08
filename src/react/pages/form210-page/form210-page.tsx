@@ -9,7 +9,7 @@ import { formatNumber } from '@helpers';
 import { SectionLayout } from '@layouts/section-layout';
 
 export const Form210Page = () => {
-  const { uvt, f136, f137, downloadData, loadData } = useForm210();
+  const { uvt, f136, f137, downloadData, loadData, resetData } = useForm210();
 
   return (
     <Form210PageStyle>
@@ -29,6 +29,9 @@ export const Form210Page = () => {
               </Button>
               <Button leftIcon='envelope' variant='ghost' onClick={loadData}>
                 Cargar información
+              </Button>
+              <Button leftIcon='envelope' variant='flat' onClick={resetData}>
+                Reiniciar formulario
               </Button>
             </section>
           </section>

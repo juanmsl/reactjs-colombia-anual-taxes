@@ -109,6 +109,7 @@ type Form210ContextEntity = Form210Data & {
   valueFromUVT: (value: number) => number;
   downloadData: () => void;
   loadData: () => void;
+  resetData: () => void;
 };
 
 const Form210Context = createContext<Form210ContextEntity | null>(null);
@@ -410,7 +411,11 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
       reader.readAsText(file);
     };
     input.click();
-  }, [setData]);
+  }, []);
+
+  const resetData = useCallback(() => {
+    setData(defaultForm210Data);
+  }, []);
 
   return (
     <Form210Context.Provider
@@ -509,6 +514,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
         valueFromUVT,
         downloadData,
         loadData,
+        resetData,
       }}
     >
       {children}
