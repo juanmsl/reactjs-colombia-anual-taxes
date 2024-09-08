@@ -21,16 +21,29 @@ export const Form210ToolBarStyle = styled(SectionLayout)`
   position: sticky;
   top: 0;
   z-index: 1;
-  background: ${props => props.theme.colors.background};
+  background: ${props => props.theme.colors.background.main};
 
   .home-shared {
-    border: 4px solid ${props => props.theme.colors.primary};
+    border: 4px solid ${props => props.theme.colors.primary.main};
     border-radius: 25px;
     padding: 1em;
     display: grid;
     justify-content: space-between;
     grid-auto-flow: column;
+    align-items: center;
     gap: 1em;
+
+    .shared-actions {
+      display: grid;
+      gap: 4px;
+
+      &-content {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 1em;
+        align-items: center;
+      }
+    }
 
     .shared-data {
       display: grid;
@@ -43,8 +56,8 @@ export const Form210ToolBarStyle = styled(SectionLayout)`
 
       &.selected {
         border-width: 0;
-        background: ${props => props.theme.colors.secondary};
-        color: ${props => props.theme.colors.secondaryContrast};
+        background: ${props => props.theme.colors.secondary.main};
+        color: ${props => props.theme.colors.secondary.contrast};
       }
     }
   }

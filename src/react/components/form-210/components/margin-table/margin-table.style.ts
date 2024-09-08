@@ -4,8 +4,8 @@ export const MarginTableStyle = styled.section`
   display: grid;
   padding: 1em 1.5em;
   gap: 0.5em;
-  border: 1px solid ${props => props.theme.colors.primary};
-  background: ${props => props.theme.colors.background};
+  border: 1px solid ${props => props.theme.colors.primary.main};
+  background: ${props => props.theme.colors.background.main};
   border-radius: 15px;
   margin-top: 1em;
 
@@ -22,13 +22,13 @@ export const MarginTableStyle = styled.section`
 
     &,
     td {
-      border: 1px solid ${props => props.theme.colors.text};
+      border: 1px solid ${props => props.theme.colors.text.main};
       border-collapse: collapse;
     }
 
     tr.selected-row {
-      color: ${props => props.theme.colors.primary};
-      background: hsl(from ${props => props.theme.colors.primary} h s 90);
+      color: ${props => props.theme.colors.primary.main};
+      background: hsl(from ${props => props.theme.colors.primary.main} h s 90);
     }
 
     td {

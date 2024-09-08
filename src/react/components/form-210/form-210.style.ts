@@ -17,10 +17,22 @@ export const Form210Style = styled.section`
 
   .form-section-title {
     text-align: center;
-    background: ${props => props.theme.colors.primary};
-    color: ${props => props.theme.colors.primaryContrast};
+    background: ${props => props.theme.colors.primary.main};
+    color: ${props => props.theme.colors.primary.contrast};
     padding: 0.5em;
     border-radius: 100px;
+  }
+
+  .form-210-actions {
+    vertical-align: top;
+
+    &-content {
+      margin-top: 1em;
+      display: grid;
+      gap: 1em;
+      height: 100%;
+      padding-right: 1em;
+    }
   }
 `;
 
@@ -32,8 +44,8 @@ export const FormTable = styled.table`
     border: 2px solid;
     padding: 0.5em;
     border-radius: 100px;
-    background: hsl(from ${props => props.theme.colors.primary} h s 90);
-    color: ${props => props.theme.colors.primary};
+    background: hsl(from ${props => props.theme.colors.primary.main} h s 90);
+    color: ${props => props.theme.colors.primary.main};
 
     span {
       font-size: 1em;

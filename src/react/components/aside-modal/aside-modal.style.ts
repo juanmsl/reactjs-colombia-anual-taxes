@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const AsideModalStyle = styled.section`
   position: absolute;
-  background: ${props => props.theme.colors.background};
-  color: ${props => props.theme.colors.text};
+  background: ${props => props.theme.colors.background.main};
+  color: ${props => props.theme.colors.text.main};
   padding: 2em;
   overflow: auto;
-  border-right: 4px solid ${props => props.theme.colors.primary};
+  border-right: 4px solid ${props => props.theme.colors.primary.main};
   z-index: 1000;
 
   .close-modal-button {

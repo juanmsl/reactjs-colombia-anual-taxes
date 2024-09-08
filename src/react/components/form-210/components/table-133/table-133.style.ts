@@ -6,8 +6,8 @@ export const Table133Style = styled.section`
   gap: 1em;
 
   padding: 1em 1.5em;
-  border: 1px solid ${props => props.theme.colors.primary};
-  background: ${props => props.theme.colors.background};
+  border: 1px solid ${props => props.theme.colors.primary.main};
+  background: ${props => props.theme.colors.background.main};
   border-radius: 15px;
   margin-top: 1em;
 
@@ -16,7 +16,7 @@ export const Table133Style = styled.section`
     border: 1px solid;
     display: block;
     margin-bottom: 1em;
-    background: ${props => props.theme.colors.background};
+    background: ${props => props.theme.colors.background.main};
     border-radius: 10px;
   }
 

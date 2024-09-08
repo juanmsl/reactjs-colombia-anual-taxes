@@ -46,7 +46,7 @@ export const FieldInput = ({
       <FieldInputContainer>
         <FieldInputStyle className={fieldClassName}>
           <section className='form-field-id'>
-            <Typography variant='small' weight='bold' withoutPadding>
+            <Typography variant='small' weight='bold' noPadding>
               {id}
             </Typography>
           </section>
@@ -67,7 +67,7 @@ export const FieldInput = ({
           </section>
         </FieldInputStyle>
         {formula ? (
-          <Typography onClick={action} variant='small' weight='bold' className='formula' withoutPadding>
+          <Typography onClick={action} variant='small' weight='bold' className='formula' noPadding>
             {formula}
           </Typography>
         ) : null}

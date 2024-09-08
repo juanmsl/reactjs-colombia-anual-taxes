@@ -1,23 +1,47 @@
-import { PaletteThemeEntity } from '@juanmsl/ui';
+import { PaletteThemeEntity, DarkTheme as DefaultDarkTheme, LightTheme as DefaultLightTheme } from '@juanmsl/ui';
 
 export const DarkTheme: PaletteThemeEntity = {
-  background: '#24263A',
-  text: '#FFFFFF',
-  primary: '#0084ef',
-  secondary: '#002b83',
-  tertiary: '#0054ff',
-  primaryContrast: '#ffffff',
-  secondaryContrast: '#FFFFFF',
-  tertiaryContrast: '#FFFFFF',
+  ...DefaultDarkTheme,
+  background: {
+    main: '#24263A',
+    paper: '#24263A',
+  },
+  text: {
+    main: '#FFFFFF',
+  },
+  primary: {
+    main: '#0084ef',
+    contrast: '#FFFFFF',
+  },
+  secondary: {
+    main: '#002b83',
+    contrast: '#FFFFFF',
+  },
+  tertiary: {
+    main: '#0054ff',
+    contrast: '#FFFFFF',
+  },
 };
 
 export const LightTheme: PaletteThemeEntity = {
-  background: '#FFFFFF',
-  text: '#002135',
-  primary: '#0084ef',
-  secondary: '#002b83',
-  tertiary: '#0054ff',
-  primaryContrast: '#ffffff',
-  secondaryContrast: '#FFFFFF',
-  tertiaryContrast: '#FFFFFF',
+  ...DefaultLightTheme,
+  background: {
+    main: '#FFFFFF',
+    paper: '#24263A',
+  },
+  text: {
+    main: '#002135',
+  },
+  primary: {
+    main: '#0084ef',
+    contrast: '#FFFFFF',
+  },
+  secondary: {
+    main: '#002b83',
+    contrast: '#FFFFFF',
+  },
+  tertiary: {
+    main: '#0054ff',
+    contrast: '#FFFFFF',
+  },
 };

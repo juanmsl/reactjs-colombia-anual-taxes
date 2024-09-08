@@ -20,7 +20,7 @@ export const FieldInputDetails = ({ id }: FieldInputDetailsProps) => {
     <FieldInputDetailsStyle>
       <section className='details-header'>
         <section>
-          <Typography withoutPadding variant='header3'>
+          <Typography noPadding variant='header3'>
             {title}
           </Typography>
           {subtitle ? (

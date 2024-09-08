@@ -51,14 +51,13 @@ export const Form210 = () => {
       <FormTable>
         <tbody>
           <tr>
-            <td colSpan={2} />
+            <td colSpan={2} rowSpan={7} className='form-210-actions' />
             <FormLabel className='form-section-title' colSpan={4}>
               Inicio
             </FormLabel>
           </tr>
 
           <tr>
-            <td colSpan={2} />
             <FormLabel atBottom>Estoy declarando por</FormLabel>
             <FormLabel colSpan={2} atBottom>
               Impuesto neto de renta año anterior (Celda 127 del 2022)
@@ -66,12 +65,12 @@ export const Form210 = () => {
           </tr>
 
           <tr>
-            <td colSpan={2} />
             <td>
               <Select<DeclarationNumberOption>
                 options={DeclarationNumberOptions}
                 renderOption={item => item.label}
                 name='declarationNumber'
+                multiselect={false}
                 value={DeclarationNumberOptions.find(item => item.value === declarationNumber)}
                 setValue={value =>
                   setData(prev => ({
@@ -93,24 +92,22 @@ export const Form210 = () => {
           </tr>
 
           <tr>
-            <td colSpan={6} className='empty-row' />
+            <td colSpan={2} />
+            <td colSpan={4} className='empty-row' />
           </tr>
 
           <tr>
-            <td colSpan={2} />
             <FormLabel className='form-section-title' colSpan={4}>
               Patrimonio
             </FormLabel>
           </tr>
           <tr>
-            <td colSpan={2} />
             <FormLabel atBottom>Uno por ciento (1%) de compras con fáctura electrónica</FormLabel>
             <FormLabel atBottom>Total patrimonio bruto</FormLabel>
             <FormLabel atBottom>Deudas</FormLabel>
             <FormLabel atBottom>Total patrimonio liquido</FormLabel>
           </tr>
           <tr>
-            <td colSpan={2} />
             <FormField id='28' />
             <FormField id='29' onClick={() => setAsideID('29')} />
             <FormField id='30' onClick={() => setAsideID('30')} />
@@ -251,7 +248,7 @@ export const Form210 = () => {
           </tr>
 
           <tr>
-            <FormLabel colSpan={2}>Rentas exentas y/o deducibles imputables</FormLabel>
+            <FormLabel colSpan={2}>Rentas exentas y/o deducciones imputables</FormLabel>
             <FormField id='41' readOnly formula='37 + 40' />
             <FormField id='53' readOnly formula='49 + 52' />
             <FormField id='69' readOnly formula='65 + 68' />
@@ -295,7 +292,7 @@ export const Form210 = () => {
           <tr>
             <td colSpan={2} />
             <FormLabel atBottom>Renta liquida</FormLabel>
-            <FormLabel atBottom>Rentas exentas y deducciones impitables</FormLabel>
+            <FormLabel atBottom>Rentas exentas y deducciones imputables</FormLabel>
             <FormLabel atBottom>Renta liquida ordinaria</FormLabel>
             <FormLabel atBottom>Compensaciones por pérdidas año gravable 2018 y anteriores</FormLabel>
           </tr>

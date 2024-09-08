@@ -81,7 +81,7 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
           >
             Agregar fila
           </Button>
-          <Typography weight='bold' withoutPadding>
+          <Typography weight='bold' noPadding>
             {data.length > 1 ? formatNumber(total, { format: 'currency' }) : null}
           </Typography>
           {data.length > 0 && (
@@ -97,10 +97,10 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
         {data.length > 0 ? (
           <section className='table-rows'>
             <section className='item-row'>
-              <Typography weight='bold' withoutPadding variant='label'>
+              <Typography weight='bold' noPadding variant='label'>
                 Concepto
               </Typography>
-              <Typography weight='bold' withoutPadding variant='label'>
+              <Typography weight='bold' noPadding variant='label'>
                 Valor
               </Typography>
             </section>

@@ -6,7 +6,6 @@ import { AsideStyle } from './aside.style';
 import { ThemeSelector } from '@components/theme-selector';
 import { useForm210 } from '@contexts';
 import { PATHS, YearsForm210Data } from '@core/constants';
-import { formatNumber } from '@helpers';
 
 export const Aside = () => {
   const { year, setData } = useForm210();
@@ -19,23 +18,24 @@ export const Aside = () => {
             label='Año'
             leftIcon='moon'
             options={Object.keys(YearsForm210Data)}
-            renderOption={item => formatNumber(+item)}
+            renderOption={item => item}
             name='year'
             value={`${year}`}
-            setValue={year => setData(prev => ({ ...prev, year }))}
+            multiselect={false}
+            setValue={year => setData(prev => ({ ...prev, year: +year }))}
           />
         </section>
       </section>
       <section className='aside-content'>
         <NavLink to={PATHS.HOME} className='aside-tab'>
           <Icon name='house' size={14} />
-          <Typography variant='label' withoutPadding>
+          <Typography variant='label' noPadding>
             Inicio
           </Typography>
         </NavLink>
         <NavLink to={PATHS.FORM210} className='aside-tab'>
           <Icon name='download' size={14} />
-          <Typography variant='label' withoutPadding>
+          <Typography variant='label' noPadding>
             Formulario 210
           </Typography>
         </NavLink>
@@ -47,7 +47,7 @@ export const Aside = () => {
           rel='noopener'
           className='form-link'
         >
-          <Typography variant='small' withoutPadding>
+          <Typography variant='small' noPadding>
             Descargar Formulario 210
             <br />+ Instrucciones por celda
           </Typography>

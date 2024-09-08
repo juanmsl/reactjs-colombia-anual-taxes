@@ -14,7 +14,7 @@ export const HomeTabStyle = styled(Tabs.Tab)`
   }
 
   &.is-open {
-    background: ${props => props.theme.colors.primary};
-    color: ${props => props.theme.colors.primaryContrast};
+    background: ${props => props.theme.colors.primary.main};
+    color: ${props => props.theme.colors.primary.contrast};
   }
 `;

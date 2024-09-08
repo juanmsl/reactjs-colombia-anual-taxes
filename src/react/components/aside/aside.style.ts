@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const AsideStyle = styled.aside`
-  background: ${props => props.theme.colors.secondary};
-  color: ${props => props.theme.colors.secondaryContrast};
-  border-right: 5px solid ${props => props.theme.colors.primary};
+  background: ${props => props.theme.colors.secondary.main};
+  color: ${props => props.theme.colors.secondary.contrast};
+  border-right: 5px solid ${props => props.theme.colors.primary.main};
   padding: 2em 1em 3em;
   display: grid;
   gap: 1em;
@@ -24,8 +24,8 @@ export const AsideStyle = styled.aside`
     transition: all 300ms ease;
 
     &:hover {
-      color: ${props => props.theme.colors.text};
-      background: ${props => props.theme.colors.background};
+      color: ${props => props.theme.colors.text.main};
+      background: ${props => props.theme.colors.background.main};
     }
   }
 
@@ -58,12 +58,12 @@ export const AsideStyle = styled.aside`
 
     &.active,
     &:hover {
-      border-color: ${props => props.theme.colors.primary};
+      border-color: ${props => props.theme.colors.primary.main};
     }
 
     &.active {
-      color: ${props => props.theme.colors.text};
-      background: ${props => props.theme.colors.background};
+      color: ${props => props.theme.colors.text.main};
+      background: ${props => props.theme.colors.background.main};
     }
   }
 

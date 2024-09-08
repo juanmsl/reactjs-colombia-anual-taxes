@@ -107,6 +107,8 @@ type Form210ContextEntity = Form210Data & {
   updateTable: (id: `${number}`) => (value: Array<Form210DataItem>) => void;
   valueToUVT: (value: number) => number;
   valueFromUVT: (value: number) => number;
+  downloadData: () => void;
+  loadData: () => void;
 };
 
 const Form210Context = createContext<Form210ContextEntity | null>(null);
@@ -383,6 +385,33 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
     [f129, f130, f131, f132, f133, f135],
   );
 
+  const downloadData = useCallback(() => {
+    const dataString = JSON.stringify(data);
+    const blob = new Blob([dataString], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Formulario210.json';
+    a.click();
+    URL.revokeObjectURL(url);
+  }, [data]);
+
+  const loadData = useCallback(() => {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'application/json';
+    input.onchange = () => {
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        const data = JSON.parse(reader.result as string);
+        setData({ ...defaultForm210Data, ...data });
+      };
+      reader.readAsText(file);
+    };
+    input.click();
+  }, [setData]);
+
   return (
     <Form210Context.Provider
       value={{
@@ -478,6 +507,8 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
         updateTable,
         valueToUVT,
         valueFromUVT,
+        downloadData,
+        loadData,
       }}
     >
       {children}

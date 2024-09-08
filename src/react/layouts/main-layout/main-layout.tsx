@@ -36,10 +36,10 @@ export const MainLayout = () => {
             Para poder utilizar la plataforma y tener una mejor experiencia, por favor visitanos desde un computador.
           </Typography>
           <section>
-            <Typography variant='label' as='p' withoutPadding>
+            <Typography variant='label' as='p' noPadding>
               <b>Tamaño minimo de la pantalla:</b> {theme.constants.breakpoints.laptopM}
             </Typography>
-            <Typography variant='label' as='p' withoutPadding>
+            <Typography variant='label' as='p' noPadding>
               <b>Tu tamaño actual:</b> {width}px
             </Typography>
           </section>
