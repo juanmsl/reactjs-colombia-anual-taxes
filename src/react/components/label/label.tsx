@@ -7,7 +7,7 @@ export type LabelProps = {
 
 export const Label = ({ children, className }: LabelProps) => {
   return (
-    <Typography withoutPadding variant='label' weight='bold' className={className}>
+    <Typography noPadding variant='label' weight='bold' className={className}>
       {children}
     </Typography>
   );

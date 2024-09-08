@@ -287,7 +287,7 @@ export const Form210Details: Record<`${number}`, FieldInputDetails> = {
     subtitle: 'Patrimonio',
     description: (
       <>
-        <Typography withoutPadding>
+        <Typography noPadding>
           Registre el total del valor patrimonial de todos los bienes y derechos apreciables en dinero poseídos en el
           país o en el exterior por el contribuyente al final del periodo fiscal, tales como:
         </Typography>
@@ -387,7 +387,7 @@ export const Form210Details: Record<`${number}`, FieldInputDetails> = {
     content: <SectionDataTableWithID id='30' />,
     description: (
       <>
-        <Typography withoutPadding>
+        <Typography noPadding>
           Registre en esta casilla el valor total de los saldos pendientes de pago a 31 de diciembre del periodo fiscal,
           tales como:
         </Typography>

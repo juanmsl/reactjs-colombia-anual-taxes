@@ -17,11 +17,11 @@ export const FieldInputStyle = styled.section`
   align-items: center;
   border-radius: 50px;
   padding: 4px 10px 4px 4px;
-  background: ${props => props.theme.colors.background};
-  color: ${props => props.theme.colors.text};
+  background: ${props => props.theme.colors.background.main};
+  color: ${props => props.theme.colors.text.main};
 
   .form-field-id {
-    background: ${props => props.theme.colors.primary};
+    background: ${props => props.theme.colors.primary.main};
     color: ${props => props.theme.colors.white};
     padding: 4px;
     display: grid;
@@ -53,8 +53,8 @@ export const FieldInputStyle = styled.section`
   }
 
   &.read-only {
-    background: hsl(from ${props => props.theme.colors.primary} h s 90);
-    color: ${props => props.theme.colors.primary};
+    background: hsl(from ${props => props.theme.colors.primary.main} h s 90);
+    color: ${props => props.theme.colors.primary.main};
 
     input {
       font-weight: bold;

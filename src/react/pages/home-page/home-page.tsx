@@ -62,10 +62,10 @@ export const HomePage = () => {
 
       <DeclarationYearDataStyle contentClassName='year-data-section-content'>
         <section>
-          <Typography variant='header1' withoutPadding>
+          <Typography variant='header1' noPadding>
             Declaración de renta {+year + 1}
           </Typography>
-          <Typography variant='header2' withoutPadding>
+          <Typography variant='header2' noPadding>
             (Año gravable {year})
           </Typography>
         </section>
@@ -78,7 +78,7 @@ export const HomePage = () => {
               <Typography variant='header4' as='p' className='year-data-item--value'>
                 {formatNumber(value, { format: 'currency' })}
               </Typography>
-              <Typography variant='body' withoutPadding>
+              <Typography variant='body' noPadding>
                 {label}
               </Typography>
             </section>
@@ -100,7 +100,7 @@ export const HomePage = () => {
                 <Typography variant='body' weight='bold' className='requirement-title'>
                   {title}
                 </Typography>
-                <Typography variant='body' className='requirement-text' withoutPadding>
+                <Typography variant='body' className='requirement-text' noPadding>
                   {text}
                 </Typography>
                 <Typography variant='header4'>

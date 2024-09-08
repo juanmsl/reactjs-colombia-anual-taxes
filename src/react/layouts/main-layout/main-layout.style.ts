@@ -13,7 +13,7 @@ export const MainLayoutStyle = styled.section`
     place-content: center;
     grid-auto-flow: row;
     grid-template-columns: unset;
-    color: ${props => props.theme.colors.primaryContrast};
+    color: ${props => props.theme.colors.primary.contrast};
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 800%;
     animation: gradient 10s linear infinite alternate;
@@ -31,7 +31,7 @@ export const MainLayoutStyle = styled.section`
       height: 10em;
       border-radius: 50%;
       padding: 2em;
-      background: ${props => props.theme.colors.primary};
+      background: ${props => props.theme.colors.primary.main};
 
       img {
         width: 100%;

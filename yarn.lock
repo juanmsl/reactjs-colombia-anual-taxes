@@ -469,10 +469,10 @@
   dependencies:
     moment "^2.30.1"
 
-"@juanmsl/hooks@0.0.10", "@juanmsl/hooks@^0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@juanmsl/hooks/-/hooks-0.0.10.tgz#9681620554054b368e94ec658de7324019682574"
-  integrity sha512-4PnzSLB3xSatLieAziKD6oEXWGeb/5M7o7yr3cExqCaXS2NtcH2VbRhQyQ/IDTd1gxM/iREIBkUSTEV5bpC/Vg==
+"@juanmsl/hooks@0.0.12", "@juanmsl/hooks@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@juanmsl/hooks/-/hooks-0.0.12.tgz#04e6dead5e913eef0bd6dbab04ab57442626955f"
+  integrity sha512-EBNEhwwNvyoxAMYRpUOUJm0MLyqYWzr6f8p+LTOizCJrVm/5YXsJOkdaJFgdmMG5+WmdbVbFEFtAphyMl2cnnQ==
   dependencies:
     "@juanmsl/helpers" "0.0.5"
 
@@ -481,14 +481,14 @@
   resolved "https://registry.yarnpkg.com/@juanmsl/tsconfig/-/tsconfig-0.0.1.tgz#5a053a7a04aabd30eea2ecb90c95d145aa49cbac"
   integrity sha512-Nf8s/T+oz+ghNutI1JrslRHDbigKPet1btGRKkiTunvShigs4KCGNGGO0pjDKZqYPTZMksz7s/44lqsb9VCjSg==
 
-"@juanmsl/ui@^0.0.38":
-  version "0.0.38"
-  resolved "https://registry.yarnpkg.com/@juanmsl/ui/-/ui-0.0.38.tgz#9e231ff8a91dec060f6aed12802b124307eae15c"
-  integrity sha512-sHWH3Tq8Qug28BxqJYeH7K3orV6HVUBIaMQpvJafNksTUf7fXJXt6DIanyiA7AQLBxvlCoyMz+xURFCp8cundQ==
+"@juanmsl/ui@^0.0.41":
+  version "0.0.41"
+  resolved "https://registry.yarnpkg.com/@juanmsl/ui/-/ui-0.0.41.tgz#56d530aa267f1d9f612fc3c3ea50468275d9f081"
+  integrity sha512-ty4TucHWE6ArP7rTlkefYFI0ToQXKjCQOsphg3q6Cc6vN2s7u/Lc1rk7MJTO5qqv4cxVE/jk0t42hBxdnpu30Q==
   dependencies:
     "@hookform/resolvers" "^3.1.0"
     "@juanmsl/helpers" "0.0.5"
-    "@juanmsl/hooks" "0.0.10"
+    "@juanmsl/hooks" "0.0.12"
     axios "^1.4.0"
     color "^4.2.3"
     moment "^2.30.1"

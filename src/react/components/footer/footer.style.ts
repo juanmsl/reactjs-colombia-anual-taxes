@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { SectionLayout } from '@layouts/section-layout';
 
 export const FooterStyle = styled(SectionLayout)`
-  background: ${props => props.theme.colors.primary};
-  color: ${props => props.theme.colors.primaryContrast};
+  background: ${props => props.theme.colors.primary.main};
+  color: ${props => props.theme.colors.primary.contrast};
   margin-top: 8em;
 
   .footer-content {
@@ -17,10 +17,10 @@ export const FooterStyle = styled(SectionLayout)`
     display: inline-block;
     transition: all 300ms ease;
     border-radius: 5px;
-    filter: drop-shadow(0 0 2px ${props => props.theme.colors.secondary});
+    filter: drop-shadow(0 0 2px ${props => props.theme.colors.secondary.main});
     text-shadow:
-      1px 1px 1px ${props => props.theme.colors.secondary},
-      2px 2px 1px ${props => props.theme.colors.secondary},
-      3px 3px 1px ${props => props.theme.colors.secondary};
+      1px 1px 1px ${props => props.theme.colors.secondary.main},
+      2px 2px 1px ${props => props.theme.colors.secondary.main},
+      3px 3px 1px ${props => props.theme.colors.secondary.main};
   }
 `;

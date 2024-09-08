@@ -49,27 +49,27 @@ export const MarginTable = ({ id, marginTable, value, uvtValue, children }: Marg
             {marginTable.toReversed().map(({ uvt, maxUvt, tm, imp }) => (
               <tr key={uvt} className={uvt <= uvtValue && uvtValue < maxUvt ? 'selected-row' : ''}>
                 <td>
-                  <Typography withoutPadding variant='label'>
+                  <Typography noPadding variant='label'>
                     {uvt}
                   </Typography>
                 </td>
                 <td>
-                  <Typography withoutPadding variant='label'>
+                  <Typography noPadding variant='label'>
                     &lt; {uvtValue} &#x2264;
                   </Typography>
                 </td>
                 <td>
-                  <Typography withoutPadding variant='label'>
+                  <Typography noPadding variant='label'>
                     {maxUvt}
                   </Typography>
                 </td>
                 <td>
-                  <Typography withoutPadding variant='label'>
+                  <Typography noPadding variant='label'>
                     {Math.round(tm * 100)}%
                   </Typography>
                 </td>
                 <td>
-                  <Typography withoutPadding variant='label'>
+                  <Typography noPadding variant='label'>
                     {imp}
                   </Typography>
                 </td>

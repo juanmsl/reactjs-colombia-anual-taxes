@@ -1,4 +1,4 @@
-import { Typography } from '@juanmsl/ui';
+import { Button, Typography } from '@juanmsl/ui';
 
 import { Form210PageStyle, Form210ToolBarStyle } from './form210-page.style';
 
@@ -9,7 +9,7 @@ import { formatNumber } from '@helpers';
 import { SectionLayout } from '@layouts/section-layout';
 
 export const Form210Page = () => {
-  const { uvt, f136, f137 } = useForm210();
+  const { uvt, f136, f137, downloadData, loadData, resetData } = useForm210();
 
   return (
     <Form210PageStyle>
@@ -19,10 +19,26 @@ export const Form210Page = () => {
             <Label>UVT</Label>
             {formatNumber(uvt, { format: 'currency' })}
           </section>
+          <section className='shared-actions'>
+            <Typography noPadding variant='label' weight='bold'>
+              Acciones
+            </Typography>
+            <section className='shared-actions-content'>
+              <Button leftIcon='download' onClick={downloadData}>
+                Descargar información
+              </Button>
+              <Button leftIcon='envelope' variant='ghost' onClick={loadData}>
+                Cargar información
+              </Button>
+              <Button leftIcon='envelope' variant='flat' onClick={resetData}>
+                Reiniciar formulario
+              </Button>
+            </section>
+          </section>
           {f136 > 0 && (
             <section className='shared-data selected'>
               <Label>Total saldo a pagar</Label>
-              <Typography withoutPadding weight='bold'>
+              <Typography noPadding weight='bold'>
                 {formatNumber(f136, { format: 'currency' })}
               </Typography>
             </section>
@@ -30,7 +46,7 @@ export const Form210Page = () => {
           {f137 > 0 && (
             <section className='shared-data selected'>
               <Label>Total saldo a favor</Label>
-              <Typography withoutPadding weight='bold'>
+              <Typography noPadding weight='bold'>
                 {formatNumber(f137, { format: 'currency' })}
               </Typography>
             </section>

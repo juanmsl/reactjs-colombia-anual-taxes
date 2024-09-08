@@ -1,4 +1,3 @@
-export * from './aside-modal';
 export * from './form-210';
 export * from './field-input';
 export * from './footer';
