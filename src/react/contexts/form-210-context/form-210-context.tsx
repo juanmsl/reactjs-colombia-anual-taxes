@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
+import { FieldParams } from '@components/field-input';
 import {
   defaultForm210Data,
   f116MarginTable,
@@ -110,6 +111,7 @@ type Form210ContextEntity = Form210Data & {
   downloadData: () => void;
   loadData: () => void;
   resetData: () => void;
+  fieldParams: { [key: `_${number}`]: FieldParams };
 };
 
 const Form210Context = createContext<Form210ContextEntity | null>(null);
@@ -392,10 +394,10 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'Formulario210.json';
+    a.download = `Formulario 210 - ${year}.json`;
     a.click();
     URL.revokeObjectURL(url);
-  }, [data]);
+  }, [year, data]);
 
   const loadData = useCallback(() => {
     const input = document.createElement('input');
@@ -416,6 +418,121 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
   const resetData = useCallback(() => {
     setData(defaultForm210Data);
   }, []);
+
+  const fieldParams: Form210ContextEntity['fieldParams'] = {
+    _28: {},
+    _29: { locked: true },
+    _30: { locked: true },
+    _31: { readOnly: true, formula: '29 - 30' },
+    _32: { locked: true },
+    _33: { locked: true },
+    _34: { readOnly: true, formula: '32 - 33' },
+    _35: { disabled: f34 === 0, locked: true },
+    _36: { disabled: f34 === 0, locked: true },
+    _37: { formula: '35 + 36', readOnly: true },
+    _38: { disabled: f34 === 0, locked: true },
+    _39: { disabled: f34 === 0, locked: true },
+    _40: { readOnly: true, formula: '38 + 39' },
+    _41: { readOnly: true, formula: '37 + 40' },
+    _42: { readOnly: true, formula: '34 - 41' },
+    _43: { locked: true },
+    _44: { locked: true },
+    _45: { locked: true },
+    _46: { readOnly: true, formula: '43 - 44 - 45' },
+    _47: { disabled: f46 === 0, locked: true },
+    _48: { disabled: f46 === 0, locked: true },
+    _49: { formula: '47 + 48', readOnly: true },
+    _50: { disabled: f46 === 0, locked: true },
+    _51: { disabled: f46 === 0, locked: true },
+    _52: { readOnly: true, formula: '50 + 51' },
+    _53: { readOnly: true, formula: '49 + 52' },
+    _54: { readOnly: true, formula: '46 - 53' },
+    _55: { readOnly: true, formula: '44 + 45 - 43' },
+    _56: {},
+    _57: { readOnly: true, formula: '54 - 56' },
+    _58: { locked: true },
+    _59: { locked: true },
+    _60: { locked: true },
+    _61: { readOnly: true, formula: '58 - 59 - 60' },
+    _62: { locked: true },
+    _63: { locked: true, disabled: f61 + f62 === 0 },
+    _64: { locked: true, disabled: f61 + f62 === 0 },
+    _65: { formula: '63 + 64', readOnly: true },
+    _66: { locked: true, disabled: f61 + f62 === 0 },
+    _67: { locked: true, disabled: f61 + f62 === 0 },
+    _68: { readOnly: true, formula: '66 + 67' },
+    _69: { readOnly: true, formula: '65 + 68' },
+    _70: { readOnly: true, formula: '61 + 62 - 69' },
+    _71: { readOnly: true, formula: '59 + 60 - 58 - 62' },
+    _72: { disabled: f70 === 0 },
+    _73: { readOnly: true, formula: '70 - 72' },
+    _74: { locked: true },
+    _75: { locked: true },
+    _76: { locked: true },
+    _77: { locked: true },
+    _78: { readOnly: true, formula: '74 - 75 - 76 - 77' },
+    _79: { locked: true },
+    _80: { locked: true, disabled: f78 + f79 === 0 },
+    _81: { locked: true, disabled: f78 + f79 === 0 },
+    _82: { formula: '80 + 81', readOnly: true },
+    _83: { locked: true, disabled: f78 + f79 === 0 },
+    _84: { locked: true, disabled: f78 + f79 === 0 },
+    _85: { readOnly: true, formula: '83 + 84' },
+    _86: { readOnly: true, formula: '82 + 85' },
+    _87: { readOnly: true, formula: '78 + 79 - 86' },
+    _88: { readOnly: true, formula: '75 + 76 + 77 - 74 - 79' },
+    _89: { disabled: f87 === 0 },
+    _90: { readOnly: true, formula: '87 - 89' },
+    _91: { readOnly: true, formula: '41 + 42 + 53 + 57 + 69 + 73 + 86 + 90' },
+    _92: { readOnly: true, formula: '28 + 41 + 53 + 69 + 86 + 139' },
+    _93: { readOnly: true, formula: '91 - 92' },
+    _94: {},
+    _95: {},
+    _96: {},
+    _97: { readOnly: true, formula: '93 + 96 - 94 - 95' },
+    _98: {},
+    _99: {},
+    _100: {},
+    _101: { readOnly: true, formula: '99 - 100' },
+    _102: {},
+    _103: { readOnly: true, formula: '101 - 102' },
+    _104: {},
+    _105: {},
+    _106: { readOnly: true, formula: '104 - 105' },
+    _107: {},
+    _108: {},
+    _109: {},
+    _110: {},
+    _111: { readOnly: true, formula: 'MAX(97, 98) + 103 + 107 + 108 - 118' },
+    _112: {},
+    _113: {},
+    _114: {},
+    _115: { readOnly: true, formula: '112 - 113 - 114' },
+    _116: { readOnly: true },
+    _117: { readOnly: true },
+    _118: { readOnly: true, formula: '108 * 35%' },
+    _119: { readOnly: true },
+    _120: { readOnly: true, formula: '(109 - 110) * 35%' },
+    _121: { readOnly: true, formula: '116 + 117 + 118 + 119 + 120' },
+    _122: {},
+    _123: {},
+    _124: {},
+    _125: { readOnly: true, formula: '122 + 123 + 124' },
+    _126: { readOnly: true, formula: '121 - 125' },
+    _127: { readOnly: true, formula: '115 * 20%' },
+    _128: {},
+    _129: { readOnly: true, formula: '126 + 127 - 128' },
+    _130: {},
+    _131: {},
+    _132: { locked: true },
+    _133: { readOnly: true },
+    _134: { readOnly: true, formula: '129 + 133 - 130 - 131 - 132' },
+    _135: {},
+    _136: { readOnly: true, formula: '129 + 133 + 135 - 130 - 131 - 132' },
+    _137: { readOnly: true, formula: '130 + 131 + 132 - 129 - 133 - 135' },
+    _138: { format: 'number', min: 0, max: 4 },
+    _139: { readOnly: true, formula: '138 * 72UVT' },
+  };
 
   return (
     <Form210Context.Provider
@@ -515,6 +632,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
         downloadData,
         loadData,
         resetData,
+        fieldParams,
       }}
     >
       {children}
@@ -542,6 +660,18 @@ export const useForm210Field = (id: number | `${number}`): number => {
   }
 
   return context[labelId];
+};
+
+export const useForm210FieldParams = (id: number | `${number}`): FieldParams => {
+  const { fieldParams } = useForm210();
+
+  const labelId = `_${id}`;
+
+  if (fieldParams[labelId] === undefined) {
+    throw new Error(`Field params ${labelId} does not exist in this context`);
+  }
+
+  return fieldParams[labelId];
 };
 
 export const useForm210Table = (id: number | `${number}`): Array<Form210DataItem> => {

@@ -1,12 +1,11 @@
+import { SectionLayout } from '@juanmsl/ui';
 import styled from 'styled-components';
-
-import { SectionLayout } from '@layouts/section-layout';
 
 export const Form210PageStyle = styled.main`
   display: grid;
   gap: 2em;
   overflow: clip;
-  padding: 2em 0;
+  padding: 0 0 2em;
   position: relative;
 
   .home-content-panel {
@@ -21,12 +20,12 @@ export const Form210ToolBarStyle = styled(SectionLayout)`
   position: sticky;
   top: 0;
   z-index: 1;
-  background: ${props => props.theme.colors.background.main};
+  background: ${props => props.theme.colors.background.paper};
+  padding: 1em 2em;
+  box-shadow: 0 0 2em 0.5em ${props => props.theme.colors.black}55;
 
   .home-shared {
-    border: 4px solid ${props => props.theme.colors.primary.main};
     border-radius: 25px;
-    padding: 1em;
     display: grid;
     justify-content: space-between;
     grid-auto-flow: column;
@@ -35,14 +34,9 @@ export const Form210ToolBarStyle = styled(SectionLayout)`
 
     .shared-actions {
       display: grid;
-      gap: 4px;
-
-      &-content {
-        display: grid;
-        grid-auto-flow: column;
-        gap: 1em;
-        align-items: center;
-      }
+      grid-auto-flow: column;
+      gap: 1em;
+      align-items: center;
     }
 
     .shared-data {
@@ -59,6 +53,45 @@ export const Form210ToolBarStyle = styled(SectionLayout)`
         background: ${props => props.theme.colors.secondary.main};
         color: ${props => props.theme.colors.secondary.contrast};
       }
+    }
+  }
+`;
+
+export const Form210PageTabsStyle = styled(SectionLayout)`
+  .home-page-tabs-content {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 1px;
+  }
+
+  .home-page-tab {
+    padding: 0.5em 2em;
+    outline: 1px solid ${props => props.theme.colors.secondary.main};
+    display: grid;
+    grid-auto-flow: column;
+    gap: 0.5em;
+    place-items: center;
+    place-content: center;
+    cursor: pointer;
+    transition: all 300ms ease;
+
+    &:first-child {
+      border-radius: 10em 0 0 10em;
+    }
+
+    &:last-child {
+      border-radius: 0 10em 10em 0;
+    }
+
+    &:hover,
+    &.is-open {
+      background: ${props => props.theme.colors.primary.main};
+      color: ${props => props.theme.colors.primary.contrast};
+    }
+
+    &:not(.is-open):hover {
+      background: ${props => props.theme.colors.primary.light};
     }
   }
 `;

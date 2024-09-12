@@ -8,16 +8,16 @@ type FormFieldProps = FieldInputProps & {
   onClick?: () => void;
 };
 
-export const FormField = ({ rowSpan, colSpan, onClick, disabled, ...fieldInputProps }: FormFieldProps) => {
+export const FormField = ({ rowSpan, colSpan, onClick, ...fieldInputProps }: FormFieldProps) => {
   return (
     <FormFieldStyle
       rowSpan={rowSpan}
       colSpan={colSpan}
       style={{ verticalAlign: 'top' }}
-      onClick={!disabled ? onClick : undefined}
-      className={!disabled && onClick ? 'field-with-overlay' : ''}
+      onClick={onClick}
+      className={onClick ? 'field-with-overlay' : ''}
     >
-      <FieldInput {...fieldInputProps} disabled={disabled} locked={Boolean(onClick)} />
+      <FieldInput {...fieldInputProps} />
     </FormFieldStyle>
   );
 };

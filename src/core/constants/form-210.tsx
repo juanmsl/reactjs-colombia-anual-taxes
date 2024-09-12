@@ -579,3 +579,19 @@ export const Form210Details: Record<`${number}`, FieldInputDetails> = {
     content: <SectionDataTableWithID id='132' />,
   },
 };
+
+export enum Form210Sections {
+  INICIO = 'inicio',
+  PATRIMONIO = 'patrimonio',
+  RENTAS_DE_TRABAJO = 'rentas-de-trabajo',
+  RENTAS_POR_HONORARIOS = 'rentas-por-honorarios',
+  RENTAS_DE_CAPITAL = 'rentas-de-capital',
+  RENTAS_NO_LABORALES = 'rentas-no-laborales',
+  CEDULA_GENERAL = 'cedula-general',
+  CEDULA_PENSIONES = 'cedula-pensiones',
+  CEDULA_DIVIDENDOS = 'cedula-dividendos',
+  GANANCIA_OCASIONAL = 'ganancia-ocasional',
+  LIQUIDACION_PRIVADA = 'liquidacion-privada',
+  DEPENDIENTES = 'dependientes',
+  PAGO_TOTAL = 'pago-total',
+}

@@ -29,7 +29,7 @@ export const FieldInputDetails = ({ id }: FieldInputDetailsProps) => {
             </Typography>
           ) : null}
         </section>
-        <FieldInput id={id} readOnly />
+        <FieldInput id={id} />
       </section>
       <Line lineStyle='dotted' orientation='horizontal' className='line-separator' spacing={4} dotSize={2} />
       {description ? description : null}

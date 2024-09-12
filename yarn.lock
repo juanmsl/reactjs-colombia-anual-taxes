@@ -481,10 +481,10 @@
   resolved "https://registry.yarnpkg.com/@juanmsl/tsconfig/-/tsconfig-0.0.1.tgz#5a053a7a04aabd30eea2ecb90c95d145aa49cbac"
   integrity sha512-Nf8s/T+oz+ghNutI1JrslRHDbigKPet1btGRKkiTunvShigs4KCGNGGO0pjDKZqYPTZMksz7s/44lqsb9VCjSg==
 
-"@juanmsl/ui@^0.0.41":
-  version "0.0.41"
-  resolved "https://registry.yarnpkg.com/@juanmsl/ui/-/ui-0.0.41.tgz#56d530aa267f1d9f612fc3c3ea50468275d9f081"
-  integrity sha512-ty4TucHWE6ArP7rTlkefYFI0ToQXKjCQOsphg3q6Cc6vN2s7u/Lc1rk7MJTO5qqv4cxVE/jk0t42hBxdnpu30Q==
+"@juanmsl/ui@^0.0.49":
+  version "0.0.49"
+  resolved "https://registry.yarnpkg.com/@juanmsl/ui/-/ui-0.0.49.tgz#1317e9edcf96d084236f4e7c8aeaf5d36d3b123e"
+  integrity sha512-k29rnmvlKoWZuUMK/VoABsoiHIUzBCm5vVcAjrjke9kVQSOk9rX5Z4J0KB1J8UFvzLwV811C8WAESJb5qLptsA==
   dependencies:
     "@hookform/resolvers" "^3.1.0"
     "@juanmsl/helpers" "0.0.5"

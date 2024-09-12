@@ -9,12 +9,7 @@ export const AsideStyle = styled.aside`
   gap: 1em;
   align-content: space-between;
   grid-template-rows: auto 1fr auto;
-  width: 250px;
-
-  .aside-header {
-    border-bottom: 1px solid;
-    padding-bottom: 1em;
-  }
+  min-width: 250px;
 
   .aside-header-tab {
     padding: 0.5em 1em;
@@ -37,7 +32,6 @@ export const AsideStyle = styled.aside`
   }
 
   .aside-footer {
-    border-top: 1px solid;
     padding-top: 1em;
     display: grid;
     gap: 1em;
