@@ -1,4 +1,4 @@
-import { AsideModal, Line, Select, Typography, ToggleButton } from '@juanmsl/ui';
+import { AsideModal, Line, Select, Typography, Switch } from '@juanmsl/ui';
 import { useEffect, useState } from 'react';
 
 import { FieldInputDetails, FormField, FormLabel, MarginTable, Table133 } from './components';
@@ -16,22 +16,7 @@ import {
 } from '@core/constants';
 
 export const Form210 = () => {
-  const {
-    declarationNumber,
-    f34,
-    f46,
-    f61,
-    f62,
-    f70,
-    f78,
-    f79,
-    f87,
-    f106,
-    f111,
-    prevDeclarationValue,
-    valueToUVT,
-    setData,
-  } = useForm210();
+  const { year, declarationNumber, f106, f111, prevDeclarationValue, valueToUVT, setData } = useForm210();
 
   const [showDescriptionTable, setShowDescriptionTable] = useState<`${number | ''}`>('');
   const [asideID, setAsideID] = useState<`${number | ''}`>('');
@@ -59,8 +44,9 @@ export const Form210 = () => {
           <tr>
             <FormLabel atBottom>Estoy declarando por</FormLabel>
             <FormLabel colSpan={2} atBottom>
-              Impuesto neto de renta año anterior (Celda 127 del 2022)
+              Impuesto neto de renta año anterior (Celda 127 del {year - 1})
             </FormLabel>
+            <FormLabel atBottom>Uno por ciento (1%) de compras con fáctura electrónica</FormLabel>
           </tr>
 
           <tr>
@@ -70,6 +56,7 @@ export const Form210 = () => {
                 renderOption={item => item.label}
                 name='declarationNumber'
                 multiselect={false}
+                variant='content-border'
                 value={DeclarationNumberOptions.find(item => item.value === declarationNumber)}
                 setValue={value =>
                   setData(prev => ({
@@ -85,9 +72,11 @@ export const Form210 = () => {
                 value={prevDeclarationValue}
                 setValue={prevDeclarationValue => setData(prev => ({ ...prev, prevDeclarationValue }))}
                 roundTo={0}
+                variant='content-border'
                 disabled={declarationNumber === 1}
               />
             </td>
+            <FormField id='28' />
           </tr>
 
           <tr>
@@ -101,16 +90,14 @@ export const Form210 = () => {
             </FormLabel>
           </tr>
           <tr>
-            <FormLabel atBottom>Uno por ciento (1%) de compras con fáctura electrónica</FormLabel>
             <FormLabel atBottom>Total patrimonio bruto</FormLabel>
             <FormLabel atBottom>Deudas</FormLabel>
             <FormLabel atBottom>Total patrimonio liquido</FormLabel>
           </tr>
           <tr>
-            <FormField id='28' />
             <FormField id='29' onClick={() => setAsideID('29')} />
             <FormField id='30' onClick={() => setAsideID('30')} />
-            <FormField id='31' readOnly formula='29 - 30' />
+            <FormField id='31' />
           </tr>
 
           <tr>
@@ -166,10 +153,10 @@ export const Form210 = () => {
           </tr>
           <tr>
             <FormLabel colSpan={2}>Renta líquida</FormLabel>
-            <FormField id='34' readOnly formula='32 - 33' />
-            <FormField id='46' readOnly formula='43 - 44 - 45' />
-            <FormField id='61' readOnly formula='58 - 59 - 60' />
-            <FormField id='78' readOnly formula='74 - 75 - 76 - 77' />
+            <FormField id='34' />
+            <FormField id='46' />
+            <FormField id='61' />
+            <FormField id='78' />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Rentas líquidas pasivas - ECE</FormLabel>
@@ -189,24 +176,24 @@ export const Form210 = () => {
               Rentas exentas
             </FormLabel>
             <FormLabel>Aportes voluntarios AFC, FVP y/o AVC</FormLabel>
-            <FormField id='35' onClick={() => setAsideID('35')} disabled={f34 === 0} />
-            <FormField id='47' onClick={() => setAsideID('47')} disabled={f46 === 0} />
-            <FormField id='63' onClick={() => setAsideID('63')} disabled={f61 + f62 === 0} />
-            <FormField id='80' onClick={() => setAsideID('80')} disabled={f78 + f79 === 0} />
+            <FormField id='35' onClick={() => setAsideID('35')} />
+            <FormField id='47' onClick={() => setAsideID('47')} />
+            <FormField id='63' onClick={() => setAsideID('63')} />
+            <FormField id='80' onClick={() => setAsideID('80')} />
           </tr>
           <tr>
             <FormLabel>Otras rentas exentas</FormLabel>
-            <FormField id='36' onClick={() => setAsideID('36')} disabled={f34 === 0} />
-            <FormField id='48' onClick={() => setAsideID('48')} disabled={f46 === 0} />
-            <FormField id='64' onClick={() => setAsideID('64')} disabled={f61 + f62 === 0} />
-            <FormField id='81' onClick={() => setAsideID('81')} disabled={f78 + f79 === 0} />
+            <FormField id='36' onClick={() => setAsideID('36')} />
+            <FormField id='48' onClick={() => setAsideID('48')} />
+            <FormField id='64' onClick={() => setAsideID('64')} />
+            <FormField id='81' onClick={() => setAsideID('81')} />
           </tr>
           <tr>
             <FormLabel>Total rentas exentas</FormLabel>
-            <FormField id='37' formula='35 + 36' readOnly />
-            <FormField id='49' formula='47 + 48' readOnly />
-            <FormField id='65' formula='63 + 64' readOnly />
-            <FormField id='82' formula='80 + 81' readOnly />
+            <FormField id='37' />
+            <FormField id='49' />
+            <FormField id='65' />
+            <FormField id='82' />
           </tr>
 
           <tr>
@@ -220,24 +207,24 @@ export const Form210 = () => {
               Deducciones imputables
             </FormLabel>
             <FormLabel>Intereses de vivienda</FormLabel>
-            <FormField id='38' onClick={() => setAsideID('38')} disabled={f34 === 0} />
-            <FormField id='50' onClick={() => setAsideID('50')} disabled={f46 === 0} />
-            <FormField id='66' onClick={() => setAsideID('66')} disabled={f61 + f62 === 0} />
-            <FormField id='83' onClick={() => setAsideID('83')} disabled={f78 + f79 === 0} />
+            <FormField id='38' onClick={() => setAsideID('38')} />
+            <FormField id='50' onClick={() => setAsideID('50')} />
+            <FormField id='66' onClick={() => setAsideID('66')} />
+            <FormField id='83' onClick={() => setAsideID('83')} />
           </tr>
           <tr>
             <FormLabel>Otras deducciones imputables</FormLabel>
-            <FormField id='39' onClick={() => setAsideID('39')} disabled={f34 === 0} />
-            <FormField id='51' onClick={() => setAsideID('51')} disabled={f46 === 0} />
-            <FormField id='67' onClick={() => setAsideID('67')} disabled={f61 + f62 === 0} />
-            <FormField id='84' onClick={() => setAsideID('84')} disabled={f78 + f79 === 0} />
+            <FormField id='39' onClick={() => setAsideID('39')} />
+            <FormField id='51' onClick={() => setAsideID('51')} />
+            <FormField id='67' onClick={() => setAsideID('67')} />
+            <FormField id='84' onClick={() => setAsideID('84')} />
           </tr>
           <tr>
             <FormLabel>Total deducciones imputables</FormLabel>
-            <FormField id='40' readOnly formula='38 + 39' />
-            <FormField id='52' readOnly formula='50 + 51' />
-            <FormField id='68' readOnly formula='66 + 67' />
-            <FormField id='85' readOnly formula='83 + 84' />
+            <FormField id='40' />
+            <FormField id='52' />
+            <FormField id='68' />
+            <FormField id='85' />
           </tr>
 
           <tr>
@@ -248,38 +235,38 @@ export const Form210 = () => {
 
           <tr>
             <FormLabel colSpan={2}>Rentas exentas y/o deducciones imputables</FormLabel>
-            <FormField id='41' readOnly formula='37 + 40' />
-            <FormField id='53' readOnly formula='49 + 52' />
-            <FormField id='69' readOnly formula='65 + 68' />
-            <FormField id='86' readOnly formula='82 + 85' />
+            <FormField id='41' />
+            <FormField id='53' />
+            <FormField id='69' />
+            <FormField id='86' />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Renta líquida ordinária del ejercicio</FormLabel>
             <td colSpan={1} className='empty'></td>
-            <FormField id='54' readOnly formula='46 - 53' />
-            <FormField id='70' readOnly formula='61 + 62 - 69' />
-            <FormField id='87' readOnly formula='78 + 79 - 86' />
+            <FormField id='54' />
+            <FormField id='70' />
+            <FormField id='87' />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Pérdida líquida del ejercicio</FormLabel>
             <td colSpan={1} className='empty'></td>
-            <FormField id='55' readOnly formula='44 + 45 - 43' />
-            <FormField id='71' readOnly formula='59 + 60 - 58 - 62' />
-            <FormField id='88' readOnly formula='75 + 76 + 77 - 74 - 79' />
+            <FormField id='55' />
+            <FormField id='71' />
+            <FormField id='88' />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Compensaciones por perdidas</FormLabel>
             <td colSpan={1} className='empty'></td>
             <FormField id='56' />
-            <FormField id='72' disabled={f70 === 0} />
-            <FormField id='89' disabled={f87 === 0} />
+            <FormField id='72' />
+            <FormField id='89' />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Renta líquida ordinaria</FormLabel>
-            <FormField id='42' readOnly formula='34 - 41' />
-            <FormField id='57' readOnly formula='54 - 56' />
-            <FormField id='73' readOnly formula='70 - 72' />
-            <FormField id='90' readOnly formula='87 - 89' />
+            <FormField id='42' />
+            <FormField id='57' />
+            <FormField id='73' />
+            <FormField id='90' />
           </tr>
 
           <tr>
@@ -297,9 +284,9 @@ export const Form210 = () => {
           </tr>
           <tr>
             <td colSpan={2} />
-            <FormField id='91' readOnly formula='41 + 42 + 53 + 57 + 69 + 73 + 86 + 90' />
-            <FormField id='92' readOnly formula='28 + 41 + 53 + 69 + 86 + 139' />
-            <FormField id='93' readOnly formula='91 - 92' />
+            <FormField id='91' />
+            <FormField id='92' />
+            <FormField id='93' />
             <FormField id='94' />
           </tr>
           <tr>
@@ -313,7 +300,7 @@ export const Form210 = () => {
             <td colSpan={2} />
             <FormField id='95' />
             <FormField id='96' />
-            <FormField id='97' readOnly formula='93 + 96 - 94 - 95' />
+            <FormField id='97' />
             <FormField id='98' />
           </tr>
 
@@ -323,7 +310,7 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2}>
-              <ToggleButton
+              <Switch
                 value={showCedulaDePensiones}
                 name='showCedulaDePensiones'
                 setValue={value => setShowCedulaDePensiones(value)}
@@ -360,7 +347,7 @@ export const Form210 = () => {
                 <td colSpan={2} />
                 <FormField id='99' />
                 <FormField id='100' />
-                <FormField id='101' readOnly formula='99 - 100' />
+                <FormField id='101' />
                 <FormField id='102' />
               </tr>
 
@@ -371,7 +358,7 @@ export const Form210 = () => {
 
               <tr>
                 <td colSpan={2} />
-                <FormField id='103' readOnly formula='101 - 102' />
+                <FormField id='103' />
               </tr>
             </>
           )}
@@ -382,7 +369,7 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2}>
-              <ToggleButton
+              <Switch
                 name='showCedulaDeDividendos'
                 value={showCedulaDeDividendos}
                 setValue={value => setShowCedulaDeDividendos(value)}
@@ -434,7 +421,7 @@ export const Form210 = () => {
                 <td colSpan={2} />
                 <FormField id='104' />
                 <FormField id='105' />
-                <FormField id='106' readOnly formula='104 - 105' />
+                <FormField id='106' />
                 <FormField id='107' />
               </tr>
 
@@ -469,7 +456,7 @@ export const Form210 = () => {
           </tr>
           <tr>
             <td colSpan={2} />
-            <FormField colSpan={4} id='111' readOnly formula='MAX(97, 98) + 103 + 107 + 108 - 118' />
+            <FormField colSpan={4} id='111' />
           </tr>
 
           <tr>
@@ -478,7 +465,7 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2}>
-              <ToggleButton
+              <Switch
                 name='showGananciasOcasionales'
                 value={showGananciasOcasionales}
                 setValue={value => setShowGananciasOcasionales(value)}
@@ -515,7 +502,7 @@ export const Form210 = () => {
                 <FormField id='112' />
                 <FormField id='113' />
                 <FormField id='114' />
-                <FormField id='115' readOnly formula='112 - 113 - 114' />
+                <FormField id='115' />
               </tr>
             </>
           )}
@@ -545,20 +532,17 @@ export const Form210 = () => {
             <td colSpan={2} />
             <FormField
               id='116'
-              readOnly
               formula={showDescriptionTable === '116' ? '(Click para ocultar)' : '(Click para ver calculo)'}
               action={() => setShowDescriptionTable(prev => (prev === '116' ? '' : '116'))}
             />
             <FormField
               id='117'
-              readOnly
               formula={showDescriptionTable === '117' ? '(Click para ocultar)' : '(Click para ver calculo)'}
               action={() => setShowDescriptionTable(prev => (prev === '117' ? '' : '117'))}
             />
-            <FormField id='118' readOnly formula='108 * 35%' />
+            <FormField id='118' />
             <FormField
               id='119'
-              readOnly
               formula={showDescriptionTable === '119' ? '(Click para ocultar)' : '(Click para ver calculo)'}
               action={() => setShowDescriptionTable(prev => (prev === '119' ? '' : '119'))}
             />
@@ -571,9 +555,9 @@ export const Form210 = () => {
                 <MarginTable id='111' value={f111} uvtValue={valueToUVT(f111)} marginTable={f116MarginTable}>
                   <Typography variant='label'>Si la celda 97 es mayor que la 98</Typography>
                   <section className='columns'>
-                    <FieldInput id='97' readOnly />
+                    <FieldInput id='97' />
                     <Typography variant='label'>&gt;</Typography>
-                    <FieldInput id='98' readOnly />
+                    <FieldInput id='98' />
                   </section>
                 </MarginTable>
               </td>
@@ -587,9 +571,9 @@ export const Form210 = () => {
                 <MarginTable id='111' value={f111} uvtValue={valueToUVT(f111)} marginTable={f117MarginTable}>
                   <Typography variant='label'>Si la celda 98 es mayor que la 97</Typography>
                   <section className='columns'>
-                    <FieldInput id='98' readOnly />
+                    <FieldInput id='98' />
                     <Typography variant='label'>&gt;</Typography>
-                    <FieldInput id='97' readOnly />
+                    <FieldInput id='97' />
                   </section>
                 </MarginTable>
               </td>
@@ -613,8 +597,8 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2} />
-            <FormField id='120' readOnly formula='(109 - 110) * 35%' />
-            <FormField id='121' readOnly formula='116 + 117 + 118 + 119 + 120' />
+            <FormField id='120' />
+            <FormField id='121' />
           </tr>
 
           <tr>
@@ -641,7 +625,7 @@ export const Form210 = () => {
             <FormField id='122' />
             <FormField id='123' />
             <FormField id='124' />
-            <FormField id='125' readOnly formula='122 + 123 + 124' />
+            <FormField id='125' />
           </tr>
 
           <tr>
@@ -665,10 +649,10 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2} />
-            <FormField id='126' readOnly formula='121 - 125' />
-            <FormField id='127' readOnly formula='115 * 20%' />
+            <FormField id='126' />
+            <FormField id='127' />
             <FormField id='128' />
-            <FormField id='129' readOnly formula='126 + 127 - 128' />
+            <FormField id='129' />
           </tr>
 
           <tr>
@@ -686,7 +670,6 @@ export const Form210 = () => {
             <FormField id='132' onClick={() => setAsideID('132')} />
             <FormField
               id='133'
-              readOnly
               formula={showDescriptionTable === '133' ? '(Click para ocultar)' : '(Click para ver calculo)'}
               action={() => setShowDescriptionTable(prev => (prev === '133' ? '' : '133'))}
             />
@@ -722,10 +705,10 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2} />
-            <FormField id='134' readOnly formula='129 + 133 - 130 - 131 - 132' />
+            <FormField id='134' />
             <FormField id='135' />
-            <FormField id='136' readOnly formula='129 + 133 + 135 - 130 - 131 - 132' />
-            <FormField id='137' readOnly formula='130 + 131 + 132 - 129 - 133 - 135' />
+            <FormField id='136' />
+            <FormField id='137' />
           </tr>
 
           <tr>
@@ -736,8 +719,8 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2} />
-            <FormField id='138' format='number' min={0} max={4} />
-            <FormField id='139' readOnly formula='138 * 72UVT' />
+            <FormField id='138' />
+            <FormField id='139' />
           </tr>
         </tbody>
       </FormTable>

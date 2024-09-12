@@ -1,39 +1,31 @@
 import { useClassNames } from '@juanmsl/hooks';
-import { Tooltip, Typography } from '@juanmsl/ui';
+import { Typography } from '@juanmsl/ui';
 
 import { FieldInputContainer, FieldInputStyle } from './field-input.style';
 
 import { FormatInput } from '@components/format-input';
-import { useForm210, useForm210Field } from '@contexts';
+import { useForm210, useForm210Field, useForm210FieldParams } from '@contexts';
 
-export type FieldInputProps = {
-  id: `${number}`;
+export type FieldParams = {
   readOnly?: boolean;
   formula?: string;
-  tooltip?: React.ReactNode;
-  roundTo?: number;
-  format?: 'currency' | 'number';
   disabled?: boolean;
   locked?: boolean;
-  action?: () => void;
+  format?: 'currency' | 'number';
   min?: number;
   max?: number;
 };
 
-export const FieldInput = ({
-  id,
-  readOnly,
-  tooltip,
-  formula,
-  roundTo,
-  format,
-  disabled,
-  action,
-  locked,
-  min,
-  max,
-}: FieldInputProps) => {
+export type FieldInputProps = {
+  id: `${number}`;
+  roundTo?: number;
+  action?: () => void;
+  formula?: string;
+};
+
+export const FieldInput = ({ id, roundTo, action, formula: fieldFormula }: FieldInputProps) => {
   const value = useForm210Field(id);
+  const { locked, readOnly, disabled, format, min, max, formula } = useForm210FieldParams(id);
   const { setValue } = useForm210();
   const fieldClassName = useClassNames({
     'read-only': readOnly,
@@ -42,36 +34,34 @@ export const FieldInput = ({
   });
 
   return (
-    <Tooltip content={tooltip} disabled={!tooltip}>
-      <FieldInputContainer>
-        <FieldInputStyle className={fieldClassName}>
-          <section className='form-field-id'>
-            <Typography variant='small' weight='bold' noPadding>
-              {id}
-            </Typography>
-          </section>
-          <section className='form-field-value'>
-            <FormatInput
-              className='form-field-value--input'
-              id={id}
-              value={value}
-              setValue={value => setValue(id, value)}
-              readOnly={readOnly}
-              disabled={disabled || readOnly || locked}
-              roundTo={roundTo}
-              format={format}
-              rightIcon={!disabled && locked ? 'pencil' : undefined}
-              min={min}
-              max={max}
-            />
-          </section>
-        </FieldInputStyle>
-        {formula ? (
-          <Typography onClick={action} variant='small' weight='bold' className='formula' noPadding>
-            {formula}
+    <FieldInputContainer>
+      <FieldInputStyle className={fieldClassName}>
+        <section className='form-field-id'>
+          <Typography variant='small' weight='bold' noPadding>
+            {id}
           </Typography>
-        ) : null}
-      </FieldInputContainer>
-    </Tooltip>
+        </section>
+        <section className='form-field-value'>
+          <FormatInput
+            className='form-field-value--input'
+            id={id}
+            value={value}
+            setValue={value => setValue(id, value)}
+            readOnly={readOnly}
+            disabled={disabled || readOnly || locked}
+            roundTo={roundTo}
+            format={format}
+            rightIcon={!disabled && locked ? 'pencil' : undefined}
+            min={min}
+            max={max}
+          />
+        </section>
+      </FieldInputStyle>
+      {formula || fieldFormula ? (
+        <Typography onClick={action} variant='small' weight='bold' className='formula' noPadding>
+          {formula || fieldFormula}
+        </Typography>
+      ) : null}
+    </FieldInputContainer>
   );
 };

@@ -1,6 +1,5 @@
+import { SectionLayout } from '@juanmsl/ui';
 import styled from 'styled-components';
-
-import { SectionLayout } from '@layouts/section-layout';
 
 export const HomePageStyle = styled.section`
   display: grid;

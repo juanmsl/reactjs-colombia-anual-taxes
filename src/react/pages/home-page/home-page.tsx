@@ -1,4 +1,4 @@
-import { Image, Typography } from '@juanmsl/ui';
+import { Image, Typography, SectionLayout } from '@juanmsl/ui';
 import { useMemo } from 'react';
 
 import { DeclarationRequirementsStyle, DeclarationYearDataStyle, HomePageStyle } from './home-page.style';
@@ -6,7 +6,6 @@ import { DeclarationRequirementsStyle, DeclarationYearDataStyle, HomePageStyle }
 import { useForm210 } from '@contexts';
 import { DeclarationRequirements } from '@core/constants';
 import { formatNumber } from '@helpers';
-import { SectionLayout } from '@layouts/section-layout';
 
 export const HomePage = () => {
   const { uvt, year, valueFromUVT, minimumSalary } = useForm210();

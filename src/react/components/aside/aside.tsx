@@ -1,4 +1,4 @@
-import { Icon, Line, Select, Typography } from '@juanmsl/ui';
+import { Grid, Icon, Line, Select, Typography } from '@juanmsl/ui';
 import { NavLink } from 'react-router-dom';
 
 import { AsideStyle } from './aside.style';
@@ -12,11 +12,15 @@ export const Aside = () => {
 
   return (
     <AsideStyle>
-      <section className='aside-header'>
+      <Grid gap='1em'>
+        <Grid flow='column' jc='space-between' gap='2em' ai='center'>
+          <Typography weight='bold'>Declara tu renta</Typography>
+        </Grid>
+        <Line />
         <section className='aside-header-tab'>
           <Select
             label='Año'
-            leftIcon='moon'
+            leftIcon='calendar'
             options={Object.keys(YearsForm210Data)}
             renderOption={item => item}
             name='year'
@@ -25,7 +29,8 @@ export const Aside = () => {
             setValue={year => setData(prev => ({ ...prev, year: +year }))}
           />
         </section>
-      </section>
+        <Line />
+      </Grid>
       <section className='aside-content'>
         <NavLink to={PATHS.HOME} className='aside-tab'>
           <Icon name='house' size={14} />
@@ -34,13 +39,14 @@ export const Aside = () => {
           </Typography>
         </NavLink>
         <NavLink to={PATHS.FORM210} className='aside-tab'>
-          <Icon name='download' size={14} />
+          <Icon name='document' size={14} />
           <Typography variant='label' noPadding>
             Formulario 210
           </Typography>
         </NavLink>
       </section>
       <section className='aside-footer'>
+        <Line />
         <a
           href={`https://www.dian.gov.co/atencionciudadano/formulariosinstructivos/Formularios/${+year + 1}/Formulario_210_${+year + 1}.pdf`}
           target='_blank'
@@ -52,7 +58,7 @@ export const Aside = () => {
             <br />+ Instrucciones por celda
           </Typography>
         </a>
-        <Line orientation='horizontal' />
+        <Line />
         <ThemeSelector />
       </section>
     </AsideStyle>

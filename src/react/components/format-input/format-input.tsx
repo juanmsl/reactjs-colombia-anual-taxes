@@ -1,4 +1,4 @@
-import { IconNameT, Input } from '@juanmsl/ui';
+import { FieldVariant, IconNameT, Input } from '@juanmsl/ui';
 import { useCallback, useMemo, useState } from 'react';
 
 import { formatNumber } from '@helpers';
@@ -17,6 +17,7 @@ type FormatInputProps = {
   leftIcon?: IconNameT;
   min?: number;
   max?: number;
+  variant?: `${FieldVariant}`;
 };
 
 export const FormatInput = ({
@@ -33,6 +34,7 @@ export const FormatInput = ({
   leftIcon,
   min = 0,
   max,
+  variant,
 }: FormatInputProps) => {
   const [usePlainValue, setPlainValue] = useState(false);
 
@@ -69,6 +71,7 @@ export const FormatInput = ({
       onFocus={() => setPlainValue(true)}
       rightIcon={rightIcon}
       leftIcon={leftIcon}
+      variant={variant}
       max={max}
       min={min}
     />
