@@ -24,12 +24,6 @@ export const Form210 = () => {
   const [showCedulaDeDividendos, setShowCedulaDeDividendos] = useState(false);
   const [showGananciasOcasionales, setShowGananciasOcasionales] = useState(false);
 
-  useEffect(() => {
-    if (declarationNumber === 1) {
-      setData(prev => ({ ...prev, prevDeclarationValue: 0 }));
-    }
-  }, [declarationNumber, setData]);
-
   return (
     <Form210Style>
       <FormTable>
@@ -43,10 +37,14 @@ export const Form210 = () => {
 
           <tr>
             <FormLabel atBottom>Estoy declarando por</FormLabel>
-            <FormLabel colSpan={2} atBottom>
-              Impuesto neto de renta año anterior (Celda 127 del {year - 1})
+            {declarationNumber > 1 && (
+              <FormLabel colSpan={2} atBottom>
+                Impuesto neto de renta año anterior (Celda 127 del {year - 1})
+              </FormLabel>
+            )}
+            <FormLabel colSpan={declarationNumber > 1 ? 1 : 2} atBottom>
+              Uno por ciento (1%) de compras con fáctura electrónica
             </FormLabel>
-            <FormLabel atBottom>Uno por ciento (1%) de compras con fáctura electrónica</FormLabel>
           </tr>
 
           <tr>
@@ -66,17 +64,19 @@ export const Form210 = () => {
                 }
               />
             </td>
-            <td colSpan={2}>
-              <FormatInput
-                id='prevDeclarationValue'
-                value={prevDeclarationValue}
-                setValue={prevDeclarationValue => setData(prev => ({ ...prev, prevDeclarationValue }))}
-                roundTo={0}
-                variant='content-border'
-                disabled={declarationNumber === 1}
-              />
-            </td>
-            <FormField id='28' />
+            {declarationNumber > 1 && (
+              <td colSpan={2}>
+                <FormatInput
+                  id='prevDeclarationValue'
+                  value={prevDeclarationValue}
+                  setValue={prevDeclarationValue => setData(prev => ({ ...prev, prevDeclarationValue }))}
+                  roundTo={0}
+                  variant='content-border'
+                  disabled={declarationNumber === 1}
+                />
+              </td>
+            )}
+            <FormField id='28' colSpan={declarationNumber > 1 ? 1 : 2} />
           </tr>
 
           <tr>

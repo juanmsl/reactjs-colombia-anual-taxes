@@ -48,7 +48,7 @@ export const Form210TabsDataStyle = styled.section`
   display: grid;
   gap: 2px;
   position: relative;
-  max-width: 300px;
+  max-width: 250px;
   align-content: start;
   grid-template-rows: subgrid;
   grid-row: span 2;
