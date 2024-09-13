@@ -419,6 +419,12 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
     setData(defaultForm210Data);
   }, []);
 
+  useEffect(() => {
+    if (declarationNumber === 1) {
+      setData(prev => ({ ...prev, prevDeclarationValue: 0 }));
+    }
+  }, [declarationNumber, setData]);
+
   const fieldParams: Form210ContextEntity['fieldParams'] = {
     _28: {},
     _29: { locked: true },

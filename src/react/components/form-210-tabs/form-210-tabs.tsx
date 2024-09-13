@@ -87,16 +87,18 @@ export const Form210Tabs = () => {
                 }
               />
             </Data>
-            <Data label={`Impuesto neto de renta año anterior (Celda 127 del ${year - 1})`}>
-              <FormatInput
-                id='prevDeclarationValue'
-                value={prevDeclarationValue}
-                setValue={prevDeclarationValue => setData(prev => ({ ...prev, prevDeclarationValue }))}
-                roundTo={0}
-                disabled={declarationNumber === 1}
-                variant='content-border'
-              />
-            </Data>
+            {declarationNumber > 1 && (
+              <Data label={`Impuesto neto de renta año anterior (Celda 127 del ${year - 1})`}>
+                <FormatInput
+                  id='prevDeclarationValue'
+                  value={prevDeclarationValue}
+                  setValue={prevDeclarationValue => setData(prev => ({ ...prev, prevDeclarationValue }))}
+                  roundTo={0}
+                  disabled={declarationNumber === 1}
+                  variant='content-border'
+                />
+              </Data>
+            )}
             <Data label='Uno por ciento (1%) de compras con fáctura electrónica'>
               <FieldInput id='28' />
             </Data>
