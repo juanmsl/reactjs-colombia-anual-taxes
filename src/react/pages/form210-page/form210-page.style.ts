@@ -22,7 +22,7 @@ export const Form210ToolBarStyle = styled(SectionLayout)`
   z-index: 1;
   background: ${props => props.theme.colors.background.paper};
   padding: 1em 2em;
-  box-shadow: 0 0 2em 0.5em ${props => props.theme.colors.black}55;
+  box-shadow: 0 0 0.8em ${props => props.theme.colors.black}33;
 
   .home-shared {
     border-radius: 25px;
@@ -58,14 +58,14 @@ export const Form210ToolBarStyle = styled(SectionLayout)`
 `;
 
 export const Form210PageTabsStyle = styled(SectionLayout)`
-  .home-page-tabs-content {
+  .form-page-tabs-content {
     display: grid;
     grid-auto-flow: column;
     align-items: center;
     gap: 1px;
   }
 
-  .home-page-tab {
+  .form-page-tab {
     padding: 0.5em 2em;
     outline: 1px solid ${props => props.theme.colors.secondary.main};
     display: grid;
@@ -85,12 +85,12 @@ export const Form210PageTabsStyle = styled(SectionLayout)`
     }
 
     &:hover,
-    &.is-open {
+    &.active {
       background: ${props => props.theme.colors.primary.main};
       color: ${props => props.theme.colors.primary.contrast};
     }
 
-    &:not(.is-open):hover {
+    &:not(.active):hover {
       background: ${props => props.theme.colors.primary.light};
     }
   }

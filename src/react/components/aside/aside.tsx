@@ -38,7 +38,7 @@ export const Aside = () => {
             Inicio
           </Typography>
         </NavLink>
-        <NavLink to={PATHS.FORM210} className='aside-tab'>
+        <NavLink to={PATHS.FORM210_FORM} className='aside-tab'>
           <Icon name='document' size={14} />
           <Typography variant='label' noPadding>
             Formulario 210
