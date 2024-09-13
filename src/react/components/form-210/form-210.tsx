@@ -1,5 +1,5 @@
 import { AsideModal, Line, Select, Typography, Switch } from '@juanmsl/ui';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { FieldInputDetails, FormField, FormLabel, MarginTable, Table133 } from './components';
 import { Form210Style, FormTable } from './form-210.style';
