@@ -3,8 +3,6 @@ import styled from 'styled-components';
 export const MainLayoutStyle = styled.section`
   display: grid;
   grid-template-columns: auto 1fr;
-  height: 100dvh;
-  overflow: auto;
 
   &.screen-message {
     padding: 4em;
@@ -16,6 +14,7 @@ export const MainLayoutStyle = styled.section`
     color: ${props => props.theme.colors.primary.contrast};
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 800%;
+    height: 100%;
     animation: gradient 10s linear infinite alternate;
 
     .screen-message-content {
@@ -40,7 +39,7 @@ export const MainLayoutStyle = styled.section`
   }
 
   .main-layout-content {
-    height: 100%;
+    height: 100dvh;
     overflow: auto;
   }
 

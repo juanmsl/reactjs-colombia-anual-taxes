@@ -44,8 +44,8 @@ export const FormTable = styled.table`
     border: 2px solid;
     padding: 0.5em;
     border-radius: 100px;
-    background: hsl(from ${props => props.theme.colors.primary.main} h s 90);
-    color: ${props => props.theme.colors.primary.main};
+    background: ${props => props.theme.colors.secondary.main}55;
+    color: ${props => props.theme.colors.secondary.main};
 
     span {
       font-size: 1em;

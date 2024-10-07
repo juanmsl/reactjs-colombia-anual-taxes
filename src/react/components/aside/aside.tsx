@@ -1,4 +1,4 @@
-import { Grid, Icon, Line, Select, Typography } from '@juanmsl/ui';
+import { Grid, Icon, Image, Line, Select, Typography } from '@juanmsl/ui';
 import { NavLink } from 'react-router-dom';
 
 import { AsideStyle } from './aside.style';
@@ -13,7 +13,8 @@ export const Aside = () => {
   return (
     <AsideStyle>
       <Grid gap='1em'>
-        <Grid flow='column' jc='space-between' gap='2em' ai='center'>
+        <Grid flow='column' jc='start' gap='10px' ai='center'>
+          <Image src='/assets/images/logo.png' alt='logo' className='aside-logo' />
           <Typography weight='bold'>Declara tu renta</Typography>
         </Grid>
         <Line />

@@ -17,7 +17,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Suspense fallback={<SimpleLoader />}>
             <Analytics />
             <SpeedInsights />
-            <Router />
+            <ThemeProvider.Wrapper>
+              <Router />
+            </ThemeProvider.Wrapper>
           </Suspense>
         </Form210Provider>
       </BrowserRouter>

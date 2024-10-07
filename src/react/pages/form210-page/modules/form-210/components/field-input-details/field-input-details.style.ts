@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const FieldInputDetailsStyle = styled.section`
   display: grid;
   gap: 1em;
+  max-width: 600px;
+  width: 100%;
 
   .details-header {
     display: grid;

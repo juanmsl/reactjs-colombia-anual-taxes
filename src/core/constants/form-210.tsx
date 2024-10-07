@@ -1,7 +1,7 @@
 import { Typography } from '@juanmsl/ui';
 import React from 'react';
 
-import { Patrimonio } from '../../react/pages/form210-page/components';
+import { Patrimonio } from '../../react/pages/form210-page/modules/form-210/components';
 
 import { SectionDataTableWithID } from '@components/section-data-table-with-id';
 

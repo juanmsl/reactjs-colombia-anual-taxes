@@ -7,7 +7,6 @@ import { useTheme } from 'styled-components';
 import { MainLayoutStyle } from './main-layout.style';
 
 import { Aside } from '@components/aside';
-import { Footer } from '@components/footer';
 
 export const MainLayout = () => {
   const theme = useTheme();
@@ -76,7 +75,6 @@ export const MainLayout = () => {
       >
         <section className='main-layout-content' ref={ref}>
           <Outlet />
-          <Footer />
         </section>
       </Suspense>
     </MainLayoutStyle>
