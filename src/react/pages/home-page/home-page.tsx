@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 
 import { DeclarationRequirementsStyle, DeclarationYearDataStyle, HomePageStyle } from './home-page.style';
 
+import { Footer } from '@components/footer';
 import { useForm210 } from '@contexts';
 import { DeclarationRequirements } from '@core/constants';
 import { formatNumber } from '@helpers';
@@ -116,6 +117,8 @@ export const HomePage = () => {
           </section>
         </DeclarationRequirementsStyle>
       </SectionLayout>
+
+      <Footer />
     </HomePageStyle>
   );
 };

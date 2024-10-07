@@ -48,7 +48,7 @@ export const DeclarationYearDataStyle = styled(SectionLayout)`
     min-height: ${props => props.theme.constants.sectionMinHeight};
     display: grid;
     gap: 2em;
-    place-content: center;
+    align-content: center;
     text-align: center;
   }
 
@@ -74,11 +74,8 @@ export const DeclarationYearDataStyle = styled(SectionLayout)`
     padding: 1em;
     border-radius: 10px;
 
-    &--value {
-    }
-
     &:hover {
-      background: ${props => props.theme.colors.primary.main}11;
+      background: ${props => props.theme.colors.primary.dark};
     }
   }
 `;

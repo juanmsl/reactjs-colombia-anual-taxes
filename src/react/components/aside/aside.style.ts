@@ -1,15 +1,19 @@
 import styled from 'styled-components';
 
 export const AsideStyle = styled.aside`
-  background: ${props => props.theme.colors.secondary.main};
-  color: ${props => props.theme.colors.secondary.contrast};
-  border-right: 5px solid ${props => props.theme.colors.primary.main};
+  background: ${props => props.theme.colors.primary.main};
+  color: ${props => props.theme.colors.primary.contrast};
   padding: 2em 1em 3em;
   display: grid;
   gap: 1em;
   align-content: space-between;
   grid-template-rows: auto 1fr auto;
   min-width: 250px;
+
+  .aside-logo {
+    width: 1.5em;
+    height: 1.5em;
+  }
 
   .aside-header-tab {
     padding: 0.5em 1em;
@@ -52,7 +56,7 @@ export const AsideStyle = styled.aside`
 
     &.active,
     &:hover {
-      border-color: ${props => props.theme.colors.primary.main};
+      border-color: ${props => props.theme.colors.secondary.main};
     }
 
     &.active {

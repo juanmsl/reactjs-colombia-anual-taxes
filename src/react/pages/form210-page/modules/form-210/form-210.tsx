@@ -724,7 +724,7 @@ export const Form210 = () => {
           </tr>
         </tbody>
       </FormTable>
-      <AsideModal isOpen={asideID !== ''} closeButton='relative' onClose={() => setAsideID('')}>
+      <AsideModal isOpen={asideID !== ''} onClose={() => setAsideID('')}>
         <FieldInputDetails id={asideID} />
       </AsideModal>
     </Form210Style>
