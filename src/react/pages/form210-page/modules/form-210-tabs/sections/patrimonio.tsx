@@ -1,6 +1,4 @@
-import { Tabs, Typography } from '@juanmsl/ui';
-
-import { Data } from '../form-210-tabs.data';
+import { Tabs, Typography } from 'polpo/ui';
 
 import { FieldInput } from '@components/field-input';
 import { Form210Sections } from '@core/constants';
@@ -14,15 +12,9 @@ export const Patrimonio = ({ setAsideID }: PatrimonioProps) => {
     <Tabs.TabPanel id={Form210Sections.PATRIMONIO}>
       <Typography variant='header1'>2. Patrimonio</Typography>
       <section className='fields-container'>
-        <Data label='Total patrimonio bruto' onClick={() => setAsideID('29')}>
-          <FieldInput id='29' />
-        </Data>
-        <Data label='Deudas' onClick={() => setAsideID('30')}>
-          <FieldInput id='30' />
-        </Data>
-        <Data label='Total patrimonio liquido'>
-          <FieldInput id='31' />
-        </Data>
+        <FieldInput id='29' label='Total patrimonio bruto' onClick={() => setAsideID('29')} />
+        <FieldInput id='30' label='Deudas' onClick={() => setAsideID('30')} />
+        <FieldInput id='31' label='Total patrimonio liquido' />
       </section>
     </Tabs.TabPanel>
   );

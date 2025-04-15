@@ -2,7 +2,16 @@ import styled from 'styled-components';
 
 export const MainLayoutStyle = styled.section`
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  position: relative;
+  height: 100dvh;
+  background: radial-gradient(circle at 60% 100px, ${props => props.theme.colors.primary.main}33 25vw, transparent 25vw),
+    radial-gradient(circle at 10% 100%, ${props => props.theme.colors.secondary.main}33 15vw, transparent 15vw);
+
+  .main-layout-content {
+    height: 100%;
+    overflow: auto;
+  }
 
   &.screen-message {
     padding: 4em;
@@ -36,11 +45,6 @@ export const MainLayoutStyle = styled.section`
         width: 100%;
       }
     }
-  }
-
-  .main-layout-content {
-    height: 100dvh;
-    overflow: auto;
   }
 
   .suspense-loader {

@@ -1,4 +1,4 @@
-import { PaletteThemeEntity, DarkTheme as DefaultDarkTheme, LightTheme as DefaultLightTheme } from '@juanmsl/ui';
+import { PaletteThemeEntity, DarkTheme as DefaultDarkTheme, LightTheme as DefaultLightTheme } from 'polpo/ui';
 
 export const DarkTheme: PaletteThemeEntity = {
   ...DefaultDarkTheme,

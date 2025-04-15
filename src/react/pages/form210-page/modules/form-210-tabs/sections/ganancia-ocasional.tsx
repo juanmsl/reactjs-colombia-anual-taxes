@@ -1,6 +1,4 @@
-import { Tabs, Typography } from '@juanmsl/ui';
-
-import { Data } from '../form-210-tabs.data';
+import { Tabs, Typography } from 'polpo/ui';
 
 import { FieldInput } from '@components/field-input';
 import { Form210Sections } from '@core/constants';
@@ -14,18 +12,10 @@ export const GananciaOcasional = () => {
         loterias, legados, donaciones, porciónes conyugales y valores recibidos por herencias.
       </Typography>
       <section className='fields-container'>
-        <Data label='Ingresos por ganancias ocasionales en el país y del exterior'>
-          <FieldInput id='112' />
-        </Data>
-        <Data label='Costos por ganancias ocacionales'>
-          <FieldInput id='113' />
-        </Data>
-        <Data label='Ganancias ocasionales no gravadas y exentas'>
-          <FieldInput id='114' />
-        </Data>
-        <Data label='Ganancias ocasionales gravables'>
-          <FieldInput id='115' />
-        </Data>
+        <FieldInput id='112' label='Ingresos por ganancias ocasionales en el país y del exterior' />
+        <FieldInput id='113' label='Costos por ganancias ocacionales' />
+        <FieldInput id='114' label='Ganancias ocasionales no gravadas y exentas' />
+        <FieldInput id='115' label='Ganancias ocasionales gravables' />
       </section>
     </Tabs.TabPanel>
   );

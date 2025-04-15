@@ -1,4 +1,4 @@
-import { Button, Icon, Input, Tooltip, Typography } from '@juanmsl/ui';
+import { Button, Icon, Input, Tooltip, Typography } from 'polpo/ui';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { SectionDataTableStyle } from './section-data-table.style';
@@ -68,14 +68,14 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
           {title}
         </Typography>
       ) : null}
-      {children ? <Typography className='recommended-width'>{children}</Typography> : null}
+      {children ? <Typography recommendedWidth>{children}</Typography> : null}
       <section className='item-rows'>
         <section className='actions-row'>
           <Button
             variant='ghost'
             size='small'
             leftIcon='pin-location'
-            rounded
+            radius='full'
             className='add-row-button'
             onClick={addItem}
           >

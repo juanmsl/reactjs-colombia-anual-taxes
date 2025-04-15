@@ -1,4 +1,4 @@
-import { useClassNames } from '@juanmsl/hooks';
+import { useClassNames } from 'polpo/hooks';
 
 import { Label, LabelProps } from '@components/label';
 

@@ -1,4 +1,4 @@
-import { Typography } from '@juanmsl/ui';
+import { Typography } from 'polpo/ui';
 
 export type LabelProps = {
   children: React.ReactNode;

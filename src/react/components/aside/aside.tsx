@@ -1,4 +1,4 @@
-import { Grid, Icon, Image, Line, Select, Typography } from '@juanmsl/ui';
+import { Grid, Icon, Image, Line, Select, Typography } from 'polpo/ui';
 import { NavLink } from 'react-router-dom';
 
 import { AsideStyle } from './aside.style';
@@ -22,8 +22,7 @@ export const Aside = () => {
           <Select
             label='Año'
             leftIcon='calendar'
-            options={Object.keys(YearsForm210Data)}
-            renderOption={item => item}
+            options={Object.keys(YearsForm210Data).toReversed()}
             name='year'
             value={`${year}`}
             multiselect={false}

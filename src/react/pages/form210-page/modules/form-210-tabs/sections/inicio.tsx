@@ -1,4 +1,4 @@
-import { Select, Tabs, Typography } from '@juanmsl/ui';
+import { Select, Tabs, Typography } from 'polpo/ui';
 
 import { Data } from '../form-210-tabs.data';
 
@@ -17,7 +17,12 @@ export const Inicio = () => {
         <Data label='Estoy declarando por'>
           <Select<DeclarationNumberOption>
             options={DeclarationNumberOptions}
-            renderOption={item => item.label}
+            optionComponent={({ value }) => <Typography variant='label'>{value.label}</Typography>}
+            valueComponent={({ value }) => (
+              <Typography variant='label' noPadding>
+                {Array.isArray(value) ? value.map(item => item.label) : value.label}
+              </Typography>
+            )}
             name='declarationNumber'
             multiselect={false}
             variant='content-border'
@@ -30,21 +35,17 @@ export const Inicio = () => {
             }
           />
         </Data>
-        {declarationNumber > 1 && (
-          <Data label={`Impuesto neto de renta año anterior (Celda 127 del ${year - 1})`}>
-            <FormatInput
-              id='prevDeclarationValue'
-              value={prevDeclarationValue}
-              setValue={prevDeclarationValue => setData(prev => ({ ...prev, prevDeclarationValue }))}
-              roundTo={0}
-              disabled={declarationNumber === 1}
-              variant='content-border'
-            />
-          </Data>
-        )}
-        <Data label='Uno por ciento (1%) de compras con fáctura electrónica'>
-          <FieldInput id='28' />
+        <Data label={`Impuesto neto de renta año anterior (Celda 127 del ${year - 1})`}>
+          <FormatInput
+            id='prevDeclarationValue'
+            value={prevDeclarationValue}
+            setValue={prevDeclarationValue => setData(prev => ({ ...prev, prevDeclarationValue }))}
+            roundTo={0}
+            disabled={declarationNumber === 1}
+            variant='content-border'
+          />
         </Data>
+        <FieldInput id='28' label='Uno por ciento (1%) de compras con fáctura electrónica' />
       </section>
     </Tabs.TabPanel>
   );

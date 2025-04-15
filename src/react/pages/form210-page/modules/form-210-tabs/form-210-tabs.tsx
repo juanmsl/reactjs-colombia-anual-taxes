@@ -1,4 +1,4 @@
-import { AsideModal, Grid, Tabs } from '@juanmsl/ui';
+import { AsideModal, Grid, Tabs } from 'polpo/ui';
 import { useState } from 'react';
 
 import { FieldInputDetails } from '../form-210/components';
@@ -28,22 +28,6 @@ export const Form210Tabs = () => {
   return (
     <Tabs defaultOpenTab={Form210Sections.INICIO}>
       <Form210TabsStyle alignContent='start' contentClassName='form-210-content'>
-        <Grid gap='1em' ac='start'>
-          <Inicio />
-          <Patrimonio setAsideID={setAsideID} />
-          <RentasDeTrabajo setAsideID={setAsideID} />
-          <RentasPorHonorarios setAsideID={setAsideID} />
-          <RentasDeCapital setAsideID={setAsideID} />
-          <RentasNoLaborales setAsideID={setAsideID} />
-          <CedulaGeneral />
-          <CedulaPensiones />
-          <CedulaDividendos />
-          <GananciaOcasional />
-          <LiquidacionPrivada setAsideID={setAsideID} />
-          <Dependientes />
-          <PagoTotal />
-        </Grid>
-
         <Tabs.TabList
           className='tabs-list-container'
           variant='flat'
@@ -66,6 +50,22 @@ export const Form210Tabs = () => {
             { id: Form210Sections.PAGO_TOTAL, label: '13. Pago total' },
           ]}
         />
+
+        <Grid gap='1em' ac='start'>
+          <Inicio />
+          <Patrimonio setAsideID={setAsideID} />
+          <RentasDeTrabajo setAsideID={setAsideID} />
+          <RentasPorHonorarios setAsideID={setAsideID} />
+          <RentasDeCapital setAsideID={setAsideID} />
+          <RentasNoLaborales setAsideID={setAsideID} />
+          <CedulaGeneral />
+          <CedulaPensiones />
+          <CedulaDividendos />
+          <GananciaOcasional />
+          <LiquidacionPrivada setAsideID={setAsideID} />
+          <Dependientes />
+          <PagoTotal />
+        </Grid>
       </Form210TabsStyle>
 
       <AsideModal isOpen={asideID !== ''} onClose={() => setAsideID('')}>

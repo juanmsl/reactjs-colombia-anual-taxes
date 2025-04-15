@@ -1,4 +1,4 @@
-import { Image, Typography, SectionLayout } from '@juanmsl/ui';
+import { Image, Typography, SectionLayout } from 'polpo/ui';
 import { useMemo } from 'react';
 
 import { DeclarationRequirementsStyle, DeclarationYearDataStyle, HomePageStyle } from './home-page.style';

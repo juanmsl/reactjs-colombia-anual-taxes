@@ -1,22 +1,27 @@
-import { SectionLayout } from '@juanmsl/ui';
+import { SectionLayout } from 'polpo/ui';
 import styled from 'styled-components';
 
 export const Form210TabsStyle = styled(SectionLayout)`
+  height: 100%;
+  overflow: auto;
+
   .form-210-content {
     display: grid;
-    gap: 2em;
-    grid-template-columns: 1fr auto;
+    gap: 4em;
+    grid-template-columns: auto 1fr;
     width: 100%;
     align-self: start;
     align-content: start;
     align-items: start;
     position: relative;
+    padding: 2em 0;
   }
 
   .tabs-list-container {
+    gap: 0.5em;
     position: sticky;
     top: 0;
-    gap: 0.5em;
+    left: 0;
 
     span {
       white-space: nowrap;

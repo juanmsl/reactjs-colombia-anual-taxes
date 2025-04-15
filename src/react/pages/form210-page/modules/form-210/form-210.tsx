@@ -1,4 +1,4 @@
-import { AsideModal, Line, Select, Typography, Switch } from '@juanmsl/ui';
+import { AsideModal, Line, Select, Typography, Switch, SlideCard } from 'polpo/ui';
 import { useState } from 'react';
 
 import { FieldInputDetails, FormField, FormLabel, MarginTable, Table133 } from './components';
@@ -37,11 +37,9 @@ export const Form210 = () => {
 
           <tr>
             <FormLabel atBottom>Estoy declarando por</FormLabel>
-            {declarationNumber > 1 && (
-              <FormLabel colSpan={2} atBottom>
-                Impuesto neto de renta año anterior (Celda 127 del {year - 1})
-              </FormLabel>
-            )}
+            <FormLabel colSpan={2} atBottom>
+              Impuesto neto de renta año anterior (Celda 127 del {year - 1})
+            </FormLabel>
             <FormLabel colSpan={declarationNumber > 1 ? 1 : 2} atBottom>
               Uno por ciento (1%) de compras con fáctura electrónica
             </FormLabel>
@@ -51,7 +49,12 @@ export const Form210 = () => {
             <td>
               <Select<DeclarationNumberOption>
                 options={DeclarationNumberOptions}
-                renderOption={item => item.label}
+                optionComponent={({ value }) => <Typography variant='label'>{value.label}</Typography>}
+                valueComponent={({ value }) => (
+                  <Typography variant='label' noPadding>
+                    {Array.isArray(value) ? value.map(item => item.label) : value.label}
+                  </Typography>
+                )}
                 name='declarationNumber'
                 multiselect={false}
                 variant='content-border'
@@ -64,18 +67,16 @@ export const Form210 = () => {
                 }
               />
             </td>
-            {declarationNumber > 1 && (
-              <td colSpan={2}>
-                <FormatInput
-                  id='prevDeclarationValue'
-                  value={prevDeclarationValue}
-                  setValue={prevDeclarationValue => setData(prev => ({ ...prev, prevDeclarationValue }))}
-                  roundTo={0}
-                  variant='content-border'
-                  disabled={declarationNumber === 1}
-                />
-              </td>
-            )}
+            <td colSpan={2}>
+              <FormatInput
+                id='prevDeclarationValue'
+                value={prevDeclarationValue}
+                setValue={prevDeclarationValue => setData(prev => ({ ...prev, prevDeclarationValue }))}
+                roundTo={0}
+                variant='content-border'
+                disabled={declarationNumber === 1}
+              />
+            </td>
             <FormField id='28' colSpan={declarationNumber > 1 ? 1 : 2} />
           </tr>
 
@@ -322,46 +323,51 @@ export const Form210 = () => {
             </FormLabel>
           </tr>
 
-          {showCedulaDePensiones && (
-            <>
-              <tr>
-                <td colSpan={2} />
-                <td colSpan={4} style={{ padding: '1em 0' }}>
-                  <Typography variant='label'>
-                    Los ingresos como las pensiones de jubilación, invalidez, vejez, de sobrevivientes y sobre riesgos
-                    laborales, así como aquellas provenientes de indemnizaciones sustitutivas de las pensiones o las
-                    devoluciones de saldos de ahorro pensional.
-                  </Typography>
-                </td>
-              </tr>
+          <tr>
+            <td colSpan={2} />
+            <td colSpan={4}>
+              <SlideCard isOpen={showCedulaDePensiones}>
+                <>
+                  <tr>
+                    <td colSpan={2} />
+                    <td colSpan={4} style={{ padding: '1em 0' }}>
+                      <Typography variant='label'>
+                        Los ingresos como las pensiones de jubilación, invalidez, vejez, de sobrevivientes y sobre
+                        riesgos laborales, así como aquellas provenientes de indemnizaciones sustitutivas de las
+                        pensiones o las devoluciones de saldos de ahorro pensional.
+                      </Typography>
+                    </td>
+                  </tr>
 
-              <tr>
-                <td colSpan={2} />
-                <FormLabel atBottom>Ingresos brutos por rentas de pensiones del pais y del exterior</FormLabel>
-                <FormLabel atBottom>Ingresos no constitutivos de renta</FormLabel>
-                <FormLabel atBottom>Renta liquida</FormLabel>
-                <FormLabel atBottom>Rentas excentas de pensiones</FormLabel>
-              </tr>
+                  <tr>
+                    <td colSpan={2} />
+                    <FormLabel atBottom>Ingresos brutos por rentas de pensiones del pais y del exterior</FormLabel>
+                    <FormLabel atBottom>Ingresos no constitutivos de renta</FormLabel>
+                    <FormLabel atBottom>Renta liquida</FormLabel>
+                    <FormLabel atBottom>Rentas excentas de pensiones</FormLabel>
+                  </tr>
 
-              <tr>
-                <td colSpan={2} />
-                <FormField id='99' />
-                <FormField id='100' />
-                <FormField id='101' />
-                <FormField id='102' />
-              </tr>
+                  <tr>
+                    <td colSpan={2} />
+                    <FormField id='99' />
+                    <FormField id='100' />
+                    <FormField id='101' />
+                    <FormField id='102' />
+                  </tr>
 
-              <tr>
-                <td colSpan={2} />
-                <FormLabel atBottom>Total impuesto sobre rentas liquidas</FormLabel>
-              </tr>
+                  <tr>
+                    <td colSpan={2} />
+                    <FormLabel atBottom>Total impuesto sobre rentas liquidas</FormLabel>
+                  </tr>
 
-              <tr>
-                <td colSpan={2} />
-                <FormField id='103' />
-              </tr>
-            </>
-          )}
+                  <tr>
+                    <td colSpan={2} />
+                    <FormField id='103' />
+                  </tr>
+                </>
+              </SlideCard>
+            </td>
+          </tr>
 
           <tr>
             <td colSpan={6} className='empty-row' />
@@ -381,71 +387,76 @@ export const Form210 = () => {
             </FormLabel>
           </tr>
 
-          {showCedulaDeDividendos && (
-            <>
-              <tr>
-                <td colSpan={2} />
-                <td colSpan={4} style={{ padding: '1em 0' }}>
-                  <section>
-                    <Typography variant='label' as='p'>
-                      Son ingresos de esta cédula los recibidos por concepto de dividendos y/o participaciones, y
-                      constituyen renta gravable en cabeza de los socios, accionistas, comuneros, asociados,
-                      suscriptores y similares, que sean personas naturales residentes y sucesiones ilíquidas de
-                      causantes que al momento de su muerte eran residentes, recibidos de distribuciones provenientes de
-                      sociedades y entidades nacionales, y de sociedades y entidades extranjeras.
-                    </Typography>
-                    <Typography variant='label' as='p'>
-                      Deberá incluir el valor total de los dividendos y/o participaciones que le hayan sido pagados o
-                      abonados en cuenta en calidad de exigibles, durante el año gravable que se está declarando y
-                      siguientes, según los valores certificados por la sociedad anónima, limitada o asimiladas, según
-                      el caso.
-                    </Typography>
-                    <Typography variant='label' as='p'>
-                      Dependiendo del periodo en el que los dividendos fueron decretados y pagados o abonados, estos
-                      pueden ser considerados como no constitutivos de renta, o como gravados de acuerdo con lo
-                      establecido en el artículo 343 del E.T.
-                    </Typography>
-                  </section>
-                </td>
-              </tr>
+          <tr>
+            <td colSpan={2} />
+            <td colSpan={4}>
+              <SlideCard isOpen={showCedulaDeDividendos}>
+                <>
+                  <tr>
+                    <td colSpan={2} />
+                    <td colSpan={4} style={{ padding: '1em 0' }}>
+                      <section>
+                        <Typography variant='label' as='p'>
+                          Son ingresos de esta cédula los recibidos por concepto de dividendos y/o participaciones, y
+                          constituyen renta gravable en cabeza de los socios, accionistas, comuneros, asociados,
+                          suscriptores y similares, que sean personas naturales residentes y sucesiones ilíquidas de
+                          causantes que al momento de su muerte eran residentes, recibidos de distribuciones
+                          provenientes de sociedades y entidades nacionales, y de sociedades y entidades extranjeras.
+                        </Typography>
+                        <Typography variant='label' as='p'>
+                          Deberá incluir el valor total de los dividendos y/o participaciones que le hayan sido pagados
+                          o abonados en cuenta en calidad de exigibles, durante el año gravable que se está declarando y
+                          siguientes, según los valores certificados por la sociedad anónima, limitada o asimiladas,
+                          según el caso.
+                        </Typography>
+                        <Typography variant='label' as='p'>
+                          Dependiendo del periodo en el que los dividendos fueron decretados y pagados o abonados, estos
+                          pueden ser considerados como no constitutivos de renta, o como gravados de acuerdo con lo
+                          establecido en el artículo 343 del E.T.
+                        </Typography>
+                      </section>
+                    </td>
+                  </tr>
 
-              <tr>
-                <td colSpan={2} />
-                <FormLabel atBottom>Dividendos y participaciones 2016 y anteriores, y otros</FormLabel>
-                <FormLabel atBottom>Ingresos no constitutivos de renta</FormLabel>
-                <FormLabel atBottom>Renta liquida ordinaria año 2016 y anteriores</FormLabel>
-                <FormLabel atBottom>1a Subcedula año 2017 y siguientes numeral 3 art 49 del E.T.</FormLabel>
-              </tr>
+                  <tr>
+                    <td colSpan={2} />
+                    <FormLabel atBottom>Dividendos y participaciones 2016 y anteriores, y otros</FormLabel>
+                    <FormLabel atBottom>Ingresos no constitutivos de renta</FormLabel>
+                    <FormLabel atBottom>Renta liquida ordinaria año 2016 y anteriores</FormLabel>
+                    <FormLabel atBottom>1a Subcedula año 2017 y siguientes numeral 3 art 49 del E.T.</FormLabel>
+                  </tr>
 
-              <tr>
-                <td colSpan={2} />
-                <FormField id='104' />
-                <FormField id='105' />
-                <FormField id='106' />
-                <FormField id='107' />
-              </tr>
+                  <tr>
+                    <td colSpan={2} />
+                    <FormField id='104' />
+                    <FormField id='105' />
+                    <FormField id='106' />
+                    <FormField id='107' />
+                  </tr>
 
-              <tr>
-                <td colSpan={2} />
-                <FormLabel atBottom>2a Subcedula año 2017 y siguientes paragrafo 2 art 49 del E.T.</FormLabel>
-                <FormLabel atBottom>Dividendos y participaciones recibidas del exterior</FormLabel>
-                <FormLabel atBottom>Rentas exentas de la casilla 109</FormLabel>
-              </tr>
-              <tr>
-                <td colSpan={2} />
-                <FormField id='108' />
-                <FormField id='109' />
-                <FormField id='110' />
-              </tr>
+                  <tr>
+                    <td colSpan={2} />
+                    <FormLabel atBottom>2a Subcedula año 2017 y siguientes paragrafo 2 art 49 del E.T.</FormLabel>
+                    <FormLabel atBottom>Dividendos y participaciones recibidas del exterior</FormLabel>
+                    <FormLabel atBottom>Rentas exentas de la casilla 109</FormLabel>
+                  </tr>
+                  <tr>
+                    <td colSpan={2} />
+                    <FormField id='108' />
+                    <FormField id='109' />
+                    <FormField id='110' />
+                  </tr>
 
-              <tr>
-                <td colSpan={2} />
-                <td colSpan={4}>
-                  <Line orientation='horizontal' />
-                </td>
-              </tr>
-            </>
-          )}
+                  <tr>
+                    <td colSpan={2} />
+                    <td colSpan={4}>
+                      <Line orientation='horizontal' />
+                    </td>
+                  </tr>
+                </>
+              </SlideCard>
+            </td>
+          </tr>
 
           <tr>
             <td colSpan={2} />
@@ -477,35 +488,41 @@ export const Form210 = () => {
             </FormLabel>
           </tr>
 
-          {showGananciasOcasionales && (
-            <>
-              <tr>
-                <td colSpan={2} />
-                <td colSpan={4} style={{ padding: '1em 0' }}>
-                  <Typography variant='label' as='p'>
-                    Los ingresos a reportar son la venta de activos fijos, indemnizaciones de seguros de vida, ganancias
-                    por loterias, legados, donaciones, porciónes conyugales y valores recibidos por herencias.
-                  </Typography>
-                </td>
-              </tr>
+          <tr>
+            <td colSpan={2} />
+            <td colSpan={4}>
+              <SlideCard isOpen={showGananciasOcasionales}>
+                <>
+                  <tr>
+                    <td colSpan={2} />
+                    <td colSpan={4} style={{ padding: '1em 0' }}>
+                      <Typography variant='label' as='p'>
+                        Los ingresos a reportar son la venta de activos fijos, indemnizaciones de seguros de vida,
+                        ganancias por loterias, legados, donaciones, porciónes conyugales y valores recibidos por
+                        herencias.
+                      </Typography>
+                    </td>
+                  </tr>
 
-              <tr>
-                <td colSpan={2} />
-                <FormLabel atBottom>Ingresos por ganancias ocasionales en el país y del exterior</FormLabel>
-                <FormLabel atBottom>Costos por ganancias ocacionales</FormLabel>
-                <FormLabel atBottom>Ganancias ocasionales no gravadas y exentas</FormLabel>
-                <FormLabel atBottom>Ganancias ocasionales gravables</FormLabel>
-              </tr>
+                  <tr>
+                    <td colSpan={2} />
+                    <FormLabel atBottom>Ingresos por ganancias ocasionales en el país y del exterior</FormLabel>
+                    <FormLabel atBottom>Costos por ganancias ocacionales</FormLabel>
+                    <FormLabel atBottom>Ganancias ocasionales no gravadas y exentas</FormLabel>
+                    <FormLabel atBottom>Ganancias ocasionales gravables</FormLabel>
+                  </tr>
 
-              <tr>
-                <td colSpan={2} />
-                <FormField id='112' />
-                <FormField id='113' />
-                <FormField id='114' />
-                <FormField id='115' />
-              </tr>
-            </>
-          )}
+                  <tr>
+                    <td colSpan={2} />
+                    <FormField id='112' />
+                    <FormField id='113' />
+                    <FormField id='114' />
+                    <FormField id='115' />
+                  </tr>
+                </>
+              </SlideCard>
+            </td>
+          </tr>
 
           <tr>
             <td colSpan={6} className='empty-row' />

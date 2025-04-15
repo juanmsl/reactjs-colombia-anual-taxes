@@ -1,4 +1,4 @@
-import { Typography } from '@juanmsl/ui';
+import { Typography } from 'polpo/ui';
 import React from 'react';
 
 import { Patrimonio } from '../../react/pages/form210-page/modules/form-210/components';
@@ -24,6 +24,10 @@ export const YearsForm210Data: Record<number, YearForm210Data> = {
   2023: {
     minimumSalary: 1160000,
     uvt: 42412,
+  },
+  2024: {
+    minimumSalary: 1300000,
+    uvt: 47065,
   },
 };
 
@@ -129,7 +133,7 @@ export type Form210Data = {
 };
 
 export const defaultForm210Data: Form210Data = {
-  year: 2023,
+  year: 2024,
   declarationNumber: 1,
   prevDeclarationValue: 0,
   f28: 0,

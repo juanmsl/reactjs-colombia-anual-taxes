@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const SectionDataTableStyle = styled.section`
   display: grid;
   gap: 0.5em;
-  background: ${props => props.theme.colors.background.main};
 
   .data-table-title {
     text-wrap: balance;
@@ -21,7 +20,6 @@ export const SectionDataTableStyle = styled.section`
   .item-rows {
     display: grid;
     grid-template-columns: 1fr 1fr auto;
-    overflow: hidden;
   }
 
   .table-rows {
@@ -62,7 +60,7 @@ export const SectionDataTableStyle = styled.section`
     }
 
     &:not(:first-child):hover {
-      background: hsl(from ${props => props.theme.colors.secondary.main} h s 90 / 40%);
+      background: ${props => props.theme.colors.background.main};
 
       &:hover {
         .item-delete-row {

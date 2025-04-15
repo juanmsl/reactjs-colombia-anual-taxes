@@ -1,6 +1,4 @@
-import { Tabs, Typography } from '@juanmsl/ui';
-
-import { Data } from '../form-210-tabs.data';
+import { Tabs, Typography } from 'polpo/ui';
 
 import { FieldInput } from '@components/field-input';
 import { Form210Sections } from '@core/constants';
@@ -10,12 +8,8 @@ export const Dependientes = () => {
     <Tabs.TabPanel id={Form210Sections.DEPENDIENTES}>
       <Typography variant='header1'>12. Dependientes</Typography>
       <section className='fields-container'>
-        <Data label='Número de dependientes económicos'>
-          <FieldInput id='138' />
-        </Data>
-        <Data label='Adición por dependientes a la casilla 92'>
-          <FieldInput id='139' />
-        </Data>
+        <FieldInput id='138' label='Número de dependientes económicos' />
+        <FieldInput id='139' label='Adición por dependientes a la casilla 92' />
       </section>
     </Tabs.TabPanel>
   );

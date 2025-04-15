@@ -1,6 +1,6 @@
-import { SimpleLoader, ThemeProvider } from '@juanmsl/ui';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
+import { SimpleLoader, ThemeProvider } from 'polpo/ui';
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';

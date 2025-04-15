@@ -1,4 +1,4 @@
-import { Line, Tabs, Typography } from '@juanmsl/ui';
+import { Line, Tabs, Typography } from 'polpo/ui';
 import { useState } from 'react';
 
 import { MarginTable, Table133 } from '../../form-210/components';
@@ -19,42 +19,37 @@ export const LiquidacionPrivada = ({ setAsideID }: LiquidacionPrivadaProps) => {
   return (
     <Tabs.TabPanel id={Form210Sections.LIQUIDACION_PRIVADA}>
       <Typography variant='header1'>11. Liquidación privada</Typography>
-      <Data label='Rentas liquida gravable (Cédula general o renta presuntiva, de pensiones y de dividendos y participaciones, art. 241 E.T.)'>
-        <FieldInput id='111' />
-      </Data>
+      <FieldInput
+        id='111'
+        label='Rentas liquida gravable (Cédula general o renta presuntiva, de pensiones y de dividendos y participaciones, art. 241 E.T.)'
+      />
       <Line />
       <Typography variant='header4'>Impuesto sobre las rentas líquidas gravables</Typography>
       <section className='fields-container'>
-        <Data label='Cédula general, de pensiones y de dividendos y participaciones'>
-          <FieldInput
-            id='116'
-            formula={showDescriptionTable === '116' ? '(Click para ocultar)' : '(Click para ver calculo)'}
-            action={() => setShowDescriptionTable(prev => (prev === '116' ? '' : '116'))}
-          />
-        </Data>
-        <Data label='Renta presuntiva, de pensiones y de dividendos y participaciones'>
-          <FieldInput
-            id='117'
-            formula={showDescriptionTable === '117' ? '(Click para ocultar)' : '(Click para ver calculo)'}
-            action={() => setShowDescriptionTable(prev => (prev === '117' ? '' : '117'))}
-          />
-        </Data>
-        <Data label='Por dividendos y participaciones año 2017 y siguientes, 2a subcédula (Art 240 E.T)'>
-          <FieldInput id='118' />
-        </Data>
-        <Data label='Por dividendos y participaciones año 2016'>
-          <FieldInput
-            id='119'
-            formula={showDescriptionTable === '119' ? '(Click para ocultar)' : '(Click para ver calculo)'}
-            action={() => setShowDescriptionTable(prev => (prev === '119' ? '' : '119'))}
-          />
-        </Data>
-        <Data label='Por dividendos y participaciones recibidas del exterior'>
-          <FieldInput id='120' />
-        </Data>
-        <Data label='Total impuesto sobre las rentas líquidas gravables'>
-          <FieldInput id='121' />
-        </Data>
+        <FieldInput
+          id='116'
+          label='Cédula general, de pensiones y de dividendos y participaciones'
+          formula={showDescriptionTable === '116' ? '(Click para ocultar)' : '(Click para ver calculo)'}
+          action={() => setShowDescriptionTable(prev => (prev === '116' ? '' : '116'))}
+        />
+        <FieldInput
+          id='117'
+          label='Renta presuntiva, de pensiones y de dividendos y participaciones'
+          formula={showDescriptionTable === '117' ? '(Click para ocultar)' : '(Click para ver calculo)'}
+          action={() => setShowDescriptionTable(prev => (prev === '117' ? '' : '117'))}
+        />
+        <FieldInput
+          id='118'
+          label='Por dividendos y participaciones año 2017 y siguientes, 2a subcédula (Art 240 E.T)'
+        />
+        <FieldInput
+          id='119'
+          label='Por dividendos y participaciones año 2016'
+          formula={showDescriptionTable === '119' ? '(Click para ocultar)' : '(Click para ver calculo)'}
+          action={() => setShowDescriptionTable(prev => (prev === '119' ? '' : '119'))}
+        />
+        <FieldInput id='120' label='Por dividendos y participaciones recibidas del exterior' />
+        <FieldInput id='121' label='Total impuesto sobre las rentas líquidas gravables' />
       </section>
       {showDescriptionTable === '116' && (
         <MarginTable id='111' value={f111} uvtValue={valueToUVT(f111)} marginTable={f116MarginTable}>
@@ -82,50 +77,27 @@ export const LiquidacionPrivada = ({ setAsideID }: LiquidacionPrivadaProps) => {
       <Line />
       <Typography variant='header4'>Descuentos</Typography>
       <section className='fields-container'>
-        <Data label='Impuestos pagados en el exterior'>
-          <FieldInput id='122' />
-        </Data>
-        <Data label='Donaciones'>
-          <FieldInput id='123' />
-        </Data>
-        <Data label='Dividendos, participaciones y otros'>
-          <FieldInput id='124' />
-        </Data>
-        <Data label='Total descuentos tributarios'>
-          <FieldInput id='125' />
-        </Data>
+        <FieldInput id='122' label='Impuestos pagados en el exterior' />
+        <FieldInput id='123' label='Donaciones' />
+        <FieldInput id='124' label='Dividendos, participaciones y otros' />
+        <FieldInput id='125' label='Total descuentos tributarios' />
       </section>
       <Line />
       <Typography variant='header4'>Liquidación</Typography>
       <section className='fields-container'>
-        <Data label='Impuesto neto de renta'>
-          <FieldInput id='126' />
-        </Data>
-        <Data label='Impuesto de ganancias ocasionales'>
-          <FieldInput id='127' />
-        </Data>
-        <Data label='Descuento por impuestos pagados en el exterior por ganancias ocacionales'>
-          <FieldInput id='128' />
-        </Data>
-        <Data label='Total impuesto a cargo'>
-          <FieldInput id='129' />
-        </Data>
-        <Data label='Anticipo renta liquida año grabable anterior'>
-          <FieldInput id='130' />
-        </Data>
-        <Data label='Saldo a favor del año gravable anterior'>
-          <FieldInput id='131' />
-        </Data>
-        <Data label='Retenciones año gravable a declarar' onClick={() => setAsideID('132')}>
-          <FieldInput id='132' />
-        </Data>
-        <Data label='Anticipo de renta para el año gravable siguiente'>
-          <FieldInput
-            id='133'
-            formula={showDescriptionTable === '133' ? '(Click para ocultar)' : '(Click para ver calculo)'}
-            action={() => setShowDescriptionTable(prev => (prev === '133' ? '' : '133'))}
-          />
-        </Data>
+        <FieldInput id='126' label='Impuesto neto de renta' />
+        <FieldInput id='127' label='Impuesto de ganancias ocasionales' />
+        <FieldInput id='128' label='Descuento por impuestos pagados en el exterior por ganancias ocacionales' />
+        <FieldInput id='129' label='Total impuesto a cargo' />
+        <FieldInput id='130' label='Anticipo renta liquida año grabable anterior' />
+        <FieldInput id='131' label='Saldo a favor del año gravable anterior' />
+        <FieldInput id='132' label='Retenciones año gravable a declarar' onClick={() => setAsideID('132')} />
+        <FieldInput
+          id='133'
+          label='Anticipo de renta para el año gravable siguiente'
+          formula={showDescriptionTable === '133' ? '(Click para ocultar)' : '(Click para ver calculo)'}
+          action={() => setShowDescriptionTable(prev => (prev === '133' ? '' : '133'))}
+        />
       </section>
       {showDescriptionTable === '133' && <Table133 />}
     </Tabs.TabPanel>

@@ -1,6 +1,4 @@
-import { Line, Tabs, Typography } from '@juanmsl/ui';
-
-import { Data } from '../form-210-tabs.data';
+import { Line, Tabs, Typography } from 'polpo/ui';
 
 import { FieldInput } from '@components/field-input';
 import { Form210Sections } from '@core/constants';
@@ -18,52 +16,30 @@ export const RentasDeTrabajo = ({ setAsideID }: RentasDeTrabajoProps) => {
         servicios personales.
       </Typography>
       <section className='fields-container'>
-        <Data label='Ingresos brutos' onClick={() => setAsideID('32')}>
-          <FieldInput id='32' />
-        </Data>
-        <Data label='Ingrésos no constitutivos de renta' onClick={() => setAsideID('33')}>
-          <FieldInput id='33' />
-        </Data>
-        <Data label='Renta líquida'>
-          <FieldInput id='34' />
-        </Data>
+        <FieldInput id='32' label='Ingresos brutos' onClick={() => setAsideID('32')} />
+        <FieldInput id='33' label='Ingrésos no constitutivos de renta' onClick={() => setAsideID('33')} />
+        <FieldInput id='34' label='Renta líquida' />
       </section>
       <Line />
       <Typography variant='header4'>Rentas exentas</Typography>
       <Typography>Las rentas exentas reducen el impuesto por pagar.</Typography>
       <section className='fields-container'>
-        <Data label='Aportes voluntarios AFC, FVP y/o AVC' onClick={() => setAsideID('35')}>
-          <FieldInput id='35' />
-        </Data>
-        <Data label='Otras rentas exentas' onClick={() => setAsideID('36')}>
-          <FieldInput id='36' />
-        </Data>
-        <Data label='Total rentas exentas'>
-          <FieldInput id='37' />
-        </Data>
+        <FieldInput id='35' label='Aportes voluntarios AFC, FVP y/o AVC' onClick={() => setAsideID('35')} />
+        <FieldInput id='36' label='Otras rentas exentas' onClick={() => setAsideID('36')} />
+        <FieldInput id='37' label='Total rentas exentas' />
       </section>
       <Line />
       <Typography variant='header4'>Deducciones imputables</Typography>
       <Typography>Las deducciones imputables reducen el impuesto por pagar.</Typography>
       <section className='fields-container'>
-        <Data label='Intereses de vivienda' onClick={() => setAsideID('38')}>
-          <FieldInput id='38' />
-        </Data>
-        <Data label='Otras deducciones imputables' onClick={() => setAsideID('39')}>
-          <FieldInput id='39' />
-        </Data>
-        <Data label='Total deducciones imputables'>
-          <FieldInput id='40' />
-        </Data>
+        <FieldInput id='38' label='Intereses de vivienda' onClick={() => setAsideID('38')} />
+        <FieldInput id='39' label='Otras deducciones imputables' onClick={() => setAsideID('39')} />
+        <FieldInput id='40' label='Total deducciones imputables' />
       </section>
       <Line />
       <section className='fields-container'>
-        <Data label='Rentas exentas y/o deducciones imputables'>
-          <FieldInput id='41' />
-        </Data>
-        <Data label='Renta líquida ordinaria'>
-          <FieldInput id='42' />
-        </Data>
+        <FieldInput id='41' label='Rentas exentas y/o deducciones imputables' />
+        <FieldInput id='42' label='Renta líquida ordinaria' />
       </section>
     </Tabs.TabPanel>
   );

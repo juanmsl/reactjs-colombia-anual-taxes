@@ -1,4 +1,4 @@
-import { Icon, THEME, Typography, useMyTheme } from '@juanmsl/ui';
+import { Icon, THEME, Typography, useMyTheme } from 'polpo/ui';
 
 import { ThemeSelectorStyle } from './theme-selector.style';
 
