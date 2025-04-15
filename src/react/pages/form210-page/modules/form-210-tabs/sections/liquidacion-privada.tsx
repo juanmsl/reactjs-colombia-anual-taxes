@@ -2,7 +2,6 @@ import { Line, Tabs, Typography } from 'polpo/ui';
 import { useState } from 'react';
 
 import { MarginTable, Table133 } from '../../form-210/components';
-import { Data } from '../form-210-tabs.data';
 
 import { FieldInput } from '@components/field-input';
 import { useForm210 } from '@contexts';
