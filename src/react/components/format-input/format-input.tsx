@@ -1,4 +1,4 @@
-import { FieldVariant, IconNameT, Input } from '@juanmsl/ui';
+import { FieldVariant, IconNameT, Input } from 'polpo/ui';
 import { useCallback, useMemo, useState } from 'react';
 
 import { formatNumber } from '@helpers';

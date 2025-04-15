@@ -1,4 +1,4 @@
-import { SectionLayout } from '@juanmsl/ui';
+import { SectionLayout } from 'polpo/ui';
 import styled from 'styled-components';
 
 export const HomePageStyle = styled.section`
@@ -41,9 +41,6 @@ export const HomePageStyle = styled.section`
 `;
 
 export const DeclarationYearDataStyle = styled(SectionLayout)`
-  background: ${props => props.theme.colors.secondary.main};
-  color: ${props => props.theme.colors.secondary.contrast};
-
   .year-data-section-content {
     min-height: ${props => props.theme.constants.sectionMinHeight};
     display: grid;
@@ -70,6 +67,7 @@ export const DeclarationYearDataStyle = styled(SectionLayout)`
     text-wrap: balance;
     transition: all 300ms ease;
     background: ${props => props.theme.colors.primary.main};
+    color: ${props => props.theme.colors.primary.contrast};
     border: 1px solid;
     padding: 1em;
     border-radius: 10px;

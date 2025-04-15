@@ -1,29 +1,59 @@
-import { SectionLayout } from '@juanmsl/ui';
+import { SectionLayout } from 'polpo/ui';
 import styled from 'styled-components';
 
 export const FormToolbarStyle = styled(SectionLayout)`
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: ${props => props.theme.colors.background.paper};
-  color: ${props => props.theme.colors.text.main};
-  padding: 1em 2em;
-  box-shadow: 0 0 0.8em ${props => props.theme.colors.black}33;
+  position: absolute;
+  top: 2em;
+  left: 0;
+  padding: 1em;
+  border-radius: 10em;
+  background: ${props => props.theme.colors.background.paper}44;
+  backdrop-filter: blur(1em);
+  border: 1px solid ${props => props.theme.colors.gray6}44;
+  align-self: start;
+  box-shadow: 0 0 1em -0.3em ${props => props.theme.colors.gray2}88;
 
   .form-toolbar-content {
     border-radius: 25px;
     display: grid;
-    justify-content: space-between;
-    grid-auto-flow: column;
-    align-items: center;
-    gap: 1em;
+    align-content: start;
+    grid-auto-flow: row;
+    justify-items: center;
+    gap: 2em;
+  }
+
+  .toolbar-label {
+    transform: rotate(180deg);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
   }
 
   .form-toolbar-actions {
     display: grid;
-    grid-auto-flow: column;
+    grid-auto-flow: row;
     gap: 1em;
-    align-items: center;
+    justify-items: center;
+  }
+
+  .form-toolbar-navlink {
+    &.active {
+      button:not(:hover) {
+        background: ${props => props.theme.colors.primary.main};
+        color: ${props => props.theme.colors.primary.contrast};
+      }
+
+      button:hover {
+        background: ${props => props.theme.colors.primary.main}AA;
+        color: ${props => props.theme.colors.primary.contrast};
+      }
+    }
+
+    &:not(.active) {
+      button:hover {
+        background: ${props => props.theme.colors.primary.main}CC;
+        color: ${props => props.theme.colors.primary.contrast};
+      }
+    }
   }
 
   .shared-data {
@@ -34,44 +64,5 @@ export const FormToolbarStyle = styled(SectionLayout)`
     align-items: center;
     align-content: center;
     gap: 2px;
-  }
-`;
-
-export const FormToolbarTabsStyle = styled(SectionLayout)`
-  .form-toolbar-tabs-content {
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    gap: 1px;
-  }
-
-  .form-toolbar-tab {
-    padding: 0.5em 2em;
-    outline: 1px solid ${props => props.theme.colors.text.main};
-    display: grid;
-    grid-auto-flow: column;
-    gap: 0.5em;
-    place-items: center;
-    place-content: center;
-    cursor: pointer;
-    transition: all 300ms ease;
-
-    &:first-child {
-      border-radius: 10em 0 0 10em;
-    }
-
-    &:last-child {
-      border-radius: 0 10em 10em 0;
-    }
-
-    &:hover,
-    &.active {
-      background: ${props => props.theme.colors.primary.main};
-      color: ${props => props.theme.colors.primary.contrast};
-    }
-
-    &:not(.active):hover {
-      background: ${props => props.theme.colors.primary.light};
-    }
   }
 `;

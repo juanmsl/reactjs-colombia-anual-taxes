@@ -1,5 +1,7 @@
-import { useClassNames } from '@juanmsl/hooks';
-import { Typography } from '@juanmsl/ui';
+import { useClassNames } from 'polpo/hooks';
+import { Typography } from 'polpo/ui';
+
+import { Data } from '../../pages/form210-page/modules/form-210-tabs/form-210-tabs.data';
 
 import { FieldInputContainer, FieldInputStyle } from './field-input.style';
 
@@ -21,9 +23,11 @@ export type FieldInputProps = {
   roundTo?: number;
   action?: () => void;
   formula?: string;
+  label?: string;
+  onClick?: () => void;
 };
 
-export const FieldInput = ({ id, roundTo, action, formula: fieldFormula }: FieldInputProps) => {
+export const FieldInput = ({ id, roundTo, action, formula: fieldFormula, label, onClick }: FieldInputProps) => {
   const value = useForm210Field(id);
   const { locked, readOnly, disabled, format, min, max, formula } = useForm210FieldParams(id);
   const { setValue } = useForm210();
@@ -33,7 +37,7 @@ export const FieldInput = ({ id, roundTo, action, formula: fieldFormula }: Field
     'is-locked': !disabled && locked,
   });
 
-  return (
+  const input = (
     <FieldInputContainer>
       <FieldInputStyle className={fieldClassName}>
         <section className='form-field-id'>
@@ -63,5 +67,13 @@ export const FieldInput = ({ id, roundTo, action, formula: fieldFormula }: Field
         </Typography>
       ) : null}
     </FieldInputContainer>
+  );
+
+  return label || onClick ? (
+    <Data label={label} disabled={disabled} onClick={onClick}>
+      {input}
+    </Data>
+  ) : (
+    input
   );
 };

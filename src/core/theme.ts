@@ -1,4 +1,4 @@
-import { PaletteThemeEntity, DarkTheme as DefaultDarkTheme, LightTheme as DefaultLightTheme } from '@juanmsl/ui';
+import { PaletteThemeEntity, DarkTheme as DefaultDarkTheme, LightTheme as DefaultLightTheme } from 'polpo/ui';
 
 export const DarkTheme: PaletteThemeEntity = {
   ...DefaultDarkTheme,
@@ -6,6 +6,8 @@ export const DarkTheme: PaletteThemeEntity = {
     main: '#24263A',
     paper: '#151623',
     disabled: '#41424e',
+    light: '#3b3f5c',
+    dark: '#181a2c',
   },
   text: {
     main: '#FFFFFF',
@@ -39,6 +41,8 @@ export const LightTheme: PaletteThemeEntity = {
     main: '#FFFFFF',
     paper: '#EFEFEF',
     disabled: '#EFEFEF',
+    light: '#e1e1e1',
+    dark: '#959595',
   },
   text: {
     main: '#002135',

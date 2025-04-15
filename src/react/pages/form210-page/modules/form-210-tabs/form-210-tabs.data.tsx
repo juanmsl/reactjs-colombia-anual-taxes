@@ -1,5 +1,5 @@
-import { useClassNames } from '@juanmsl/hooks';
-import { Typography } from '@juanmsl/ui';
+import { useClassNames } from 'polpo/hooks';
+import { Typography } from 'polpo/ui';
 
 import { Form210TabsDataStyle } from './form-210-tabs.style';
 

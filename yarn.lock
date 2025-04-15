@@ -441,10 +441,10 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@juanmsl/eslint-config@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@juanmsl/eslint-config/-/eslint-config-0.0.7.tgz#b5f7c41a741a270889e32771be98eb10769361bb"
-  integrity sha512-ZhngFnYf+UXgbDv6vv4yMfUNQP8Kfe3CsC+BCl9i/W7SnPpxaFg4uPZ2O1Fgw5dvJ4KCyvg86++ZGArXJApMIA==
+"@juanmsl/eslint-config@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@juanmsl/eslint-config/-/eslint-config-0.0.8.tgz#80c7657932fb4075361b076ab0b5d018842866b6"
+  integrity sha512-jrr2KACkDPdJomQg56O9saxIVSdK2NiT7rwhqbbVhPgtlfYSWlRZ90CPnNTu3cIO5aqkoqREELLSVGj2MUedhQ==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^7.4.0"
     "@typescript-eslint/parser" "^7.4.0"
@@ -460,41 +460,12 @@
     eslint-plugin-react-hooks "^4.6.0"
     eslint-plugin-react-refresh "^0.4.3"
     prettier "^3.0.3"
-    typescript "^5.3.3"
+    typescript "^5.5.4"
 
-"@juanmsl/helpers@0.0.5", "@juanmsl/helpers@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@juanmsl/helpers/-/helpers-0.0.5.tgz#c70965ef2ded8274f7ae2129088a1a3ca5dfaf0b"
-  integrity sha512-/U1sjGD5MnXnDxWlH1fRr+RFI0cSuwvTfjRiV3hzAMBbqRDoylR6lZ54d1q5V3JUYUM36kkWHtDuHBnf2nBBig==
-  dependencies:
-    moment "^2.30.1"
-
-"@juanmsl/hooks@0.0.12", "@juanmsl/hooks@^0.0.12":
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/@juanmsl/hooks/-/hooks-0.0.12.tgz#04e6dead5e913eef0bd6dbab04ab57442626955f"
-  integrity sha512-EBNEhwwNvyoxAMYRpUOUJm0MLyqYWzr6f8p+LTOizCJrVm/5YXsJOkdaJFgdmMG5+WmdbVbFEFtAphyMl2cnnQ==
-  dependencies:
-    "@juanmsl/helpers" "0.0.5"
-
-"@juanmsl/tsconfig@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@juanmsl/tsconfig/-/tsconfig-0.0.1.tgz#5a053a7a04aabd30eea2ecb90c95d145aa49cbac"
-  integrity sha512-Nf8s/T+oz+ghNutI1JrslRHDbigKPet1btGRKkiTunvShigs4KCGNGGO0pjDKZqYPTZMksz7s/44lqsb9VCjSg==
-
-"@juanmsl/ui@^0.0.52":
-  version "0.0.52"
-  resolved "https://registry.yarnpkg.com/@juanmsl/ui/-/ui-0.0.52.tgz#9b8477ea0f228e9a09aa068ef4823d694c65d600"
-  integrity sha512-BFpa2iRA0W/LwMJ+gYSVQv1Mjvrk4T3a1PxTjpgiM51GrDrvaTlXFYGKG7Bljq/ac6ficpPn4osxNhHxgVFAZg==
-  dependencies:
-    "@hookform/resolvers" "^3.1.0"
-    "@juanmsl/helpers" "0.0.5"
-    "@juanmsl/hooks" "0.0.12"
-    axios "^1.4.0"
-    color "^4.2.3"
-    moment "^2.30.1"
-    react-colorful "^5.6.1"
-    use-eye-dropper "^1.6.1"
-    yup "^1.2.0"
+"@juanmsl/tsconfig@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@juanmsl/tsconfig/-/tsconfig-0.0.2.tgz#78456f0536f61671b84e0828533e8415c7f4844d"
+  integrity sha512-Ra03dWdyaArHx4j3A0d2lFWtPMPrZXI7TqUF2tp+cNxtLdCoc7GOQo67Cy/1z1RUTcYGdEaHRfnbbcxkeb1YjA==
 
 "@microsoft/tsdoc-config@0.16.2":
   version "0.16.2"
@@ -3002,6 +2973,19 @@ pluralize@^8.0.0:
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
   integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
 
+polpo@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/polpo/-/polpo-0.1.7.tgz#61be2eabbc97e1ace377ecf50ecd151c03d2f611"
+  integrity sha512-NOIJ1D1eHOqc8ZTjAEnibYrLag053lZaIsnqgYcHO55gsRpMgbbAgIZoUjwV7/usLvvl4hPumiHjcYlARI4fuQ==
+  dependencies:
+    "@hookform/resolvers" "^3.1.0"
+    axios "^1.4.0"
+    color "^4.2.3"
+    moment "^2.30.1"
+    react-colorful "^5.6.1"
+    use-eye-dropper "^1.6.1"
+    yup "^1.2.0"
+
 possible-typed-array-names@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/possible-typed-array-names/-/possible-typed-array-names-1.0.0.tgz#89bb63c6fada2c3e90adc4a647beeeb39cc7bf8f"
@@ -3710,10 +3694,15 @@ typed-array-length@^1.0.6:
     is-typed-array "^1.1.13"
     possible-typed-array-names "^1.0.0"
 
-typescript@^5.2.2, typescript@^5.3.3:
+typescript@^5.2.2:
   version "5.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.3.tgz#e1b0a3c394190838a0b168e771b0ad56a0af0faa"
   integrity sha512-/hreyEujaB0w76zKo6717l3L0o/qEUtRgdvUBvlkhoWeOVMjMuHNHk0BRBzikzuGDqNmPQbg5ifMEqsHLiIUcQ==
+
+typescript@^5.5.4:
+  version "5.7.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.7.3.tgz#919b44a7dbb8583a9b856d162be24a54bf80073e"
+  integrity sha512-84MVSjMEHP+FQRPy3pX9sTVV/INIex71s9TL2Gm5FG/WG1SqXeKyZ0k7/blY/4FdOzI12CBy1vGc4og/eus0fw==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"

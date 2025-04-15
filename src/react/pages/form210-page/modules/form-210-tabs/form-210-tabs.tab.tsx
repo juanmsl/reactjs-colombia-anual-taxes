@@ -1,4 +1,4 @@
-import { Tooltip, Typography } from '@juanmsl/ui';
+import { Tooltip, Typography } from 'polpo/ui';
 
 import { Form210TabStyle } from './form-210-tabs.style';
 

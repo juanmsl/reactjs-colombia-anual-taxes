@@ -1,19 +1,19 @@
-import { useMediaQuery, useViewport } from '@juanmsl/hooks';
-import { Image, SimpleLoader, Typography } from '@juanmsl/ui';
+import { useMediaQuery, useViewport } from 'polpo/hooks';
+import { Image, SimpleLoader, Typography } from 'polpo/ui';
 import { Suspense, useEffect, useMemo, useRef } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 
 import { MainLayoutStyle } from './main-layout.style';
 
-import { Aside } from '@components/aside';
+import { Navbar } from '@components/navbar';
 
 export const MainLayout = () => {
   const theme = useTheme();
   const location = useLocation();
   const ref = useRef(null);
   const { width } = useViewport();
-  const isWidthSupported = useMediaQuery(`(min-width: ${theme.constants.breakpoints.laptopM})`);
+  const isWidthSupported = useMediaQuery(`(min-width: ${theme.constants.breakpoints.laptopS})`);
   const shouldUpdate = useMemo(
     () => !CSS.supports('(grid-template-rows: subgrid) or (grid-template-columns: subgrid)'),
     [],
@@ -36,7 +36,7 @@ export const MainLayout = () => {
           </Typography>
           <section>
             <Typography variant='label' as='p' noPadding>
-              <b>Tamaño minimo de la pantalla:</b> {theme.constants.breakpoints.laptopM}
+              <b>Tamaño minimo de la pantalla:</b> {theme.constants.breakpoints.laptopS}
             </Typography>
             <Typography variant='label' as='p' noPadding>
               <b>Tu tamaño actual:</b> {width}px
@@ -65,7 +65,7 @@ export const MainLayout = () => {
 
   return (
     <MainLayoutStyle>
-      <Aside />
+      <Navbar />
       <Suspense
         fallback={
           <section className='suspense-loader'>

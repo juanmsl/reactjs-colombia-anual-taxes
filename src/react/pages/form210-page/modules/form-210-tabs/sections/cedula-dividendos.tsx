@@ -1,6 +1,4 @@
-import { Tabs, Typography } from '@juanmsl/ui';
-
-import { Data } from '../form-210-tabs.data';
+import { Tabs, Typography } from 'polpo/ui';
 
 import { FieldInput } from '@components/field-input';
 import { Form210Sections } from '@core/constants';
@@ -29,27 +27,13 @@ export const CedulaDividendos = () => {
         </Typography>
       </section>
       <section className='fields-container'>
-        <Data label='Dividendos y participaciones 2016 y anteriores, y otros'>
-          <FieldInput id='104' />
-        </Data>
-        <Data label='Ingresos no constitutivos de renta'>
-          <FieldInput id='105' />
-        </Data>
-        <Data label='Renta liquida ordinaria año 2016 y anteriores'>
-          <FieldInput id='106' />
-        </Data>
-        <Data label='1a Subcedula año 2017 y siguientes numeral 3 art 49 del E.T.'>
-          <FieldInput id='107' />
-        </Data>
-        <Data label='2a Subcedula año 2017 y siguientes paragrafo 2 art 49 del E.T.'>
-          <FieldInput id='108' />
-        </Data>
-        <Data label='Dividendos y participaciones recibidas del exterior'>
-          <FieldInput id='109' />
-        </Data>
-        <Data label='Rentas exentas de la casilla 109'>
-          <FieldInput id='110' />
-        </Data>
+        <FieldInput id='104' label='Dividendos y participaciones 2016 y anteriores, y otros' />
+        <FieldInput id='105' label='Ingresos no constitutivos de renta' />
+        <FieldInput id='106' label='Renta liquida ordinaria año 2016 y anteriores' />
+        <FieldInput id='107' label='1a Subcedula año 2017 y siguientes numeral 3 art 49 del E.T.' />
+        <FieldInput id='108' label='2a Subcedula año 2017 y siguientes paragrafo 2 art 49 del E.T.' />
+        <FieldInput id='109' label='Dividendos y participaciones recibidas del exterior' />
+        <FieldInput id='110' label='Rentas exentas de la casilla 109' />
       </section>
     </Tabs.TabPanel>
   );

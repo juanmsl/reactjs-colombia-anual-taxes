@@ -211,7 +211,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
 
   useEffect(() => {
     const years = Object.keys(YearsForm210Data);
-    const selectedYear = years[years.length - 2];
+    const selectedYear = years[years.length - 1];
 
     setYearData(YearsForm210Data[year] ?? YearsForm210Data[selectedYear]);
   }, [year]);
