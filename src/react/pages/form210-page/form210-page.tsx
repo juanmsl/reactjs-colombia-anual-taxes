@@ -4,9 +4,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { useTheme } from 'styled-components';
 
 import { Form210PagePanelStyle, Form210PageStyle } from './form210-page.style';
-import { FormToolbar, Form210, Form210Tabs } from './modules';
+import { Form210, Form210Tabs } from './modules';
 
 import { Footer } from '@components/footer';
+import { FormToolbar } from '@components/form-toolbar';
 import { PATHS } from '@core/constants';
 
 export const Form210Page = () => {

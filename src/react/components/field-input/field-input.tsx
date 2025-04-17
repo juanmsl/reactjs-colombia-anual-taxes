@@ -1,8 +1,7 @@
-import { Data } from '../../pages/form210-page/modules/form-210-tabs/form-210-tabs.data';
-
 import { FormFieldStyle } from './field-input.style';
 
 import { FieldInputContainer } from '@components/field-input-container';
+import { FormField } from '@components/form-field';
 import { FormatInput } from '@components/format-input';
 import { FieldParamId, useForm210FieldParams } from '@contexts';
 
@@ -73,9 +72,9 @@ export const FieldInput = ({
 
   if (label || onClick) {
     return (
-      <Data label={label} disabled={disabled} onClick={onClick}>
+      <FormField label={label} disabled={disabled} onClick={onClick}>
         {input}
-      </Data>
+      </FormField>
     );
   }
 

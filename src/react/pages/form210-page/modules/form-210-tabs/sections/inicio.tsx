@@ -1,9 +1,8 @@
 import { Select, Tabs, Typography } from 'polpo/ui';
 
-import { Data } from '../form-210-tabs.data';
-
 import { FieldInput } from '@components/field-input';
 import { FieldInputContainer } from '@components/field-input-container';
+import { FormField } from '@components/form-field';
 import { useForm210, useForm210FieldParams } from '@contexts';
 import { DeclarationNumberOptions, Form210Sections } from '@core/constants';
 
@@ -16,7 +15,7 @@ export const Inicio = () => {
     <Tabs.TabPanel id={Form210Sections.INICIO}>
       <Typography variant='header1'>1. Inicio</Typography>
       <section className='fields-container'>
-        <Data label='Estoy declarando por'>
+        <FormField label='Estoy declarando por'>
           <FieldInputContainer>
             <Select
               options={DeclarationNumberOptions}
@@ -37,7 +36,7 @@ export const Inicio = () => {
               }
             />
           </FieldInputContainer>
-        </Data>
+        </FormField>
         <FieldInput
           label={`Impuesto neto de renta año anterior (Celda 127 del ${year - 1})`}
           id='prevDeclarationValue'
