@@ -1,25 +1,23 @@
 import { AsideModal, Line, Select, Typography, Switch, SlideCard } from 'polpo/ui';
 import { useState } from 'react';
 
-import { FieldInputDetails, FormField, FormLabel, MarginTable, Table133 } from './components';
+import { FieldInputDetails, FormLabel, MarginTable, Table133 } from './components';
 import { Form210Style, FormTable } from './form-210.style';
 
 import { FieldInput } from '@components/field-input';
-import { FormatInput } from '@components/format-input';
-import { useForm210 } from '@contexts';
-import {
-  DeclarationNumberOption,
-  DeclarationNumberOptions,
-  f116MarginTable,
-  f117MarginTable,
-  f119MarginTable,
-} from '@core/constants';
+import { FieldInputContainer } from '@components/field-input-container';
+import { FieldParamId, useForm210, useForm210FieldParams } from '@contexts';
+import { DeclarationNumberOptions, f116MarginTable, f117MarginTable, f119MarginTable } from '@core/constants';
 
 export const Form210 = () => {
-  const { year, declarationNumber, f106, f111, prevDeclarationValue, valueToUVT, setData } = useForm210();
+  const { valueToUVT, setData } = useForm210();
+  const { value: f106 } = useForm210FieldParams('106');
+  const { value: f111 } = useForm210FieldParams('111');
+  const { value: year } = useForm210FieldParams('year');
+  const { value: declarationNumber } = useForm210FieldParams('declarationNumber');
 
   const [showDescriptionTable, setShowDescriptionTable] = useState<`${number | ''}`>('');
-  const [asideID, setAsideID] = useState<`${number | ''}`>('');
+  const [asideID, setAsideID] = useState<FieldParamId | null>(null);
   const [showCedulaDePensiones, setShowCedulaDePensiones] = useState(false);
   const [showCedulaDeDividendos, setShowCedulaDeDividendos] = useState(false);
   const [showGananciasOcasionales, setShowGananciasOcasionales] = useState(false);
@@ -47,37 +45,29 @@ export const Form210 = () => {
 
           <tr>
             <td>
-              <Select<DeclarationNumberOption>
-                options={DeclarationNumberOptions}
-                optionComponent={({ value }) => <Typography variant='label'>{value.label}</Typography>}
-                valueComponent={({ value }) => (
-                  <Typography variant='label' noPadding>
-                    {Array.isArray(value) ? value.map(item => item.label) : value.label}
-                  </Typography>
-                )}
-                name='declarationNumber'
-                multiselect={false}
-                variant='content-border'
-                value={DeclarationNumberOptions.find(item => item.value === declarationNumber)}
-                setValue={value =>
-                  setData(prev => ({
-                    ...prev,
-                    declarationNumber: value.value,
-                  }))
-                }
-              />
+              <FieldInputContainer>
+                <Select
+                  options={DeclarationNumberOptions}
+                  optionComponent={({ value }) => <Typography variant='label'>{value.label}</Typography>}
+                  valueComponent={({ value }) => (
+                    <Typography variant='label' noPadding>
+                      {Array.isArray(value) ? value.map(item => item.label) : value.label}
+                    </Typography>
+                  )}
+                  name='declarationNumber'
+                  multiselect={false}
+                  value={DeclarationNumberOptions.find(item => item.value === declarationNumber)}
+                  setValue={value =>
+                    setData(prev => ({
+                      ...prev,
+                      declarationNumber: value.value,
+                    }))
+                  }
+                />
+              </FieldInputContainer>
             </td>
-            <td colSpan={2}>
-              <FormatInput
-                id='prevDeclarationValue'
-                value={prevDeclarationValue}
-                setValue={prevDeclarationValue => setData(prev => ({ ...prev, prevDeclarationValue }))}
-                roundTo={0}
-                variant='content-border'
-                disabled={declarationNumber === 1}
-              />
-            </td>
-            <FormField id='28' colSpan={declarationNumber > 1 ? 1 : 2} />
+            <FieldInput inTable colSpan={2} id='prevDeclarationValue' roundTo={0} />
+            <FieldInput inTable id='28' colSpan={declarationNumber > 1 ? 1 : 2} />
           </tr>
 
           <tr>
@@ -96,9 +86,9 @@ export const Form210 = () => {
             <FormLabel atBottom>Total patrimonio liquido</FormLabel>
           </tr>
           <tr>
-            <FormField id='29' onClick={() => setAsideID('29')} />
-            <FormField id='30' onClick={() => setAsideID('30')} />
-            <FormField id='31' />
+            <FieldInput inTable id='29' onClick={() => setAsideID('29')} />
+            <FieldInput inTable id='30' onClick={() => setAsideID('30')} />
+            <FieldInput inTable id='31' />
           </tr>
 
           <tr>
@@ -128,42 +118,42 @@ export const Form210 = () => {
 
           <tr>
             <FormLabel colSpan={2}>Ingresos brutos</FormLabel>
-            <FormField id='32' onClick={() => setAsideID('32')} />
-            <FormField id='43' onClick={() => setAsideID('43')} />
-            <FormField id='58' onClick={() => setAsideID('58')} />
-            <FormField id='74' onClick={() => setAsideID('74')} />
+            <FieldInput inTable id='32' onClick={() => setAsideID('32')} />
+            <FieldInput inTable id='43' onClick={() => setAsideID('43')} />
+            <FieldInput inTable id='58' onClick={() => setAsideID('58')} />
+            <FieldInput inTable id='74' onClick={() => setAsideID('74')} />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Devoluciones, rebajas y dctos.</FormLabel>
             <td colSpan={3} className='empty'></td>
-            <FormField id='75' onClick={() => setAsideID('75')} />
+            <FieldInput inTable id='75' onClick={() => setAsideID('75')} />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Ingrésos no constitutivos de renta</FormLabel>
-            <FormField id='33' onClick={() => setAsideID('33')} />
-            <FormField id='44' onClick={() => setAsideID('44')} />
-            <FormField id='59' onClick={() => setAsideID('59')} />
-            <FormField id='76' onClick={() => setAsideID('76')} />
+            <FieldInput inTable id='33' onClick={() => setAsideID('33')} />
+            <FieldInput inTable id='44' onClick={() => setAsideID('44')} />
+            <FieldInput inTable id='59' onClick={() => setAsideID('59')} />
+            <FieldInput inTable id='76' onClick={() => setAsideID('76')} />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Costos y deducciones procedentes</FormLabel>
             <td colSpan={1} className='empty'></td>
-            <FormField id='45' onClick={() => setAsideID('45')} />
-            <FormField id='60' onClick={() => setAsideID('60')} />
-            <FormField id='77' onClick={() => setAsideID('77')} />
+            <FieldInput inTable id='45' onClick={() => setAsideID('45')} />
+            <FieldInput inTable id='60' onClick={() => setAsideID('60')} />
+            <FieldInput inTable id='77' onClick={() => setAsideID('77')} />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Renta líquida</FormLabel>
-            <FormField id='34' />
-            <FormField id='46' />
-            <FormField id='61' />
-            <FormField id='78' />
+            <FieldInput inTable id='34' />
+            <FieldInput inTable id='46' />
+            <FieldInput inTable id='61' />
+            <FieldInput inTable id='78' />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Rentas líquidas pasivas - ECE</FormLabel>
             <td colSpan={2} className='empty'></td>
-            <FormField id='62' onClick={() => setAsideID('62')} />
-            <FormField id='79' onClick={() => setAsideID('79')} />
+            <FieldInput inTable id='62' onClick={() => setAsideID('62')} />
+            <FieldInput inTable id='79' onClick={() => setAsideID('79')} />
           </tr>
 
           <tr>
@@ -177,24 +167,24 @@ export const Form210 = () => {
               Rentas exentas
             </FormLabel>
             <FormLabel>Aportes voluntarios AFC, FVP y/o AVC</FormLabel>
-            <FormField id='35' onClick={() => setAsideID('35')} />
-            <FormField id='47' onClick={() => setAsideID('47')} />
-            <FormField id='63' onClick={() => setAsideID('63')} />
-            <FormField id='80' onClick={() => setAsideID('80')} />
+            <FieldInput inTable id='35' onClick={() => setAsideID('35')} />
+            <FieldInput inTable id='47' onClick={() => setAsideID('47')} />
+            <FieldInput inTable id='63' onClick={() => setAsideID('63')} />
+            <FieldInput inTable id='80' onClick={() => setAsideID('80')} />
           </tr>
           <tr>
             <FormLabel>Otras rentas exentas</FormLabel>
-            <FormField id='36' onClick={() => setAsideID('36')} />
-            <FormField id='48' onClick={() => setAsideID('48')} />
-            <FormField id='64' onClick={() => setAsideID('64')} />
-            <FormField id='81' onClick={() => setAsideID('81')} />
+            <FieldInput inTable id='36' onClick={() => setAsideID('36')} />
+            <FieldInput inTable id='48' onClick={() => setAsideID('48')} />
+            <FieldInput inTable id='64' onClick={() => setAsideID('64')} />
+            <FieldInput inTable id='81' onClick={() => setAsideID('81')} />
           </tr>
           <tr>
             <FormLabel>Total rentas exentas</FormLabel>
-            <FormField id='37' />
-            <FormField id='49' />
-            <FormField id='65' />
-            <FormField id='82' />
+            <FieldInput inTable id='37' />
+            <FieldInput inTable id='49' />
+            <FieldInput inTable id='65' />
+            <FieldInput inTable id='82' />
           </tr>
 
           <tr>
@@ -208,24 +198,24 @@ export const Form210 = () => {
               Deducciones imputables
             </FormLabel>
             <FormLabel>Intereses de vivienda</FormLabel>
-            <FormField id='38' onClick={() => setAsideID('38')} />
-            <FormField id='50' onClick={() => setAsideID('50')} />
-            <FormField id='66' onClick={() => setAsideID('66')} />
-            <FormField id='83' onClick={() => setAsideID('83')} />
+            <FieldInput inTable id='38' onClick={() => setAsideID('38')} />
+            <FieldInput inTable id='50' onClick={() => setAsideID('50')} />
+            <FieldInput inTable id='66' onClick={() => setAsideID('66')} />
+            <FieldInput inTable id='83' onClick={() => setAsideID('83')} />
           </tr>
           <tr>
             <FormLabel>Otras deducciones imputables</FormLabel>
-            <FormField id='39' onClick={() => setAsideID('39')} />
-            <FormField id='51' onClick={() => setAsideID('51')} />
-            <FormField id='67' onClick={() => setAsideID('67')} />
-            <FormField id='84' onClick={() => setAsideID('84')} />
+            <FieldInput inTable id='39' onClick={() => setAsideID('39')} />
+            <FieldInput inTable id='51' onClick={() => setAsideID('51')} />
+            <FieldInput inTable id='67' onClick={() => setAsideID('67')} />
+            <FieldInput inTable id='84' onClick={() => setAsideID('84')} />
           </tr>
           <tr>
             <FormLabel>Total deducciones imputables</FormLabel>
-            <FormField id='40' />
-            <FormField id='52' />
-            <FormField id='68' />
-            <FormField id='85' />
+            <FieldInput inTable id='40' />
+            <FieldInput inTable id='52' />
+            <FieldInput inTable id='68' />
+            <FieldInput inTable id='85' />
           </tr>
 
           <tr>
@@ -236,38 +226,38 @@ export const Form210 = () => {
 
           <tr>
             <FormLabel colSpan={2}>Rentas exentas y/o deducciones imputables</FormLabel>
-            <FormField id='41' />
-            <FormField id='53' />
-            <FormField id='69' />
-            <FormField id='86' />
+            <FieldInput inTable id='41' />
+            <FieldInput inTable id='53' />
+            <FieldInput inTable id='69' />
+            <FieldInput inTable id='86' />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Renta líquida ordinária del ejercicio</FormLabel>
             <td colSpan={1} className='empty'></td>
-            <FormField id='54' />
-            <FormField id='70' />
-            <FormField id='87' />
+            <FieldInput inTable id='54' />
+            <FieldInput inTable id='70' />
+            <FieldInput inTable id='87' />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Pérdida líquida del ejercicio</FormLabel>
             <td colSpan={1} className='empty'></td>
-            <FormField id='55' />
-            <FormField id='71' />
-            <FormField id='88' />
+            <FieldInput inTable id='55' />
+            <FieldInput inTable id='71' />
+            <FieldInput inTable id='88' />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Compensaciones por perdidas</FormLabel>
             <td colSpan={1} className='empty'></td>
-            <FormField id='56' />
-            <FormField id='72' />
-            <FormField id='89' />
+            <FieldInput inTable id='56' />
+            <FieldInput inTable id='72' />
+            <FieldInput inTable id='89' />
           </tr>
           <tr>
             <FormLabel colSpan={2}>Renta líquida ordinaria</FormLabel>
-            <FormField id='42' />
-            <FormField id='57' />
-            <FormField id='73' />
-            <FormField id='90' />
+            <FieldInput inTable id='42' />
+            <FieldInput inTable id='57' />
+            <FieldInput inTable id='73' />
+            <FieldInput inTable id='90' />
           </tr>
 
           <tr>
@@ -285,10 +275,10 @@ export const Form210 = () => {
           </tr>
           <tr>
             <td colSpan={2} />
-            <FormField id='91' />
-            <FormField id='92' />
-            <FormField id='93' />
-            <FormField id='94' />
+            <FieldInput inTable id='91' />
+            <FieldInput inTable id='92' />
+            <FieldInput inTable id='93' />
+            <FieldInput inTable id='94' />
           </tr>
           <tr>
             <td colSpan={2} />
@@ -299,10 +289,10 @@ export const Form210 = () => {
           </tr>
           <tr>
             <td colSpan={2} />
-            <FormField id='95' />
-            <FormField id='96' />
-            <FormField id='97' />
-            <FormField id='98' />
+            <FieldInput inTable id='95' />
+            <FieldInput inTable id='96' />
+            <FieldInput inTable id='97' />
+            <FieldInput inTable id='98' />
           </tr>
 
           <tr>
@@ -349,10 +339,10 @@ export const Form210 = () => {
 
                   <tr>
                     <td colSpan={2} />
-                    <FormField id='99' />
-                    <FormField id='100' />
-                    <FormField id='101' />
-                    <FormField id='102' />
+                    <FieldInput inTable id='99' />
+                    <FieldInput inTable id='100' />
+                    <FieldInput inTable id='101' />
+                    <FieldInput inTable id='102' />
                   </tr>
 
                   <tr>
@@ -362,7 +352,7 @@ export const Form210 = () => {
 
                   <tr>
                     <td colSpan={2} />
-                    <FormField id='103' />
+                    <FieldInput inTable id='103' />
                   </tr>
                 </>
               </SlideCard>
@@ -428,10 +418,10 @@ export const Form210 = () => {
 
                   <tr>
                     <td colSpan={2} />
-                    <FormField id='104' />
-                    <FormField id='105' />
-                    <FormField id='106' />
-                    <FormField id='107' />
+                    <FieldInput inTable id='104' />
+                    <FieldInput inTable id='105' />
+                    <FieldInput inTable id='106' />
+                    <FieldInput inTable id='107' />
                   </tr>
 
                   <tr>
@@ -442,9 +432,9 @@ export const Form210 = () => {
                   </tr>
                   <tr>
                     <td colSpan={2} />
-                    <FormField id='108' />
-                    <FormField id='109' />
-                    <FormField id='110' />
+                    <FieldInput inTable id='108' />
+                    <FieldInput inTable id='109' />
+                    <FieldInput inTable id='110' />
                   </tr>
 
                   <tr>
@@ -467,7 +457,7 @@ export const Form210 = () => {
           </tr>
           <tr>
             <td colSpan={2} />
-            <FormField colSpan={4} id='111' />
+            <FieldInput inTable colSpan={4} id='111' />
           </tr>
 
           <tr>
@@ -514,10 +504,10 @@ export const Form210 = () => {
 
                   <tr>
                     <td colSpan={2} />
-                    <FormField id='112' />
-                    <FormField id='113' />
-                    <FormField id='114' />
-                    <FormField id='115' />
+                    <FieldInput inTable id='112' />
+                    <FieldInput inTable id='113' />
+                    <FieldInput inTable id='114' />
+                    <FieldInput inTable id='115' />
                   </tr>
                 </>
               </SlideCard>
@@ -547,18 +537,21 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2} />
-            <FormField
+            <FieldInput
+              inTable
               id='116'
               formula={showDescriptionTable === '116' ? '(Click para ocultar)' : '(Click para ver calculo)'}
               action={() => setShowDescriptionTable(prev => (prev === '116' ? '' : '116'))}
             />
-            <FormField
+            <FieldInput
+              inTable
               id='117'
               formula={showDescriptionTable === '117' ? '(Click para ocultar)' : '(Click para ver calculo)'}
               action={() => setShowDescriptionTable(prev => (prev === '117' ? '' : '117'))}
             />
-            <FormField id='118' />
-            <FormField
+            <FieldInput inTable id='118' />
+            <FieldInput
+              inTable
               id='119'
               formula={showDescriptionTable === '119' ? '(Click para ocultar)' : '(Click para ver calculo)'}
               action={() => setShowDescriptionTable(prev => (prev === '119' ? '' : '119'))}
@@ -614,8 +607,8 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2} />
-            <FormField id='120' />
-            <FormField id='121' />
+            <FieldInput inTable id='120' />
+            <FieldInput inTable id='121' />
           </tr>
 
           <tr>
@@ -639,10 +632,10 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2} />
-            <FormField id='122' />
-            <FormField id='123' />
-            <FormField id='124' />
-            <FormField id='125' />
+            <FieldInput inTable id='122' />
+            <FieldInput inTable id='123' />
+            <FieldInput inTable id='124' />
+            <FieldInput inTable id='125' />
           </tr>
 
           <tr>
@@ -666,10 +659,10 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2} />
-            <FormField id='126' />
-            <FormField id='127' />
-            <FormField id='128' />
-            <FormField id='129' />
+            <FieldInput inTable id='126' />
+            <FieldInput inTable id='127' />
+            <FieldInput inTable id='128' />
+            <FieldInput inTable id='129' />
           </tr>
 
           <tr>
@@ -682,10 +675,11 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2} />
-            <FormField id='130' />
-            <FormField id='131' />
-            <FormField id='132' onClick={() => setAsideID('132')} />
-            <FormField
+            <FieldInput inTable id='130' />
+            <FieldInput inTable id='131' />
+            <FieldInput inTable id='132' onClick={() => setAsideID('132')} />
+            <FieldInput
+              inTable
               id='133'
               formula={showDescriptionTable === '133' ? '(Click para ocultar)' : '(Click para ver calculo)'}
               action={() => setShowDescriptionTable(prev => (prev === '133' ? '' : '133'))}
@@ -722,10 +716,10 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2} />
-            <FormField id='134' />
-            <FormField id='135' />
-            <FormField id='136' />
-            <FormField id='137' />
+            <FieldInput inTable id='134' />
+            <FieldInput inTable id='135' />
+            <FieldInput inTable id='136' />
+            <FieldInput inTable id='137' />
           </tr>
 
           <tr>
@@ -736,12 +730,12 @@ export const Form210 = () => {
 
           <tr>
             <td colSpan={2} />
-            <FormField id='138' />
-            <FormField id='139' />
+            <FieldInput inTable id='138' />
+            <FieldInput inTable id='139' />
           </tr>
         </tbody>
       </FormTable>
-      <AsideModal isOpen={asideID !== ''} onClose={() => setAsideID('')}>
+      <AsideModal isOpen={asideID !== null} onClose={() => setAsideID(null)}>
         <FieldInputDetails id={asideID} />
       </AsideModal>
     </Form210Style>

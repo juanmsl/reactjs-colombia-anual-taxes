@@ -1,18 +1,19 @@
 import { useCallback } from 'react';
 
 import { SectionDataTable } from '@components/section-data-table';
-import { useForm210 } from '@contexts';
-import { Form210DataItem, Table29 } from '@core/constants';
+import { useForm210, useForm210FieldParams, Table29 } from '@contexts';
+import { Form210DataItem } from '@core/constants';
 
 export const Patrimonio = () => {
-  const { setData, _29 } = useForm210();
+  const { setData } = useForm210();
+  const { data: _29 } = useForm210FieldParams('29');
 
   const updateData = useCallback(
     (value: Array<Form210DataItem>, key: keyof Table29) => {
       setData(prev => ({
         ...prev,
-        _29: {
-          ...prev._29,
+        29: {
+          ...prev['29'],
           [key]: value,
         },
       }));

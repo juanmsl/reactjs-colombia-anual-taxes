@@ -1,10 +1,10 @@
-import { Button, ConfirmationModal, Icon, Line, Tooltip, Typography } from 'polpo/ui';
+import { Button, ConfirmationModal, Grid, Icon, Line, Tooltip, Typography } from 'polpo/ui';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { FormToolbarStyle } from './form-toolbar.style';
 
-import { useForm210 } from '@contexts';
+import { useForm210, useForm210FieldParams } from '@contexts';
 import { PATHS } from '@core/constants';
 
 type FormToolbarProps = {
@@ -13,6 +13,7 @@ type FormToolbarProps = {
 
 export const FormToolbar = ({ style }: FormToolbarProps) => {
   const { downloadData, loadData, resetData } = useForm210();
+  const { value: year } = useForm210FieldParams('year');
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -51,6 +52,30 @@ export const FormToolbar = ({ style }: FormToolbarProps) => {
           <Button radius='full' variant='ghost' onClick={() => setIsOpen(true)} size='small'>
             <Icon name='arrow-circle' size='1.5em' />
           </Button>
+        </Tooltip>
+      </section>
+
+      <section className='form-toolbar-actions'>
+        <Line orientation='vertical' style={{ height: '20px' }} />
+        <Tooltip
+          content={
+            <Grid ji='center' gap='4px'>
+              <span>Descargar Formulario 210</span>
+              <span>Instrucciones por celda</span>
+            </Grid>
+          }
+          position='right'
+        >
+          <a
+            href={`https://www.dian.gov.co/atencionciudadano/formulariosinstructivos/Formularios/${+year + 1}/Formulario_210_${+year + 1}.pdf`}
+            target='_blank'
+            rel='noopener'
+            className='form-link'
+          >
+            <Button radius='full' variant='ghost' size='small'>
+              <Icon name='document' size='1.5em' />
+            </Button>
+          </a>
         </Tooltip>
       </section>
 

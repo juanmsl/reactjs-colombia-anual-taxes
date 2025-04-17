@@ -4,12 +4,13 @@ import { useMemo } from 'react';
 import { DeclarationRequirementsStyle, DeclarationYearDataStyle, HomePageStyle } from './home-page.style';
 
 import { Footer } from '@components/footer';
-import { useForm210 } from '@contexts';
+import { useForm210, useForm210FieldParams } from '@contexts';
 import { DeclarationRequirements } from '@core/constants';
 import { formatNumber } from '@helpers';
 
 export const HomePage = () => {
-  const { uvt, year, valueFromUVT, minimumSalary } = useForm210();
+  const { uvt, valueFromUVT, minimumSalary } = useForm210();
+  const { value: year } = useForm210FieldParams('year');
 
   const declarationData = useMemo(
     () => [
@@ -60,7 +61,7 @@ export const HomePage = () => {
         </section>
       </SectionLayout>
 
-      <DeclarationYearDataStyle contentClassName='year-data-section-content'>
+      <DeclarationYearDataStyle fitHeightContent contentClassName='year-data-section-content'>
         <section>
           <Typography variant='header1' noPadding>
             Declaración de renta {+year + 1}

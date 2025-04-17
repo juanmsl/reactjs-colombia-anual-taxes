@@ -1,9 +1,19 @@
 import styled from 'styled-components';
 
-export const FormFieldStyle = styled.td`
+export const FormFieldStyle = styled.section`
+  display: grid;
+  gap: 2px;
   position: relative;
+  align-content: start;
+  grid-template-rows: subgrid;
+  grid-row: span 2;
 
-  &.field-with-overlay {
+  .data-label {
+    align-self: end;
+    text-wrap: balance;
+  }
+
+  .data-with-overlay {
     &::after {
       content: '';
       position: absolute;

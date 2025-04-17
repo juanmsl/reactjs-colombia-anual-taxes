@@ -1,29 +1,29 @@
 import { useClassNames } from 'polpo/hooks';
 import { Typography } from 'polpo/ui';
 
-import { Form210TabsDataStyle } from './form-210-tabs.style';
+import { FormFieldStyle } from './form-field.style';
 
-type DataProps = {
+type FormFieldProps = {
   children?: React.ReactNode;
   label?: string;
   onClick?: () => void;
   disabled?: boolean;
 };
 
-export const Data = ({ children, label, onClick, disabled }: DataProps) => {
+export const FormField = ({ children, label, onClick, disabled }: FormFieldProps) => {
   const dataClassName = useClassNames({
     'data-field': true,
     'data-with-overlay': Boolean(!disabled && onClick),
   });
 
   return (
-    <Form210TabsDataStyle>
+    <FormFieldStyle>
       <Typography variant='label' weight='bold' className='data-label'>
         {label}
       </Typography>
       <section className={dataClassName} onClick={!disabled ? onClick : undefined}>
         {children}
       </section>
-    </Form210TabsDataStyle>
+    </FormFieldStyle>
   );
 };
