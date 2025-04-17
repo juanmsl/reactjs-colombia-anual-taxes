@@ -3,14 +3,15 @@ import { Line, Typography } from 'polpo/ui';
 import { FieldInputDetailsStyle } from './field-input-details.style';
 
 import { FieldInput } from '@components/field-input';
+import { FieldParamId } from '@contexts';
 import { Form210Details } from '@core/constants';
 
 type FieldInputDetailsProps = {
-  id: `${number}` | '';
+  id: FieldParamId;
 };
 
 export const FieldInputDetails = ({ id }: FieldInputDetailsProps) => {
-  if (id === '' || !Form210Details[id]) {
+  if (!Form210Details[id]) {
     return null;
   }
 
