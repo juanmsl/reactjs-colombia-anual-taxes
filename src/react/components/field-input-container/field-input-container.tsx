@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 
 import { FieldInputContainerStyle, FieldInputContentStyle } from './field-input-container.style';
 
-export type FieldInputProps = {
+export type FieldInputContainerProps = {
   id?: string;
   action?: () => void;
   formula?: string;
@@ -15,7 +15,15 @@ export type FieldInputProps = {
   locked?: boolean;
 };
 
-export const FieldInputContainer = ({ id, action, readOnly, disabled, children, locked, formula }: FieldInputProps) => {
+export const FieldInputContainer = ({
+  id,
+  action,
+  readOnly,
+  disabled,
+  children,
+  locked,
+  formula,
+}: FieldInputContainerProps) => {
   const fieldClassName = useClassNames({
     'read-only': readOnly,
     'is-disabled': disabled,

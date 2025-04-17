@@ -6,7 +6,7 @@ import { Form210Style, FormTable } from './form-210.style';
 
 import { FieldInput } from '@components/field-input';
 import { FieldInputContainer } from '@components/field-input-container';
-import { useForm210, useForm210FieldParams } from '@contexts';
+import { FieldParamId, useForm210, useForm210FieldParams } from '@contexts';
 import { DeclarationNumberOptions, f116MarginTable, f117MarginTable, f119MarginTable } from '@core/constants';
 
 export const Form210 = () => {
@@ -17,7 +17,7 @@ export const Form210 = () => {
   const { value: declarationNumber } = useForm210FieldParams('declarationNumber');
 
   const [showDescriptionTable, setShowDescriptionTable] = useState<`${number | ''}`>('');
-  const [asideID, setAsideID] = useState<`${number | ''}`>('');
+  const [asideID, setAsideID] = useState<FieldParamId | null>(null);
   const [showCedulaDePensiones, setShowCedulaDePensiones] = useState(false);
   const [showCedulaDeDividendos, setShowCedulaDeDividendos] = useState(false);
   const [showGananciasOcasionales, setShowGananciasOcasionales] = useState(false);
@@ -735,7 +735,7 @@ export const Form210 = () => {
           </tr>
         </tbody>
       </FormTable>
-      <AsideModal isOpen={asideID !== ''} onClose={() => setAsideID('')}>
+      <AsideModal isOpen={asideID !== null} onClose={() => setAsideID(null)}>
         <FieldInputDetails id={asideID} />
       </AsideModal>
     </Form210Style>

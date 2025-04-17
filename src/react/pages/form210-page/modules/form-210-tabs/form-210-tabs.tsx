@@ -20,10 +20,11 @@ import {
   RentasPorHonorarios,
 } from './sections';
 
+import { FieldParamId } from '@contexts';
 import { Form210Sections } from '@core/constants';
 
 export const Form210Tabs = () => {
-  const [asideID, setAsideID] = useState<`${number | ''}`>('');
+  const [asideID, setAsideID] = useState<FieldParamId | null>(null);
 
   return (
     <Tabs defaultOpenTab={Form210Sections.INICIO}>
@@ -68,7 +69,7 @@ export const Form210Tabs = () => {
         </Grid>
       </Form210TabsStyle>
 
-      <AsideModal isOpen={asideID !== ''} onClose={() => setAsideID('')}>
+      <AsideModal isOpen={asideID !== null} onClose={() => setAsideID(null)}>
         <FieldInputDetails id={asideID} />
       </AsideModal>
     </Tabs>

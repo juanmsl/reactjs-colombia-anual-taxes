@@ -1,10 +1,11 @@
 import { Line, Tabs, Typography } from 'polpo/ui';
 
 import { FieldInput } from '@components/field-input';
+import { FieldParamId } from '@contexts';
 import { Form210Sections } from '@core/constants';
 
 type RentasNoLaboralesProps = {
-  setAsideID: (id: `${number | ''}`) => void;
+  setAsideID: (id: FieldParamId | null) => void;
 };
 
 export const RentasNoLaborales = ({ setAsideID }: RentasNoLaboralesProps) => {

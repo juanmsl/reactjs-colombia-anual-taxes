@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { MarginTable, Table133 } from '../../form-210/components';
 
 import { FieldInput } from '@components/field-input';
-import { useForm210, useForm210FieldParams } from '@contexts';
+import { FieldParamId, useForm210, useForm210FieldParams } from '@contexts';
 import { f116MarginTable, f117MarginTable, f119MarginTable, Form210Sections } from '@core/constants';
 
 type LiquidacionPrivadaProps = {
-  setAsideID: (id: `${number | ''}`) => void;
+  setAsideID: (id: FieldParamId | null) => void;
 };
 
 export const LiquidacionPrivada = ({ setAsideID }: LiquidacionPrivadaProps) => {
