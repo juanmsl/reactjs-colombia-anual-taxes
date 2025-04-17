@@ -4,6 +4,7 @@ import React from 'react';
 import { Patrimonio } from '../../react/pages/form210-page/modules/form-210/components';
 
 import { SectionDataTableWithID } from '@components/section-data-table-with-id';
+import { FormFieldParams } from '@contexts';
 
 export type Form210DataItem = {
   name: string;
@@ -55,89 +56,79 @@ export const DeclarationNumberOptions: Array<DeclarationNumberOption> = [
   },
 ];
 
-export type Table29 = {
-  cuentasBancarias: Array<Form210DataItem>;
-  inversiones: Array<Form210DataItem>;
-  cuentasPorCobrar: Array<Form210DataItem>;
-  activosFijos: Array<Form210DataItem>;
-  bienesInmuebles: Array<Form210DataItem>;
-  vehiculos: Array<Form210DataItem>;
-  otros: Array<Form210DataItem>;
-};
-
 export type Form210Data = {
-  year: number;
-  declarationNumber: number;
-  prevDeclarationValue: number;
-  f28: number;
-  _29: Table29;
-  _30: Array<Form210DataItem>;
-  _32: Array<Form210DataItem>;
-  _33: Array<Form210DataItem>;
-  _35: Array<Form210DataItem>;
-  _36: Array<Form210DataItem>;
-  _38: Array<Form210DataItem>;
-  _39: Array<Form210DataItem>;
-  _43: Array<Form210DataItem>;
-  _44: Array<Form210DataItem>;
-  _45: Array<Form210DataItem>;
-  _47: Array<Form210DataItem>;
-  _48: Array<Form210DataItem>;
-  _50: Array<Form210DataItem>;
-  _51: Array<Form210DataItem>;
-  f56: number;
-  _58: Array<Form210DataItem>;
-  _59: Array<Form210DataItem>;
-  _60: Array<Form210DataItem>;
-  _62: Array<Form210DataItem>;
-  _63: Array<Form210DataItem>;
-  _64: Array<Form210DataItem>;
-  _66: Array<Form210DataItem>;
-  _67: Array<Form210DataItem>;
-  f72: number;
-  _74: Array<Form210DataItem>;
-  _75: Array<Form210DataItem>;
-  _76: Array<Form210DataItem>;
-  _77: Array<Form210DataItem>;
-  _79: Array<Form210DataItem>;
-  _80: Array<Form210DataItem>;
-  _81: Array<Form210DataItem>;
-  _83: Array<Form210DataItem>;
-  _84: Array<Form210DataItem>;
-  f89: number;
-  f94: number;
-  f95: number;
-  f96: number;
-  f98: number;
-  f99: number;
-  f100: number;
-  f102: number;
-  f104: number;
-  f105: number;
-  f107: number;
-  f108: number;
-  f109: number;
-  f110: number;
-  f112: number;
-  f113: number;
-  f114: number;
-  f122: number;
-  f123: number;
-  f124: number;
-  f128: number;
-  f130: number;
-  f131: number;
-  _132: Array<Form210DataItem>;
-  f135: number;
-  f138: number;
+  year: FormFieldParams['year']['value'];
+  declarationNumber: FormFieldParams['declarationNumber']['value'];
+  prevDeclarationValue: FormFieldParams['prevDeclarationValue']['value'];
+  '28': FormFieldParams['28']['value'];
+  '29': FormFieldParams['29']['data'];
+  '30': FormFieldParams['30']['table'];
+  '32': FormFieldParams['32']['table'];
+  '33': FormFieldParams['33']['table'];
+  '35': FormFieldParams['35']['table'];
+  '36': FormFieldParams['36']['table'];
+  '38': FormFieldParams['38']['table'];
+  '39': FormFieldParams['39']['table'];
+  '43': FormFieldParams['43']['table'];
+  '44': FormFieldParams['44']['table'];
+  '45': FormFieldParams['45']['table'];
+  '47': FormFieldParams['47']['table'];
+  '48': FormFieldParams['48']['table'];
+  '50': FormFieldParams['50']['table'];
+  '51': FormFieldParams['51']['table'];
+  '56': FormFieldParams['56']['value'];
+  '58': FormFieldParams['58']['table'];
+  '59': FormFieldParams['59']['table'];
+  '60': FormFieldParams['60']['table'];
+  '62': FormFieldParams['62']['table'];
+  '63': FormFieldParams['63']['table'];
+  '64': FormFieldParams['64']['table'];
+  '66': FormFieldParams['66']['table'];
+  '67': FormFieldParams['67']['table'];
+  '72': FormFieldParams['72']['value'];
+  '74': FormFieldParams['74']['table'];
+  '75': FormFieldParams['75']['table'];
+  '76': FormFieldParams['76']['table'];
+  '77': FormFieldParams['77']['table'];
+  '79': FormFieldParams['79']['table'];
+  '80': FormFieldParams['80']['table'];
+  '81': FormFieldParams['81']['table'];
+  '83': FormFieldParams['83']['table'];
+  '84': FormFieldParams['84']['table'];
+  '89': FormFieldParams['89']['value'];
+  '94': FormFieldParams['94']['value'];
+  '95': FormFieldParams['95']['value'];
+  '96': FormFieldParams['96']['value'];
+  '98': FormFieldParams['98']['value'];
+  '99': FormFieldParams['99']['value'];
+  '100': FormFieldParams['100']['value'];
+  '102': FormFieldParams['102']['value'];
+  '104': FormFieldParams['104']['value'];
+  '105': FormFieldParams['105']['value'];
+  '107': FormFieldParams['107']['value'];
+  '108': FormFieldParams['108']['value'];
+  '109': FormFieldParams['109']['value'];
+  '110': FormFieldParams['110']['value'];
+  '112': FormFieldParams['112']['value'];
+  '113': FormFieldParams['113']['value'];
+  '114': FormFieldParams['114']['value'];
+  '122': FormFieldParams['122']['value'];
+  '123': FormFieldParams['123']['value'];
+  '124': FormFieldParams['124']['value'];
+  '128': FormFieldParams['128']['value'];
+  '130': FormFieldParams['130']['value'];
+  '131': FormFieldParams['131']['value'];
+  '132': FormFieldParams['132']['table'];
+  '135': FormFieldParams['135']['value'];
+  '138': FormFieldParams['138']['value'];
 };
 
 export const defaultForm210Data: Form210Data = {
   year: 2024,
   declarationNumber: 1,
   prevDeclarationValue: 0,
-  f28: 0,
-  _29: {
+  '28': 0,
+  '29': {
     cuentasBancarias: [],
     inversiones: [],
     cuentasPorCobrar: [],
@@ -146,69 +137,69 @@ export const defaultForm210Data: Form210Data = {
     vehiculos: [],
     otros: [],
   },
-  _30: [],
-  _32: [],
-  _33: [],
-  _35: [],
-  _36: [],
-  _38: [],
-  _39: [],
-  _43: [],
-  _44: [],
-  _45: [],
-  _47: [],
-  _48: [],
-  _50: [],
-  _51: [],
-  f56: 0,
-  _58: [],
-  _59: [],
-  _60: [],
-  _62: [],
-  _63: [],
-  _64: [],
-  _66: [],
-  _67: [],
-  f72: 0,
-  _74: [],
-  _75: [],
-  _76: [],
-  _77: [],
-  _79: [],
-  _80: [],
-  _81: [],
-  _83: [],
-  _84: [],
-  f89: 0,
-  f94: 0,
-  f95: 0,
-  f96: 0,
-  f98: 0,
-  f99: 0,
-  f100: 0,
-  f102: 0,
-  f104: 0,
-  f105: 0,
-  f107: 0,
-  f108: 0,
-  f109: 0,
-  f110: 0,
-  f112: 0,
-  f113: 0,
-  f114: 0,
-  f122: 0,
-  f123: 0,
-  f124: 0,
-  f128: 0,
-  f130: 0,
-  f131: 0,
-  _132: [],
-  f135: 0,
-  f138: 0,
+  '30': [],
+  '32': [],
+  '33': [],
+  '35': [],
+  '36': [],
+  '38': [],
+  '39': [],
+  '43': [],
+  '44': [],
+  '45': [],
+  '47': [],
+  '48': [],
+  '50': [],
+  '51': [],
+  '56': 0,
+  '58': [],
+  '59': [],
+  '60': [],
+  '62': [],
+  '63': [],
+  '64': [],
+  '66': [],
+  '67': [],
+  '72': 0,
+  '74': [],
+  '75': [],
+  '76': [],
+  '77': [],
+  '79': [],
+  '80': [],
+  '81': [],
+  '83': [],
+  '84': [],
+  '89': 0,
+  '94': 0,
+  '95': 0,
+  '96': 0,
+  '98': 0,
+  '99': 0,
+  '100': 0,
+  '102': 0,
+  '104': 0,
+  '105': 0,
+  '107': 0,
+  '108': 0,
+  '109': 0,
+  '110': 0,
+  '112': 0,
+  '113': 0,
+  '114': 0,
+  '122': 0,
+  '123': 0,
+  '124': 0,
+  '128': 0,
+  '130': 0,
+  '131': 0,
+  '132': [],
+  '135': 0,
+  '138': 0,
 };
 
 export const Form210DataLimits: Record<
-  `f${number}`,
+  `f${string}`,
   Partial<{
     min: number;
     max: number;

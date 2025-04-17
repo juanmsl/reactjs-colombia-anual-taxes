@@ -4,11 +4,12 @@ import { NavLink } from 'react-router-dom';
 import { AsideStyle } from './aside.style';
 
 import { ThemeSelector } from '@components/theme-selector';
-import { useForm210 } from '@contexts';
+import { useForm210, useForm210FieldParams } from '@contexts';
 import { PATHS, YearsForm210Data } from '@core/constants';
 
 export const Aside = () => {
-  const { year, setData } = useForm210();
+  const { setData } = useForm210();
+  const { value: year } = useForm210FieldParams('year');
 
   return (
     <AsideStyle>

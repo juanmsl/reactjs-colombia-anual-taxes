@@ -2,11 +2,14 @@ import { Typography } from 'polpo/ui';
 
 import { Table133Style } from './table-133.style';
 
-import { useForm210 } from '@contexts';
+import { useForm210FieldParams } from '@contexts';
 import { formatNumber, getPrevPaymentYearPercentage } from '@helpers';
 
 export const Table133 = () => {
-  const { f126, declarationNumber, f132, prevDeclarationValue } = useForm210();
+  const { value: declarationNumber } = useForm210FieldParams('declarationNumber');
+  const { value: prevDeclarationValue } = useForm210FieldParams('prevDeclarationValue');
+  const { value: f126 } = useForm210FieldParams('126');
+  const { value: f132 } = useForm210FieldParams('132');
 
   return (
     <Table133Style>

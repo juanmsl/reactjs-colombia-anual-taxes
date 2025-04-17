@@ -41,8 +41,11 @@ export const HomePageStyle = styled.section`
 `;
 
 export const DeclarationYearDataStyle = styled(SectionLayout)`
+  background: ${props => props.theme.colors.background.paper}22;
+  backdrop-filter: blur(0.5em);
+  padding: 10em 2em;
+
   .year-data-section-content {
-    min-height: ${props => props.theme.constants.sectionMinHeight};
     display: grid;
     gap: 2em;
     align-content: center;

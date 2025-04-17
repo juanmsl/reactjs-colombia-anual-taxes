@@ -1,79 +1,83 @@
-import { useClassNames } from 'polpo/hooks';
-import { Typography } from 'polpo/ui';
-
 import { Data } from '../../pages/form210-page/modules/form-210-tabs/form-210-tabs.data';
 
-import { FieldInputContainer, FieldInputStyle } from './field-input.style';
+import { FormFieldStyle } from './field-input.style';
 
+import { FieldInputContainer } from '@components/field-input-container';
 import { FormatInput } from '@components/format-input';
-import { useForm210, useForm210Field, useForm210FieldParams } from '@contexts';
-
-export type FieldParams = {
-  readOnly?: boolean;
-  formula?: string;
-  disabled?: boolean;
-  locked?: boolean;
-  format?: 'currency' | 'number';
-  min?: number;
-  max?: number;
-};
+import { FieldParamId, useForm210FieldParams } from '@contexts';
 
 export type FieldInputProps = {
-  id: `${number}`;
+  id: FieldParamId;
   roundTo?: number;
   action?: () => void;
   formula?: string;
   label?: string;
   onClick?: () => void;
+  inTable?: boolean;
+  colSpan?: number;
+  rowSpan?: number;
 };
 
-export const FieldInput = ({ id, roundTo, action, formula: fieldFormula, label, onClick }: FieldInputProps) => {
-  const value = useForm210Field(id);
-  const { locked, readOnly, disabled, format, min, max, formula } = useForm210FieldParams(id);
-  const { setValue } = useForm210();
-  const fieldClassName = useClassNames({
-    'read-only': readOnly,
-    'is-disabled': disabled,
-    'is-locked': !disabled && locked,
-  });
+export const FieldInput = ({
+  id,
+  roundTo,
+  action,
+  formula: fieldFormula,
+  inTable,
+  label,
+  colSpan,
+  rowSpan,
+  onClick,
+}: FieldInputProps) => {
+  const { locked, readOnly, disabled, format, min, max, formula, value, setValue } = useForm210FieldParams(id);
 
   const input = (
-    <FieldInputContainer>
-      <FieldInputStyle className={fieldClassName}>
-        <section className='form-field-id'>
-          <Typography variant='small' weight='bold' noPadding>
-            {id}
-          </Typography>
-        </section>
-        <section className='form-field-value'>
-          <FormatInput
-            className='form-field-value--input'
-            id={id}
-            value={value}
-            setValue={value => setValue(id, value)}
-            readOnly={readOnly}
-            disabled={disabled || readOnly || locked}
-            roundTo={roundTo}
-            format={format}
-            rightIcon={!disabled && locked ? 'pencil' : undefined}
-            min={min}
-            max={max}
-          />
-        </section>
-      </FieldInputStyle>
-      {formula || fieldFormula ? (
-        <Typography onClick={action} variant='small' weight='bold' className='formula' noPadding>
-          {formula || fieldFormula}
-        </Typography>
-      ) : null}
+    <FieldInputContainer
+      id={id}
+      action={action}
+      formula={formula || fieldFormula}
+      label={label}
+      disabled={disabled}
+      readOnly={readOnly}
+      locked={locked}
+    >
+      <FormatInput
+        className='form-field-value--input'
+        id={id}
+        value={value}
+        setValue={setValue as (value: number) => void}
+        readOnly={readOnly}
+        disabled={disabled || readOnly || locked}
+        roundTo={roundTo}
+        format={format}
+        rightIcon={!disabled && locked ? 'pencil' : undefined}
+        min={min}
+        max={max}
+      />
     </FieldInputContainer>
   );
 
-  return label || onClick ? (
-    <Data label={label} disabled={disabled} onClick={onClick}>
-      {input}
-    </Data>
-  ) : (
-    input
-  );
+  if (inTable) {
+    return (
+      <FormFieldStyle
+        rowSpan={rowSpan}
+        colSpan={colSpan}
+        style={{ verticalAlign: 'top' }}
+        onClick={!disabled ? onClick : undefined}
+        className={!disabled && onClick ? 'field-with-overlay' : ''}
+      >
+        {input}
+      </FormFieldStyle>
+    );
+  }
+
+  if (label || onClick) {
+    return (
+      <Data label={label} disabled={disabled} onClick={onClick}>
+        {input}
+      </Data>
+    );
+  }
+
+  return input;
 };
