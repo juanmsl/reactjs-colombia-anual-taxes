@@ -206,7 +206,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
     setYearData(YearsForm210Data[d.year] ?? YearsForm210Data[selectedYear]);
   }, [d.year]);
 
-  const valueToUVT = useCallback<Form210ContextEntity['valueToUVT']>((value: number) => Math.round(value / uvt), [uvt]);
+  const valueToUVT = useCallback<Form210ContextEntity['valueToUVT']>((value: number) => value / uvt, [uvt]);
 
   const valueFromUVT = useCallback<Form210ContextEntity['valueFromUVT']>((value: number) => value * uvt, [uvt]);
 
