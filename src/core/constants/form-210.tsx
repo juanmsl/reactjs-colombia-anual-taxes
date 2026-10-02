@@ -23,12 +23,16 @@ export type YearForm210Data = {
 
 export const YearsForm210Data: Record<number, YearForm210Data> = {
   2023: {
-    minimumSalary: 1160000,
-    uvt: 42412,
+    minimumSalary: 1_160_000,
+    uvt: 42_412,
   },
   2024: {
-    minimumSalary: 1300000,
-    uvt: 47065,
+    minimumSalary: 1_300_000,
+    uvt: 47_065,
+  },
+  2025: {
+    minimumSalary: 1_423_500,
+    uvt: 49_799,
   },
 };
 
