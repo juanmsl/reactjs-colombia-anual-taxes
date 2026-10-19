@@ -1,4 +1,4 @@
-import { Typography } from 'polpo/ui';
+import { Typography } from 'polpo/components';
 
 export type LabelProps = {
   children: React.ReactNode;

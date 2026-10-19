@@ -1,50 +1,43 @@
-import { Icon, Image, Line, Select, THEME, useMyTheme } from 'polpo/ui';
+import { Image, Select } from 'polpo/components';
+import { FaCalendar } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
-import { NavbarStyle, NavLinkStyle } from './navbar.style';
+import './navbar.styles.css';
 
 import { useForm210, useForm210FieldParams } from '@contexts';
 import { PATHS, YearsForm210Data } from '@core/constants';
+import { SectionLayout } from '@layouts/section-layout';
 
 export const Navbar = () => {
-  const { themeName, changeTheme } = useMyTheme();
   const { setData } = useForm210();
   const { value: year } = useForm210FieldParams('year');
 
   return (
-    <NavbarStyle fitHeightContent contentClassName='navbar-content'>
+    <SectionLayout className='navbar' fitHeightContent contentClassName='navbar-content'>
       <section className='navbar-logo'>
         <Image src='/assets/images/logo.png' alt='logo' />
       </section>
 
       <section className='navbar-links'>
-        <NavLinkStyle to={PATHS.HOME}>Inicio</NavLinkStyle>
-        <NavLinkStyle to={PATHS.FORM210_FORM}>Formulario 210</NavLinkStyle>
+        <NavLink className='nav-link' to={PATHS.HOME}>
+          Inicio
+        </NavLink>
+        <NavLink className='nav-link' to={PATHS.FORM210_FORM}>
+          Formulario 210
+        </NavLink>
       </section>
 
       <section className='navbar-actions'>
         <Select
           style={{ width: '100px' }}
-          leftIcon='calendar'
+          leftIcon={FaCalendar}
           options={Object.keys(YearsForm210Data).toReversed()}
           name='year'
           value={`${year}`}
           multiselect={false}
-          setValue={year => setData(prev => ({ ...prev, year: +year }))}
-        />
-        <Line orientation='vertical' style={{ height: '20px', margin: '0 1em' }} />
-        <Icon
-          name='moon'
-          size={18}
-          className={`navbar-icon ${themeName === THEME.DARK ? 'is-active' : ''}`}
-          onClick={() => changeTheme('dark')}
-        />
-        <Icon
-          name='sun'
-          size={18}
-          className={`navbar-icon ${themeName === THEME.LIGHT ? 'is-active' : ''}`}
-          onClick={() => changeTheme('light')}
+          setValue={year => setData(prev => ({ ...prev, year: +(year ?? 0) }))}
         />
       </section>
-    </NavbarStyle>
+    </SectionLayout>
   );
 };

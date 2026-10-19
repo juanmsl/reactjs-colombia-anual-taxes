@@ -1,0 +1,38 @@
+@layer tailwind-base, local;
+
+@import "tailwindcss" layer(tailwind-base);
+@import "polpo-tailwind-config/styles" layer(tailwind-base);
+@import "polpo/components.css" layer(tailwind-base);
+
+@theme {
+  --color-active: hsl(147 100% 35%);
+  --color-alert: hsl(359 90% 62%);
+  --color-warning: hsl(38 100% 50%);
+  --color-info: hsl(210 100% 51%);
+  --color-primary: hsl(221 100% 41%);
+  --color-primary-foreground: hsl(0 0 100%);
+  --color-secondary: hsl(207 100% 47%);
+  --color-secondary-foreground: hsl(0 0 100%);
+  --color-tertiary: hsl(220 100% 50%);
+  --color-tertiary-foreground: hsl(0 0 100%);
+  --color-highlight: hsl(205 100% 68%);
+  --color-accent: hsl(285 26% 70%);
+
+  --color-background: var(--color-white);
+  --color-background-paper: hsl(0 0 94%);
+  --color-background-disabled: var(--color-gray-400);
+  --color-foreground: hsl(203 100% 10%);
+  --color-foreground-disabled: var(--color-gray-900);
+  --color-border: hsl(300 18% 79%);
+
+  --font-main: 'Montserrat', 'Segoe UI', sans-serif;
+  --font-title: 'Josefin Sans', var(--font-main);
+  --font-brand: 'Roboto', var(--font-title);
+}
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}

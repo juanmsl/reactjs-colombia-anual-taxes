@@ -1,0 +1,20 @@
+@layer tailwind-base, local;
+
+@layer local {
+  .footer {
+    background: var(--color-background-paper);
+    color: var(--color-foreground);
+
+    .footer-content {
+      text-align: center;
+      padding: 1em;
+    }
+
+    a {
+      padding: 0.5em 0.5em 0 0.5em;
+      display: inline-block;
+      transition: all 300ms ease;
+      border-bottom: 1px solid;
+    }
+  }
+}

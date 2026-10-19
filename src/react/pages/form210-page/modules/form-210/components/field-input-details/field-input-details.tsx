@@ -1,24 +1,20 @@
-import { Line, Typography } from 'polpo/ui';
+import { Line, Typography } from 'polpo/components';
 
-import { FieldInputDetailsStyle } from './field-input-details.style';
+import './field-input-details.styles.css';
 
 import { FieldInput } from '@components/field-input';
-import { FieldParamId } from '@contexts';
+import { FieldParamIdOnlyNumbers } from '@contexts';
 import { Form210Details } from '@core/constants';
 
 type FieldInputDetailsProps = {
-  id: FieldParamId;
+  id: FieldParamIdOnlyNumbers;
 };
 
 export const FieldInputDetails = ({ id }: FieldInputDetailsProps) => {
-  if (!Form210Details[id]) {
-    return null;
-  }
-
-  const { content, title, subtitle, description } = Form210Details[id] ?? {};
+  const { content = '', title = '', subtitle = '', description = '' } = Form210Details[id] ?? {};
 
   return (
-    <FieldInputDetailsStyle>
+    <section className='field-input-details'>
       <section className='details-header'>
         <section>
           <Typography noPadding variant='header3'>
@@ -30,11 +26,11 @@ export const FieldInputDetails = ({ id }: FieldInputDetailsProps) => {
             </Typography>
           ) : null}
         </section>
-        <FieldInput id={id} />
+        {id ? <FieldInput id={id} /> : null}
       </section>
-      <Line lineStyle='dotted' orientation='horizontal' className='line-separator' spacing={4} dotSize={2} />
+      <Line lineStyle='dotted' orientation='horizontal' className='line-separator' spacing={4} size={2} />
       {description ? description : null}
       {content}
-    </FieldInputDetailsStyle>
+    </section>
   );
 };

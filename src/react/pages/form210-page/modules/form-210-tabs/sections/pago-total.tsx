@@ -1,4 +1,4 @@
-import { Tabs, Typography } from 'polpo/ui';
+import { Tabs, Typography } from 'polpo/components';
 
 import { FieldInput } from '@components/field-input';
 import { Form210Sections } from '@core/constants';

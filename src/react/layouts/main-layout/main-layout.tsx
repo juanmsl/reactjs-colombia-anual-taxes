@@ -1,19 +1,17 @@
+import { Image, Typography } from 'polpo/components';
 import { useMediaQuery, useViewport } from 'polpo/hooks';
-import { Image, SimpleLoader, Typography } from 'polpo/ui';
-import { Suspense, useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import { useTheme } from 'styled-components';
 
-import { MainLayoutStyle } from './main-layout.style';
+import './main-layout.styles.css';
 
 import { Navbar } from '@components/navbar';
 
 export const MainLayout = () => {
-  const theme = useTheme();
   const location = useLocation();
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const { width } = useViewport();
-  const isWidthSupported = useMediaQuery(`(min-width: ${theme.constants.breakpoints.laptopS})`);
+  const isWidthSupported = useMediaQuery('(min-width: 1024px');
   const shouldUpdate = useMemo(
     () => !CSS.supports('(grid-template-rows: subgrid) or (grid-template-columns: subgrid)'),
     [],
@@ -25,7 +23,7 @@ export const MainLayout = () => {
 
   if (!isWidthSupported) {
     return (
-      <MainLayoutStyle className='screen-message'>
+      <section className='main-layout screen-message'>
         <section className='screen-message-content'>
           <section className='main-layout-logo'>
             <Image src='/assets/images/logo.png' />
@@ -36,20 +34,20 @@ export const MainLayout = () => {
           </Typography>
           <section>
             <Typography variant='label' as='p' noPadding>
-              <b>Tamaño minimo de la pantalla:</b> {theme.constants.breakpoints.laptopS}
+              <b>Tamaño minimo de la pantalla:</b> 1024px
             </Typography>
             <Typography variant='label' as='p' noPadding>
               <b>Tu tamaño actual:</b> {width}px
             </Typography>
           </section>
         </section>
-      </MainLayoutStyle>
+      </section>
     );
   }
 
   if (shouldUpdate) {
     return (
-      <MainLayoutStyle className='screen-message'>
+      <section className='main-layout screen-message'>
         <section className='screen-message-content'>
           <section className='main-layout-logo'>
             <Image src='/assets/images/logo.png' />
@@ -59,24 +57,16 @@ export const MainLayout = () => {
             Debes actualizar tu navegador a la ultima version para garantizar una mejor experiencia.
           </Typography>
         </section>
-      </MainLayoutStyle>
+      </section>
     );
   }
 
   return (
-    <MainLayoutStyle>
+    <section className='main-layout'>
       <Navbar />
-      <Suspense
-        fallback={
-          <section className='suspense-loader'>
-            <SimpleLoader />
-          </section>
-        }
-      >
-        <section className='main-layout-content' ref={ref}>
-          <Outlet />
-        </section>
-      </Suspense>
-    </MainLayoutStyle>
+      <section className='main-layout-content' ref={ref}>
+        <Outlet />
+      </section>
+    </section>
   );
 };

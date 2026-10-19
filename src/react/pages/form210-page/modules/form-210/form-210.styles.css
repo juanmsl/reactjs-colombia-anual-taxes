@@ -1,0 +1,83 @@
+@layer tailwind-base, local;
+
+@layer local {
+  .form210 {
+    display: grid;
+    gap: 1em;
+    align-content: start;
+    justify-self: start;
+    margin: 0 auto;
+    padding: 2em 0;
+
+    .table-label {
+      text-wrap: balance;
+
+      &.at-bottom {
+        vertical-align: bottom;
+      }
+    }
+
+    .form-section-title {
+      text-align: center;
+      background: var(--color-primary);
+      color: var(--color-primary-foreground);
+      padding: 0.5em;
+      border-radius: 100px;
+    }
+
+    .form-210-actions {
+      vertical-align: top;
+
+      .form-210-actions-content {
+        margin-top: 1em;
+        display: grid;
+        gap: 1em;
+        height: 100%;
+        padding-right: 1em;
+      }
+    }
+  }
+
+  .form-table {
+    border-spacing: 10px;
+    border-collapse: separate;
+
+    .column-title {
+      text-align: center;
+      border: 2px solid;
+      padding: 0.5em;
+      border-radius: 100px;
+      background: hsl(from var(--color-secondary) h s l / 33%);
+      color: var(--color-secondary);
+
+      span {
+        font-size: 1em;
+      }
+    }
+
+    & > tbody > tr > td,
+    & > tbody > tr > th {
+      border: 0;
+      padding: 0;
+      width: 220px;
+      min-width: 220px;
+    }
+
+    .empty {
+      border-radius: 100px;
+    }
+
+    .empty-row {
+      height: 40px;
+    }
+
+    .text-vertical {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      text-align: center;
+      width: auto;
+      min-width: unset;
+    }
+  }
+}

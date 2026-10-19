@@ -1,12 +1,12 @@
-import { AsideModal, Line, Select, Typography, Switch, SlideCard } from 'polpo/ui';
+import { AsideModal, Line, Select, Typography, Switch, SlideCard } from 'polpo/components';
 import { useState } from 'react';
 
 import { FieldInputDetails, FormLabel, MarginTable, Table133 } from './components';
-import { Form210Style, FormTable } from './form-210.style';
+import './form-210.styles.css';
 
 import { FieldInput } from '@components/field-input';
 import { FieldInputContainer } from '@components/field-input-container';
-import { FieldParamId, useForm210, useForm210FieldParams } from '@contexts';
+import { FieldParamIdOnlyNumbers, useForm210, useForm210FieldParams } from '@contexts';
 import { DeclarationNumberOptions, f116MarginTable, f117MarginTable, f119MarginTable } from '@core/constants';
 
 export const Form210 = () => {
@@ -17,14 +17,14 @@ export const Form210 = () => {
   const { value: declarationNumber } = useForm210FieldParams('declarationNumber');
 
   const [showDescriptionTable, setShowDescriptionTable] = useState<`${number | ''}`>('');
-  const [asideID, setAsideID] = useState<FieldParamId | null>(null);
+  const [asideID, setAsideID] = useState<FieldParamIdOnlyNumbers | null>(null);
   const [showCedulaDePensiones, setShowCedulaDePensiones] = useState(false);
   const [showCedulaDeDividendos, setShowCedulaDeDividendos] = useState(false);
   const [showGananciasOcasionales, setShowGananciasOcasionales] = useState(false);
 
   return (
-    <Form210Style>
-      <FormTable>
+    <section className='form210'>
+      <table className='form-table'>
         <tbody>
           <tr>
             <td colSpan={2} rowSpan={7} className='form-210-actions' />
@@ -48,10 +48,10 @@ export const Form210 = () => {
               <FieldInputContainer>
                 <Select
                   options={DeclarationNumberOptions}
-                  optionComponent={({ value }) => <Typography variant='label'>{value.label}</Typography>}
+                  optionComponent={({ value }) => <Typography variant='label'>{value?.label}</Typography>}
                   valueComponent={({ value }) => (
                     <Typography variant='label' noPadding>
-                      {Array.isArray(value) ? value.map(item => item.label) : value.label}
+                      {Array.isArray(value) ? value.map(item => item?.label) : value?.label}
                     </Typography>
                   )}
                   name='declarationNumber'
@@ -60,7 +60,7 @@ export const Form210 = () => {
                   setValue={value =>
                     setData(prev => ({
                       ...prev,
-                      declarationNumber: value.value,
+                      declarationNumber: value?.value ?? 0,
                     }))
                   }
                 />
@@ -734,10 +734,10 @@ export const Form210 = () => {
             <FieldInput inTable id='139' />
           </tr>
         </tbody>
-      </FormTable>
+      </table>
       <AsideModal isOpen={asideID !== null} onClose={() => setAsideID(null)}>
-        <FieldInputDetails id={asideID} />
+        <FieldInputDetails id={asideID!} />
       </AsideModal>
-    </Form210Style>
+    </section>
   );
 };

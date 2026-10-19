@@ -9,10 +9,10 @@ type FormLabelProps = LabelProps & {
   atBottom?: boolean;
 };
 
-export const FormLabel = ({ colSpan, rowSpan, className, atBottom, children, ...labelProps }: FormLabelProps) => {
+export const FormLabel = ({ colSpan, rowSpan, className = '', atBottom, children, ...labelProps }: FormLabelProps) => {
   const labelClassName = useClassNames({
     'table-label': true,
-    'at-bottom': atBottom,
+    'at-bottom': Boolean(atBottom),
     [className]: Boolean(className),
   });
 

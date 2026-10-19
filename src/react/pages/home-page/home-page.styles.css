@@ -1,0 +1,127 @@
+@layer tailwind-base, local;
+
+@layer local {
+  .home-page {
+    display: grid;
+    align-content: start;
+
+    .home-page-logo {
+      width: 10em;
+      height: 10em;
+      border-radius: 50%;
+      padding: 2em;
+      background: var(--color-primary);
+      color: var(--color-primary-foreground);
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .home-header {
+      display: grid;
+      gap: 2em;
+      align-content: center;
+      justify-items: center;
+      min-height: var(--breakpoint-md);
+
+      .home-header-title {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: auto auto;
+        align-items: center;
+        gap: 2em;
+        max-width: 930px;
+      }
+
+      .home-header-description {
+        max-width: 70ch;
+      }
+    }
+  }
+
+  .declaration-year-data {
+    background: hsl(from var(--color-background-paper) h s l / 15%);
+    backdrop-filter: blur(0.5em);
+    padding: 10em 2em;
+
+    .year-data-section-content {
+      display: grid;
+      gap: 2em;
+      align-content: center;
+      text-align: center;
+    }
+
+    .year-data-content {
+      display: grid;
+      gap: 1em;
+      align-content: start;
+      justify-content: center;
+      grid-template-columns: repeat(auto-fit, 350px);
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .year-data-item {
+      display: grid;
+      grid-auto-flow: row;
+      place-content: center;
+      place-items: center;
+      text-align: center;
+      text-wrap: balance;
+      transition: all 300ms ease;
+      background: var(--color-primary);
+      color: var(--color-primary-foreground);
+      border: 1px solid;
+      padding: 1em;
+      border-radius: 10px;
+
+      &:hover {
+        background: var(--color-primary-800);
+      }
+    }
+  }
+
+  .declaration-requirements {
+    display: grid;
+    gap: 1em;
+    place-content: center;
+    min-height: var(--breakpoint-md);
+    padding: 4em 0;
+
+    .declaration-content {
+      display: grid;
+      gap: 1em;
+      align-content: start;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .declaration-requirement {
+      display: grid;
+      gap: 4px;
+      grid-template-rows: subgrid;
+      grid-row: span 3;
+      border: 1px solid var(--color-primary);
+      background: var(--color-background);
+      padding: 1em;
+      border-radius: 10px;
+      transition: all 300ms ease;
+
+      .requirement-title {
+        border-bottom: 1px solid;
+        margin-bottom: 1em;
+      }
+
+      .requirement-text {
+      }
+
+      .requirement-value {
+        color: var(--color-primary);
+      }
+
+      &:hover {
+        background: hsl(from var(--color-primary) h s l / 15%);
+      }
+    }
+  }
+}

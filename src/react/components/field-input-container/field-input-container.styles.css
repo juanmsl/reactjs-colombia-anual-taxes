@@ -1,0 +1,75 @@
+@layer tailwind-base, local;
+
+@layer local {
+  .field-input-container {
+    display: grid;
+    gap: 4px;
+
+    .formula {
+      text-align: center;
+    }
+  }
+
+  .field-input-content {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 10px;
+    border: 1px solid;
+    align-items: center;
+    border-radius: 50px;
+    padding: 4px 10px 4px 4px;
+    background: var(--color-background);
+    color: var(--color-foreground);
+
+    .form-field-id {
+      background: var(--color-secondary);
+      color: var(--color-white);
+      padding: 4px;
+      display: grid;
+      place-content: center;
+
+      border-radius: 40px;
+      width: 36px;
+      height: 36px;
+    }
+
+    &.no-field-id {
+      padding: 4px 20px;
+      height: 46px;
+      grid-template-columns: 1fr;
+
+      .form-field-id {
+        display: none;
+      }
+    }
+
+    .form-field-value {
+      border-radius: 0 40px 40px 0;
+      display: grid;
+      align-items: center;
+      height: 100%;
+    }
+
+    &.is-locked {
+    }
+
+    &.is-disabled {
+      background: var(--color-gray-100);
+      color: var(--color-gray-400);
+
+      .form-field-id {
+        background: var(--color-gray-300);
+        color: var(--color-gray-400);
+      }
+    }
+
+    &.read-only {
+      background: hsl(from var(--color-secondary-200) h s l / 33%);
+      color: var(--color-secondary);
+
+      input {
+        font-weight: bold;
+      }
+    }
+  }
+}

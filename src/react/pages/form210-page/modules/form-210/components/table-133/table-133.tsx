@@ -1,6 +1,6 @@
-import { Typography } from 'polpo/ui';
+import { Typography } from 'polpo/components';
 
-import { Table133Style } from './table-133.style';
+import './table-133.styles.css';
 
 import { useForm210FieldParams } from '@contexts';
 import { formatNumber, getPrevPaymentYearPercentage } from '@helpers';
@@ -12,7 +12,7 @@ export const Table133 = () => {
   const { value: f132 } = useForm210FieldParams('132');
 
   return (
-    <Table133Style>
+    <section className='table133'>
       <Typography noPadding variant='label'>
         Para calcular el anticipo hay que calcular basado en 2 metodos y escoger el menor
       </Typography>
@@ -256,6 +256,6 @@ export const Table133 = () => {
           </table>
         </section>
       </section>
-    </Table133Style>
+    </section>
   );
 };

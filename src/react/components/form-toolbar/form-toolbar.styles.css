@@ -1,0 +1,65 @@
+@layer tailwind-base, local;
+
+@layer local {
+  .form-toolbar {
+    position: absolute;
+    top: 2em;
+    left: 0;
+    padding: 1em;
+    border-radius: 10em;
+    background: hsl(from var(--color-gray-100) h s l / 20%);
+    backdrop-filter: blur(1em);
+    border: 1px solid hsl(from var(--color-gray-200) h s l / 25%);
+    align-self: start;
+    box-shadow: 0 0 1em -0.3em hsl(from var(--color-gray-400) h s l / 50%);
+    display: grid;
+    align-content: start;
+    grid-auto-flow: row;
+    justify-items: center;
+    gap: 2em;
+
+    .toolbar-label {
+      transform: rotate(180deg);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+
+    .form-toolbar-actions {
+      display: grid;
+      grid-auto-flow: row;
+      gap: 1em;
+      justify-items: center;
+    }
+
+    .form-toolbar-navlink {
+      &.active {
+        button:not(:hover) {
+          background: var(--color-primary);
+          color: var(--color-primary-foreground);
+        }
+
+        button:hover {
+          background: hsl(from var(--color-primary) h s l / 66%);
+          color: var(--color-primary-foreground);
+        }
+      }
+
+      &:not(.active) {
+        button:hover {
+          background: hsl(from var(--color-primary) h s l / 80%);
+          color: var(--color-primary-foreground);
+        }
+      }
+    }
+
+    .shared-data {
+      display: grid;
+      padding: 0.5em 1.5em;
+      border-radius: 20px;
+      border: 1px solid;
+      align-items: center;
+      align-content: center;
+      gap: 2px;
+    }
+  }
+}

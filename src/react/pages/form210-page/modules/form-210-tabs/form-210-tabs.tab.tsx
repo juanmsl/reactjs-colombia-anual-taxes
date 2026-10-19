@@ -1,6 +1,6 @@
-import { Tooltip, Typography } from 'polpo/ui';
+import { Tooltip, Typography } from 'polpo/components';
 
-import { Form210TabStyle } from './form-210-tabs.style';
+import './form-210-tabs.styles.css';
 
 type Form210TabProps = {
   children?: React.ReactNode;
@@ -10,11 +10,11 @@ type Form210TabProps = {
 export const Form210Tab = ({ children, tooltip }: Form210TabProps) => {
   return (
     <Tooltip content={tooltip} offset={10}>
-      <Form210TabStyle>
+      <span className='form210-tab'>
         <Typography nowrap noPadding>
           {children}
         </Typography>
-      </Form210TabStyle>
+      </span>
     </Tooltip>
   );
 };

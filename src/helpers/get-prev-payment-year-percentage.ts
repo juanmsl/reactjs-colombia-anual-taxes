@@ -2,7 +2,6 @@ export function getPrevPaymentYearPercentage(declarationNumber: number, format?:
 
 export function getPrevPaymentYearPercentage(declarationNumber: number, format?: 'string'): string;
 
-// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function getPrevPaymentYearPercentage(
   declarationNumber: number,
   format: 'number' | 'string' = 'number',

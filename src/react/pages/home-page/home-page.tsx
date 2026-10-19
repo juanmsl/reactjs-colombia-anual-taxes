@@ -1,12 +1,13 @@
-import { Image, Typography, SectionLayout } from 'polpo/ui';
+import { Image, Typography } from 'polpo/components';
 import { useMemo } from 'react';
 
-import { DeclarationRequirementsStyle, DeclarationYearDataStyle, HomePageStyle } from './home-page.style';
+import './home-page.styles.css';
 
 import { Footer } from '@components/footer';
 import { useForm210, useForm210FieldParams } from '@contexts';
 import { DeclarationRequirements } from '@core/constants';
 import { formatNumber } from '@helpers';
+import { SectionLayout } from '@layouts/section-layout';
 
 export const HomePage = () => {
   const { uvt, valueFromUVT, minimumSalary } = useForm210();
@@ -35,7 +36,7 @@ export const HomePage = () => {
   );
 
   return (
-    <HomePageStyle>
+    <section className='home-page'>
       <SectionLayout>
         <section className='home-header'>
           <section className='home-header-title'>
@@ -61,7 +62,7 @@ export const HomePage = () => {
         </section>
       </SectionLayout>
 
-      <DeclarationYearDataStyle fitHeightContent contentClassName='year-data-section-content'>
+      <SectionLayout className='declaration-year-data' fitHeightContent contentClassName='year-data-section-content'>
         <section>
           <Typography variant='header1' noPadding>
             Declaración de renta {+year + 1}
@@ -85,10 +86,10 @@ export const HomePage = () => {
             </section>
           ))}
         </section>
-      </DeclarationYearDataStyle>
+      </SectionLayout>
 
       <SectionLayout>
-        <DeclarationRequirementsStyle>
+        <section className='declaration-requirements'>
           <Typography variant='header4'>Debes declarar si...</Typography>
           <Typography>
             Recuerda que en {+year + 1} para declarar renta sobre el año gravable {year}, debes haber cumplido con
@@ -116,10 +117,10 @@ export const HomePage = () => {
               </section>
             ))}
           </section>
-        </DeclarationRequirementsStyle>
+        </section>
       </SectionLayout>
 
       <Footer />
-    </HomePageStyle>
+    </section>
   );
 };
