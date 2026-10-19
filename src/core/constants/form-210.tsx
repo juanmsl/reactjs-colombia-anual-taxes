@@ -1,4 +1,4 @@
-import { Typography } from 'polpo/ui';
+import { Typography } from 'polpo/components';
 import React from 'react';
 
 import { Patrimonio } from '../../react/pages/form210-page/modules/form-210/components';
@@ -249,7 +249,7 @@ export const Form210DataLimits: Record<
 
 export type MarginTableEntity = Array<{
   uvt: number;
-  maxUvt: number;
+  maxUvt: number | null;
   tm: number;
   imp: number;
 }>;

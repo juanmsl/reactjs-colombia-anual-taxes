@@ -1,9 +1,10 @@
-import { AsideModal, Grid, Tabs } from 'polpo/ui';
+import { AsideModal, Tabs } from 'polpo/components';
+import { Grid } from 'polpo/layouts';
 import { useState } from 'react';
 
 import { FieldInputDetails } from '../form-210/components';
 
-import { Form210TabsStyle } from './form-210-tabs.style';
+import './form-210-tabs.styles.css';
 import {
   CedulaDividendos,
   CedulaGeneral,
@@ -20,15 +21,16 @@ import {
   RentasPorHonorarios,
 } from './sections';
 
-import { FieldParamId } from '@contexts';
+import { FieldParamIdOnlyNumbers } from '@contexts';
 import { Form210Sections } from '@core/constants';
+import { SectionLayout } from '@layouts/section-layout';
 
 export const Form210Tabs = () => {
-  const [asideID, setAsideID] = useState<FieldParamId | null>(null);
+  const [asideID, setAsideID] = useState<FieldParamIdOnlyNumbers | null>(null);
 
   return (
     <Tabs defaultOpenTab={Form210Sections.INICIO}>
-      <Form210TabsStyle alignContent='start' contentClassName='form-210-content'>
+      <SectionLayout className='form210-tabs' alignContent='start' contentClassName='form-210-content'>
         <Tabs.TabList
           className='tabs-list-container'
           variant='flat'
@@ -67,10 +69,10 @@ export const Form210Tabs = () => {
           <Dependientes />
           <PagoTotal />
         </Grid>
-      </Form210TabsStyle>
+      </SectionLayout>
 
       <AsideModal isOpen={asideID !== null} onClose={() => setAsideID(null)}>
-        <FieldInputDetails id={asideID} />
+        <FieldInputDetails id={asideID!} />
       </AsideModal>
     </Tabs>
   );

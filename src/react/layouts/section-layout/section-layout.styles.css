@@ -1,0 +1,19 @@
+@layer tailwind-base, local;
+
+@layer local {
+  .section-layout {
+    display: grid;
+    padding: var(--padding, 0 2px);
+
+    .section-content {
+      max-width: var(--breakpoint-xl);
+      width: 100%;
+      margin: 0 auto;
+
+      &.section-layout-min-height {
+        min-height: var(--breakpoint-md);
+        display: grid;
+      }
+    }
+  }
+}

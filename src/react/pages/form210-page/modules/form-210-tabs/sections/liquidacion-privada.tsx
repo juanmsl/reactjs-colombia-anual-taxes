@@ -1,14 +1,14 @@
-import { Line, Tabs, Typography } from 'polpo/ui';
+import { Line, Tabs, Typography } from 'polpo/components';
 import { useState } from 'react';
 
 import { MarginTable, Table133 } from '../../form-210/components';
 
 import { FieldInput } from '@components/field-input';
-import { FieldParamId, useForm210, useForm210FieldParams } from '@contexts';
+import { FieldParamIdOnlyNumbers, useForm210, useForm210FieldParams } from '@contexts';
 import { f116MarginTable, f117MarginTable, f119MarginTable, Form210Sections } from '@core/constants';
 
 type LiquidacionPrivadaProps = {
-  setAsideID: (id: FieldParamId | null) => void;
+  setAsideID: (id: FieldParamIdOnlyNumbers | null) => void;
 };
 
 export const LiquidacionPrivada = ({ setAsideID }: LiquidacionPrivadaProps) => {

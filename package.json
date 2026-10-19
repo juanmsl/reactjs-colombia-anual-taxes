@@ -6,33 +6,32 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc -b && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "lint:fix": "yarn lint --fix",
+    "lint": "eslint src --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "pnpm lint --fix",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@juanmsl/eslint-config": "^0.0.8",
-    "@juanmsl/tsconfig": "^0.0.2",
+    "@tailwindcss/vite": "^4.3.3",
     "@vercel/analytics": "^1.3.1",
     "@vercel/speed-insights": "^1.0.12",
-    "framer-motion": "^11.3.2",
-    "polpo": "^0.1.7",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "polpo": "^0.1.32",
+    "polpo-tailwind-config": "^0.1.3",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "react-hook-form": "^7.52.1",
+    "react-icons": "^5.7.0",
     "react-router-dom": "^6.24.1",
-    "styled-components": "^6.1.11"
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^7.13.1",
-    "@typescript-eslint/parser": "^7.13.1",
-    "@vitejs/plugin-react": "^4.3.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.7",
-    "typescript": "^5.2.2",
-    "vite": "^5.3.1"
+    "@types/react": "^19.2.3",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.4",
+    "eslint": "^9.31.0",
+    "polpo-eslint-config": "^1.0.1",
+    "polpo-typescript-config": "^1.0.1",
+    "typescript": "^5.8.2",
+    "vite": "^8.2.0"
   }
 }

@@ -1,20 +1,17 @@
+import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
   resolve: {
-    alias: {
-      '@core': '/src/core',
-      '@assets': '/src/assets',
-      '@helpers': '/src/helpers',
-      '@components': '/src/react/components',
-      '@layouts': '/src/react/layouts',
-      '@contexts': '/src/react/contexts',
-      '@pages': '/src/react/pages',
-      '@hooks': '/src/react/hooks',
-      '@router': '/src/react/router',
-    },
+    tsconfigPaths: true,
+  },
+  optimizeDeps: {
+    include: ['polpo/components'],
   },
 });

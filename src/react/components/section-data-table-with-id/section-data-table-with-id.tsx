@@ -1,4 +1,4 @@
-import { KeyValuesOf } from 'polpo/ui';
+import { KeyValuesOf } from 'polpo/components';
 
 import { SectionDataTable } from '@components/section-data-table';
 import { useForm210FieldParams } from '@contexts';

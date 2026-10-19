@@ -1,11 +1,11 @@
-import { Line, Tabs, Typography } from 'polpo/ui';
+import { Line, Tabs, Typography } from 'polpo/components';
 
 import { FieldInput } from '@components/field-input';
-import { FieldParamId } from '@contexts';
+import { FieldParamIdOnlyNumbers } from '@contexts';
 import { Form210Sections } from '@core/constants';
 
 type RentasDeCapitalProps = {
-  setAsideID: (id: FieldParamId | null) => void;
+  setAsideID: (id: FieldParamIdOnlyNumbers | null) => void;
 };
 
 export const RentasDeCapital = ({ setAsideID }: RentasDeCapitalProps) => {

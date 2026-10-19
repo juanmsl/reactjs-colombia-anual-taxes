@@ -1,8 +1,14 @@
-import { Button, ConfirmationModal, Grid, Icon, Line, Tooltip, Typography } from 'polpo/ui';
+import { Button, ConfirmationModal, Line, Tooltip, Typography } from 'polpo/components';
+import { Grid } from 'polpo/layouts';
 import { useState } from 'react';
+import { FaTrashCan } from 'react-icons/fa6';
+import { GrPowerReset } from 'react-icons/gr';
+import { HiOutlineDocumentText } from 'react-icons/hi2';
+import { LuDownload, LuTextCursorInput, LuUpload } from 'react-icons/lu';
+import { RiListOrdered2 } from 'react-icons/ri';
 import { NavLink } from 'react-router-dom';
 
-import { FormToolbarStyle } from './form-toolbar.style';
+import './form-toolbar.styles.css';
 
 import { useForm210, useForm210FieldParams } from '@contexts';
 import { PATHS } from '@core/constants';
@@ -17,20 +23,20 @@ export const FormToolbar = ({ style }: FormToolbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <FormToolbarStyle style={style} fitHeightContent contentClassName='form-toolbar-content'>
+    <section className='form-toolbar' style={style}>
       <section className='form-toolbar-actions'>
         <Line orientation='vertical' style={{ height: '20px' }} />
         <NavLink end to={PATHS.FORM210_FORM} className='form-toolbar-navlink'>
           <Tooltip content='Formulario' position='right'>
-            <Button radius='full' variant='ghost' size='small'>
-              <Icon name='form' size='1.5em' />
+            <Button radius='full' variant='outlined' forIcon size='small'>
+              <LuTextCursorInput size='1.5em' />
             </Button>
           </Tooltip>
         </NavLink>
         <NavLink end to={PATHS.FORM210_STEPS} className='form-toolbar-navlink'>
           <Tooltip content='Paso a paso' position='right'>
-            <Button radius='full' variant='ghost' size='small'>
-              <Icon name='order-list' size='1.5em' />
+            <Button radius='full' variant='outlined' forIcon size='small'>
+              <RiListOrdered2 size='1.5em' />
             </Button>
           </Tooltip>
         </NavLink>
@@ -39,18 +45,18 @@ export const FormToolbar = ({ style }: FormToolbarProps) => {
       <section className='form-toolbar-actions'>
         <Line orientation='vertical' style={{ height: '20px' }} />
         <Tooltip content='Descargar' position='right'>
-          <Button radius='full' variant='ghost' onClick={downloadData} size='small'>
-            <Icon name='download' size='1.5em' />
+          <Button radius='full' variant='outlined' forIcon onClick={downloadData} size='small'>
+            <LuDownload size='1.5em' />
           </Button>
         </Tooltip>
         <Tooltip content='Cargar' position='right'>
-          <Button radius='full' variant='ghost' onClick={loadData} size='small'>
-            <Icon name='upload' size='1.5em' />
+          <Button radius='full' variant='outlined' forIcon onClick={loadData} size='small'>
+            <LuUpload size='1.5em' />
           </Button>
         </Tooltip>
         <Tooltip content='Reiniciar formulario' position='right'>
-          <Button radius='full' variant='ghost' onClick={() => setIsOpen(true)} size='small'>
-            <Icon name='arrow-circle' size='1.5em' />
+          <Button radius='full' variant='outlined' forIcon onClick={() => setIsOpen(true)} size='small'>
+            <GrPowerReset size='1.5em' />
           </Button>
         </Tooltip>
       </section>
@@ -72,8 +78,8 @@ export const FormToolbar = ({ style }: FormToolbarProps) => {
             rel='noopener'
             className='form-link'
           >
-            <Button radius='full' variant='ghost' size='small'>
-              <Icon name='document' size='1.5em' />
+            <Button radius='full' variant='outlined' forIcon size='small'>
+              <HiOutlineDocumentText size='1.5em' />
             </Button>
           </a>
         </Tooltip>
@@ -86,10 +92,10 @@ export const FormToolbar = ({ style }: FormToolbarProps) => {
         onAccept={resetData}
         acceptText='Reiniciar'
         rejectText='Cancelar'
-        icon='trash-can'
+        icon={FaTrashCan}
       >
         <Typography>¿Seguro que quieres borrar toda la información y reiniciar el formulario?</Typography>
       </ConfirmationModal>
-    </FormToolbarStyle>
+    </section>
   );
 };

@@ -1,9 +1,9 @@
-import { Typography } from 'polpo/ui';
+import { Typography } from 'polpo/components';
 import React from 'react';
 
 import { FormLabel } from '../form-label';
 
-import { MarginTableStyle } from './margin-table.style';
+import './margin-table.styles.css';
 
 import { Label } from '@components/label';
 import { useForm210 } from '@contexts';
@@ -19,11 +19,11 @@ type MarginTableProps = {
 };
 
 export const MarginTable = ({ id, marginTable, value, uvtValue, children }: MarginTableProps) => {
-  const { uvt, tm, imp } = marginTable.find(({ uvt }) => uvtValue >= uvt);
+  const { uvt, tm, imp } = marginTable.find(({ uvt }) => uvtValue >= uvt)!;
   const { valueFromUVT } = useForm210();
 
   return (
-    <MarginTableStyle>
+    <section className='margin-table-container'>
       {children}
       <Typography variant='label'>Se aplica la tarifa de la siguiente tabla a la celda {id} en UVT</Typography>
       <section className='columns'>
@@ -47,7 +47,7 @@ export const MarginTable = ({ id, marginTable, value, uvtValue, children }: Marg
               <FormLabel>+ IMP</FormLabel>
             </tr>
             {marginTable.toReversed().map(({ uvt, maxUvt, tm, imp }) => (
-              <tr key={uvt} className={uvt <= uvtValue && uvtValue < maxUvt ? 'selected-row' : ''}>
+              <tr key={uvt} className={maxUvt && uvt <= uvtValue && uvtValue < maxUvt ? 'selected-row' : ''}>
                 <td>
                   <Typography noPadding variant='label'>
                     {uvt}
@@ -106,6 +106,6 @@ export const MarginTable = ({ id, marginTable, value, uvtValue, children }: Marg
           </li>
         </ol>
       </section>
-    </MarginTableStyle>
+    </section>
   );
 };

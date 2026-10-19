@@ -157,6 +157,10 @@ export type FormFieldParams = {
 };
 
 export type FieldParamId = keyof FormFieldParams;
+export type FieldParamIdOnlyNumbers = keyof Omit<
+  FormFieldParams,
+  'year' | 'declarationNumber' | 'prevDeclarationValue'
+>;
 
 type Form210ContextEntity = {
   uvt: number;
@@ -196,14 +200,14 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
     const years = Object.keys(YearsForm210Data);
     const selectedYear = years[years.length - 2];
 
-    return YearsForm210Data[selectedYear];
+    return YearsForm210Data[+selectedYear];
   });
 
   useEffect(() => {
     const years = Object.keys(YearsForm210Data);
     const selectedYear = years[years.length - 1];
 
-    setYearData(YearsForm210Data[d.year] ?? YearsForm210Data[selectedYear]);
+    setYearData(YearsForm210Data[d.year] ?? YearsForm210Data[+selectedYear]);
   }, [d.year]);
 
   const valueToUVT = useCallback<Form210ContextEntity['valueToUVT']>((value: number) => value / uvt, [uvt]);
@@ -256,7 +260,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
   );
 
   const getTotalOf = useCallback(
-    (array: Array<Form210DataItem>) => array.reduce((total, value) => total + value.value, 0),
+    (array: Array<Form210DataItem> = []) => array.reduce((total, value) => total + value.value, 0),
     [],
   );
 
@@ -277,8 +281,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
   const f38 = useMemo(() => getTotalOf(d['38']), [d, getTotalOf]);
   const f39 = useMemo(() => getTotalOf(d['39']), [d, getTotalOf]);
   const f40 = useMemo(() => v(f38 + f39), [f38, f39]);
-  const f41 = useMemo(() => v(f37 + f40), [f37, f40]);
-  const f42 = useMemo(() => v(Math.max(f34 - f41, 0)), [f34, f41]);
+
   const f43 = useMemo(() => getTotalOf(d['43']), [d, getTotalOf]);
   const f44 = useMemo(() => getTotalOf(d['44']), [d, getTotalOf]);
   const f45 = useMemo(() => getTotalOf(d['45']), [d, getTotalOf]);
@@ -289,10 +292,8 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
   const f50 = useMemo(() => getTotalOf(d['50']), [d, getTotalOf]);
   const f51 = useMemo(() => getTotalOf(d['51']), [d, getTotalOf]);
   const f52 = useMemo(() => v(f50 + f51), [f50, f51]);
-  const f53 = useMemo(() => v(f49 + f52), [f49, f52]);
-  const f54 = useMemo(() => v(Math.max(f46 - f53, 0)), [f46, f53]);
+
   const f55 = useMemo(() => v(Math.max(f44 + f45 - f43, 0)), [f43, f44, f45]);
-  const f57 = useMemo(() => v(Math.max(f54 - d['56'], 0)), [d, f54]);
   const f58 = useMemo(() => getTotalOf(d['58']), [d, getTotalOf]);
   const f59 = useMemo(() => getTotalOf(d['59']), [d, getTotalOf]);
   const f60 = useMemo(() => getTotalOf(d['60']), [d, getTotalOf]);
@@ -304,10 +305,8 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
   const f66 = useMemo(() => getTotalOf(d['66']), [d, getTotalOf]);
   const f67 = useMemo(() => getTotalOf(d['67']), [d, getTotalOf]);
   const f68 = useMemo(() => v(f66 + f67), [f66, f67]);
-  const f69 = useMemo(() => v(f65 + f68), [f65, f68]);
-  const f70 = useMemo(() => v(Math.max(f61 + f62 - f69, 0)), [f61, f62, f69]);
+
   const f71 = useMemo(() => v(Math.max(f59 + f60 - f58 - f62, 0)), [f58, f59, f60, f62]);
-  const f73 = useMemo(() => v(Math.max(f70 - d['72'], 0)), [d, f70]);
   const f74 = useMemo(() => getTotalOf(d['74']), [d, getTotalOf]);
   const f75 = useMemo(() => getTotalOf(d['75']), [d, getTotalOf]);
   const f76 = useMemo(() => getTotalOf(d['76']), [d, getTotalOf]);
@@ -320,16 +319,35 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
   const f83 = useMemo(() => getTotalOf(d['83']), [d, getTotalOf]);
   const f84 = useMemo(() => getTotalOf(d['84']), [d, getTotalOf]);
   const f85 = useMemo(() => v(f83 + f84), [f83, f84]);
-  const f86 = useMemo(() => v(f82 + f85), [f82, f85]);
+
+  const netIncome = useMemo(() => f34 + f46 + f61 + f78, [f34, f46, f61, f78]);
+  const netIncomePercentageLimit = useMemo(() => 0.4 * netIncome, [netIncome]);
+  const netIncomeUVTLimit = useMemo(() => uvt * 1340, [uvt]);
+  const netIncomeLimit = useMemo(
+    () => Math.min(netIncomePercentageLimit, netIncomeUVTLimit),
+    [netIncomeUVTLimit, netIncomePercentageLimit],
+  );
+
+  const f41 = useMemo(() => v(Math.min(f37 + f40, netIncomeLimit)), [f37, f40, netIncomeLimit]);
+  const f41NetIncomeLimit = useMemo(() => Math.max(0, netIncomeLimit - f41), [f41, netIncomeLimit]);
+  const f53 = useMemo(() => v(Math.min(f49 + f52, f41NetIncomeLimit)), [f49, f52, f41NetIncomeLimit]);
+  const f53NetIncomeLimit = useMemo(() => Math.max(0, f41NetIncomeLimit - f53), [f53, f41NetIncomeLimit]);
+  const f69 = useMemo(() => v(Math.min(f65 + f68, f53NetIncomeLimit)), [f65, f68, f53NetIncomeLimit]);
+  const f69NetIncomeLimit = useMemo(() => Math.max(0, f53NetIncomeLimit - f69), [f69, f53NetIncomeLimit]);
+  const f86 = useMemo(() => v(Math.min(f82 + f85, f69NetIncomeLimit)), [f82, f85, f69NetIncomeLimit]);
+
+  const f42 = useMemo(() => v(Math.max(f34 - f41, 0)), [f34, f41]);
+  const f54 = useMemo(() => v(Math.max(f46 - f53, 0)), [f46, f53]);
+  const f57 = useMemo(() => v(Math.max(f54 - d['56'], 0)), [d, f54]);
+  const f70 = useMemo(() => v(Math.max(f61 + f62 - f69, 0)), [f61, f62, f69]);
+  const f73 = useMemo(() => v(Math.max(f70 - d['72'], 0)), [d, f70]);
+
   const f87 = useMemo(() => v(Math.max(f78 + f79 - f86, 0)), [f78, f79, f86]);
   const f88 = useMemo(() => v(Math.max(f75 + f76 + f77 - f74 - f79, 0)), [f74, f75, f76, f77, f79]);
   const f90 = useMemo(() => v(f87 - d['89']), [d, f87]);
-  const f91 = useMemo(() => v(f41 + f42 + f53 + f57 + f69 + f73 + f86 + f90), [f41, f42, f53, f57, f69, f73, f86, f90]);
-  const f139 = useMemo(() => v(d['138'] * valueFromUVT(72)), [d, valueFromUVT]);
-  const f92 = useMemo(
-    () => v(Math.min(d['28'] + f41 + f53 + f69 + f86 + f139, valueFromUVT(1340))),
-    [d, f41, f53, f69, f86, f139, valueFromUVT],
-  );
+  const f91 = useMemo(() => v(netIncome), [netIncome]);
+  const f139 = useMemo(() => v(Math.min(d['138'], 4) * valueFromUVT(72)), [d, valueFromUVT]);
+  const f92 = useMemo(() => d['28'] + f41 + f53 + f69 + f86 + f139, [d, f41, f53, f69, f86, f139]);
   const f93 = useMemo(() => v(Math.max(f91 - f92, 0)), [f91, f92]);
   const f97 = useMemo(() => v(Math.max(f93 + d['96'] - d['94'] - d['95'], 0)), [d, f93]);
   const f101 = useMemo(() => v(Math.max(d['99'] - d['100'], 0)), [d]);
@@ -394,13 +412,15 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
     input.type = 'file';
     input.accept = 'application/json';
     input.onchange = () => {
-      const file = input.files[0];
-      const reader = new FileReader();
-      reader.onload = () => {
-        const data = JSON.parse(reader.result as string);
-        setData({ ...defaultForm210Data, ...data });
-      };
-      reader.readAsText(file);
+      if (input.files) {
+        const file = input.files[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+          const data = JSON.parse(reader.result as string);
+          setData({ ...defaultForm210Data, ...data });
+        };
+        reader.readAsText(file);
+      }
     };
     input.click();
   }, []);
@@ -494,7 +514,7 @@ export const Form210Provider = ({ children }: Form210ProviderProps) => {
     91: {
       value: f91,
       readOnly: true,
-      formula: '41 + 42 + 53 + 57 + 69 + 73 + 86 + 90',
+      formula: '34 + 46 + 61 + 78',
     },
     92: {
       value: f92,

@@ -1,4 +1,6 @@
-import { FormFieldStyle } from './field-input.style';
+import { FaPencil } from 'react-icons/fa6';
+
+import './field-input.styles.css';
 
 import { FieldInputContainer } from '@components/field-input-container';
 import { FormField } from '@components/form-field';
@@ -49,7 +51,7 @@ export const FieldInput = ({
         disabled={disabled || readOnly || locked}
         roundTo={roundTo}
         format={format}
-        rightIcon={!disabled && locked ? 'pencil' : undefined}
+        rightIcon={!disabled && locked ? FaPencil : undefined}
         min={min}
         max={max}
       />
@@ -58,15 +60,15 @@ export const FieldInput = ({
 
   if (inTable) {
     return (
-      <FormFieldStyle
+      <td
         rowSpan={rowSpan}
         colSpan={colSpan}
         style={{ verticalAlign: 'top' }}
         onClick={!disabled ? onClick : undefined}
-        className={!disabled && onClick ? 'field-with-overlay' : ''}
+        className={`field-input ${!disabled && onClick ? 'field-with-overlay' : ''}`}
       >
         {input}
-      </FormFieldStyle>
+      </td>
     );
   }
 

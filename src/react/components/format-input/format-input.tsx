@@ -1,5 +1,6 @@
-import { FieldVariant, IconNameT, Input } from 'polpo/ui';
+import { FieldVariant, Input } from 'polpo/components';
 import { useCallback, useMemo, useState } from 'react';
+import { IconType } from 'react-icons';
 
 import { formatNumber } from '@helpers';
 
@@ -13,8 +14,8 @@ type FormatInputProps = {
   format?: 'currency' | 'number';
   setValue: (value: number) => void;
   label?: string;
-  rightIcon?: IconNameT;
-  leftIcon?: IconNameT;
+  rightIcon?: IconType;
+  leftIcon?: IconType;
   min?: number;
   max?: number;
   variant?: `${FieldVariant}`;

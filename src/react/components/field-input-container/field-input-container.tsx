@@ -1,8 +1,8 @@
+import { Typography } from 'polpo/components';
 import { useClassNames } from 'polpo/hooks';
-import { Typography } from 'polpo/ui';
 import { ReactNode } from 'react';
 
-import { FieldInputContainerStyle, FieldInputContentStyle } from './field-input-container.style';
+import './field-input-container.styles.css';
 
 export type FieldInputContainerProps = {
   id?: string;
@@ -25,27 +25,28 @@ export const FieldInputContainer = ({
   formula,
 }: FieldInputContainerProps) => {
   const fieldClassName = useClassNames({
-    'read-only': readOnly,
-    'is-disabled': disabled,
-    'is-locked': !disabled && locked,
+    'field-input-content': true,
+    'read-only': Boolean(readOnly),
+    'is-disabled': Boolean(disabled),
+    'is-locked': Boolean(!disabled && locked),
     'no-field-id': Number.isNaN(Number(id)),
   });
 
   return (
-    <FieldInputContainerStyle>
-      <FieldInputContentStyle className={fieldClassName}>
+    <section className='field-input-container'>
+      <section className={fieldClassName}>
         <section className='form-field-id'>
           <Typography variant='small' weight='bold' noPadding nowrap>
             {id}
           </Typography>
         </section>
         <section className='form-field-value'>{children}</section>
-      </FieldInputContentStyle>
+      </section>
       {formula ? (
         <Typography onClick={action} variant='small' weight='bold' className='formula' noPadding>
           {formula}
         </Typography>
       ) : null}
-    </FieldInputContainerStyle>
+    </section>
   );
 };

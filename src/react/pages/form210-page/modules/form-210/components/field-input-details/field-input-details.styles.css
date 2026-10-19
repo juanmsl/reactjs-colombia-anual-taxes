@@ -1,0 +1,21 @@
+@layer tailwind-base, local;
+
+@layer local {
+  .field-input-details {
+    display: grid;
+    gap: 1em;
+    width: 600px;
+
+    .details-header {
+      display: grid;
+      justify-content: space-between;
+      gap: 3em;
+      align-items: center;
+      grid-auto-flow: column;
+    }
+
+    .line-separator {
+      margin-bottom: 2em;
+    }
+  }
+}

@@ -1,0 +1,79 @@
+@layer tailwind-base, local;
+
+@layer local {
+  .navbar {
+    background: hsl(from var(--color-background-paper) h s l / 25%);
+    backdrop-filter: blur(1em);
+    box-shadow: 0 -8px 1em 4px hsl(from var(--color-gray-800) h s l / 50%);
+
+    .navbar-content {
+      padding: 1em 0;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 4em;
+    }
+
+    .navbar-logo {
+      display: flex;
+      gap: 0.5em;
+      align-items: center;
+
+      img {
+        width: 48px;
+      }
+    }
+
+    .navbar-links {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 2em;
+      align-items: center;
+      justify-content: start;
+    }
+
+    .navbar-actions {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+    }
+
+    .navbar-icon {
+      cursor: pointer;
+      padding: 0.5em;
+      border-radius: 50%;
+      box-sizing: content-box;
+      transition: all 300ms ease;
+
+      &:hover,
+      &.is-active {
+        background: var(--color-primary);
+        color: var(--color-primary-foreground);
+      }
+    }
+  }
+
+  .nav-link {
+    display: block;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -0.5em;
+      left: 50%;
+      width: 0;
+      height: 1px;
+      background: var(--color-foreground);
+      transition: all 200ms ease;
+    }
+
+    &:hover,
+    &.active {
+      &::before {
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
+}

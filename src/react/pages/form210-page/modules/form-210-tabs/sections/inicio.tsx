@@ -1,4 +1,4 @@
-import { Select, Tabs, Typography } from 'polpo/ui';
+import { Select, Tabs, Typography } from 'polpo/components';
 
 import { FieldInput } from '@components/field-input';
 import { FieldInputContainer } from '@components/field-input-container';
@@ -19,10 +19,10 @@ export const Inicio = () => {
           <FieldInputContainer>
             <Select
               options={DeclarationNumberOptions}
-              optionComponent={({ value }) => <Typography variant='label'>{value.label}</Typography>}
+              optionComponent={({ value }) => <Typography variant='label'>{value?.label}</Typography>}
               valueComponent={({ value }) => (
                 <Typography variant='label' noPadding>
-                  {Array.isArray(value) ? value.map(item => item.label) : value.label}
+                  {Array.isArray(value) ? value.map(item => item?.label) : value?.label}
                 </Typography>
               )}
               name='declarationNumber'
@@ -31,7 +31,7 @@ export const Inicio = () => {
               setValue={value =>
                 setData(prev => ({
                   ...prev,
-                  declarationNumber: value.value,
+                  declarationNumber: value?.value ?? 0,
                 }))
               }
             />

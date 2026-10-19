@@ -1,7 +1,8 @@
-import { Button, Icon, Input, Tooltip, Typography } from 'polpo/ui';
+import { Button, Input, Tooltip, Typography } from 'polpo/components';
 import { useCallback, useEffect, useMemo, useState } from 'react';
+import { FaLocationDot, FaTrashCan } from 'react-icons/fa6';
 
-import { SectionDataTableStyle } from './section-data-table.style';
+import './section-data-table.styles.css';
 
 import { FormatInput } from '@components/format-input';
 import { DefaultForm210DataItem, Form210DataItem } from '@core/constants';
@@ -62,7 +63,7 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
   const total = useMemo(() => data.reduce((count, item) => count + item.value, 0), [data]);
 
   return (
-    <SectionDataTableStyle>
+    <section className='section-data-table'>
       {title ? (
         <Typography variant='header4' weight='bold' className='data-table-title'>
           {title}
@@ -71,14 +72,8 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
       {children ? <Typography recommendedWidth>{children}</Typography> : null}
       <section className='item-rows'>
         <section className='actions-row'>
-          <Button
-            variant='ghost'
-            size='small'
-            leftIcon='pin-location'
-            radius='full'
-            className='add-row-button'
-            onClick={addItem}
-          >
+          <Button variant='outlined' size='small' radius='full' className='add-row-button' onClick={addItem}>
+            <FaLocationDot />
             Agregar fila
           </Button>
           <Typography weight='bold' noPadding>
@@ -88,7 +83,7 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
             <span className='clear-table-button'>
               <Tooltip content='Vaciar toda la tabla' position='left'>
                 <span>
-                  <Icon name='trash-can' className='empty-table-button' onClick={emptyTable} />
+                  <FaTrashCan className='empty-table-button' onClick={emptyTable} />
                 </span>
               </Tooltip>
             </span>
@@ -121,7 +116,7 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
                 <section className='item-delete-row'>
                   <Tooltip content='Eliminar fila' position='left'>
                     <span>
-                      <Icon name='trash-can' className='delete-row-button' onClick={() => deleteItem(key)} />
+                      <FaTrashCan className='delete-row-button' onClick={() => deleteItem(key)} />
                     </span>
                   </Tooltip>
                 </section>
@@ -134,6 +129,6 @@ export const SectionDataTable = ({ defaultData, onChange, children, title }: Sec
           </section>
         )}
       </section>
-    </SectionDataTableStyle>
+    </section>
   );
 };
